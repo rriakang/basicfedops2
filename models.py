@@ -1,4 +1,4 @@
-#model.py
+# models.py
 from sklearn.metrics import f1_score
 import torch
 from torch import nn
@@ -36,7 +36,7 @@ class MNISTClassifier(nn.Module):
 # Set the torch train & test
 # torch train
 def train_torch():
-    def custom_train_torch(model, train_loader, epochs, cfg):
+    def custom_train_torch(model, train_loader, epochs, cfg, hp=None):
         """
         Train the network on the training set.
         Model must be the return value.
@@ -44,7 +44,9 @@ def train_torch():
         print("Starting training...")
         
         criterion = nn.CrossEntropyLoss()
-        optimizer = optim.Adam(model.parameters(), lr=cfg.learning_rate)
+        # hp에 learning_rate가 있으면 우선 적용
+        lr = float(hp.get("learning_rate")) if (hp and "learning_rate" in hp) else float(cfg.learning_rate)
+        optimizer = optim.Adam(model.parameters(), lr=lr)
 
         device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         model.to(device)

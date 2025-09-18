@@ -1,6 +1,4 @@
 
-
-#server_api.py
 import requests
 
 
@@ -27,4 +25,3 @@ class ServerAPI():
     # send server_time_result to performance pod
     def put_server_time_result(self, server_time_result_json):
         requests.put(f"http://{self.performance_address}:{self.performance_port}/server_perf/server_time_result/{self.task_id}", data=server_time_result_json)
-

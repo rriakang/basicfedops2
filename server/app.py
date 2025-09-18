@@ -1,4 +1,6 @@
+
 #server/app.py
+
 import logging
 from typing import Dict, Optional, Tuple
 import flwr as fl
@@ -9,7 +11,9 @@ import time
 import numpy as np
 import shutil
 from . import server_api
+# import server_api
 from . import server_utils
+
 from collections import OrderedDict
 from hydra.utils import instantiate
 
@@ -84,7 +88,7 @@ class FLServer():
         if self.model_type == "Tensorflow":
             model_parameters = model.get_weights()
         elif self.model_type == "Pytorch":
-            model_parameters = [val.cpu().numpy() for _, val in model.state_dict().items()]
+            model_parameters = [val.cpu().detach().numpy() for _, val in model.state_dict().items()]
         elif self.model_type == "Huggingface":
             json_path = "./parameter_shapes.json"
             model_parameters = server_utils.load_initial_parameters_from_shape(json_path)
