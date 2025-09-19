@@ -1,4 +1,3 @@
-
 #server/app.py
 
 import logging
@@ -16,6 +15,9 @@ from . import server_utils
 
 from collections import OrderedDict
 from hydra.utils import instantiate
+
+# 추가: Flower 파라미터 변환 유틸
+from flwr.common import ndarrays_to_parameters, parameters_to_ndarrays, NDArrays
 
 # TF warning log filtering
 # os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
@@ -48,13 +50,18 @@ class FLServer():
             self.x_val = x_val
             self.y_val = y_val  
                
-
         elif self.model_type == "Pytorch":
             self.gl_val_loader = gl_val_loader
             self.test_torch = test_torch
 
         elif self.model_type == "Huggingface":
             pass
+
+        # === 추가: 최고 전역모델 보관 슬롯 ===
+        # 어떤 메트릭을 최고 기준으로 쓸지 지정 (accuracy 또는 f1_score 등)
+        self.best_metric_key = "accuracy"
+        # _best["params"]는 list[np.ndarray] (NDArrays)를 보관
+        self._best = {"metric": float("-inf"), "round": -1, "params": None}
 
 
     def init_gl_model_registration(self, model, gl_model_name) -> None:
@@ -68,7 +75,6 @@ class FLServer():
 
             self.fl_server_start(init_model, model_name)
             return model_name
-
 
         else:
             logging.info('load last global model')
@@ -101,12 +107,50 @@ class FLServer():
             on_evaluate_config_fn=self.evaluate_config,
         )
         
-        # Start Flower server (SSL-enabled) for four rounds of federated learning
+        # Start Flower server
         fl.server.start_server(
             server_address="0.0.0.0:8080",
             config=fl.server.ServerConfig(num_rounds=self.num_rounds),
             strategy=strategy,
         )
+
+        # ===== 학습 종료 후: 최고 전역모델로 최종 파일 덮어쓰기 =====
+        try:
+            if self._best["params"] is not None:
+                logging.info(f"[BEST] using round={self._best['round']} {self.best_metric_key}={self._best['metric']:.6f} as final")
+
+                gl_model_path = f'./{model_name}_gl_model_V{self.server.gl_model_v}'
+
+                if self.model_type == "Pytorch":
+                    import torch
+                    keys = [k for k in model.state_dict().keys() if "bn" not in k]
+                    params_dict = zip(keys, self._best["params"])
+                    state_dict = OrderedDict({k: torch.tensor(v) for k, v in params_dict})
+                    model.load_state_dict(state_dict, strict=True)
+                    torch.save(model.state_dict(), gl_model_path + '.pth')
+                    logging.info("[BEST] Saved best global model to %s.pth", gl_model_path)
+
+                    # (선택) 중앙 검증으로 최종-베스트 성능 로그
+                    loss_b, acc_b, met_b = self.test_torch(model, self.gl_val_loader, self.cfg)
+                    logging.info(f"[FINAL-BEST] loss={loss_b:.4f}, acc={acc_b:.6f}, extra={met_b}")
+
+                elif self.model_type == "Tensorflow":
+                    # TensorFlow는 set_weights로 바로 세팅 가능
+                    self.init_model.set_weights(self._best["params"])
+                    # 저장 확장자 통일: .h5
+                    self.init_model.save(gl_model_path + '.h5')
+                    logging.info("[BEST] Saved best global model to %s.h5", gl_model_path)
+
+                    # (선택) 중앙 검증으로 최종-베스트 성능 로그
+                    loss_b, acc_b = self.init_model.evaluate(self.x_val, self.y_val, verbose=0)
+                    logging.info(f"[FINAL-BEST] loss={loss_b:.4f}, acc={acc_b:.6f}")
+
+                elif self.model_type == "Huggingface":
+                    # 생략: 필요 시 어댑터 파라미터 npz로 덮어쓰기 구현
+                    logging.info("[BEST] Huggingface finalization skipped")
+
+        except Exception as e:
+            logging.error(f"[BEST] finalization error: {e}")
 
 
     def get_eval_fn(self, model, model_name):
@@ -120,19 +164,18 @@ class FLServer():
                 config: Dict[str, fl.common.Scalar],
         ) -> Optional[Tuple[float, Dict[str, fl.common.Scalar]]]:
                         
-            # model path for saving local model
+            # model path for saving global model snapshot by round
             gl_model_path = f'./{model_name}_gl_model_V{self.server.gl_model_v}'
             
             metrics = None
             
             if self.model_type == "Tensorflow":
-                # loss, accuracy, precision, recall, auc, auprc = model.evaluate(x_val, y_val)
-                loss, accuracy = model.evaluate(self.x_val, self.y_val)
-
+                # 먼저 최신 파라미터 로드 후 평가 (순서 수정)
                 model.set_weights(parameters_ndarrays)  # Update model with the latest parameters
-                
-                # model save
-                model.save(gl_model_path+'.tf')
+                loss, accuracy = model.evaluate(self.x_val, self.y_val, verbose=0)
+
+                # 저장 확장자 통일: .h5 (업로드 로직과 일관)
+                model.save(gl_model_path + '.h5')
             
             elif self.model_type == "Pytorch":
                 import torch
@@ -144,7 +187,7 @@ class FLServer():
                 loss, accuracy, metrics = self.test_torch(model, self.gl_val_loader, self.cfg)
                 
                 # model save
-                torch.save(model.state_dict(), gl_model_path+'.pth')
+                torch.save(model.state_dict(), gl_model_path + '.pth')
 
             elif self.model_type == "Huggingface":
                 logging.warning("Skipping evaluation for Huggingface model")
@@ -153,6 +196,7 @@ class FLServer():
                 os.makedirs(gl_model_path, exist_ok=True)
                 np.savez(os.path.join(gl_model_path, "adapter_parameters.npz"), *parameters_ndarrays)
 
+            # === 라운드별 로그/리포팅 ===
             if self.server.round >= 1:
                 # fit aggregation end time
                 self.server.end_by_round = time.time() - self.server.start_by_round
@@ -168,7 +212,22 @@ class FLServer():
 
                 # send gl model evaluation to performance pod
                 server_api.ServerAPI(self.task_id).put_gl_model_evaluation(json_server_eval)
-                
+            
+            # === 추가: 최고 전역모델 갱신 ===
+            # 기준 메트릭은 accuracy(기본) 또는 metrics 내 self.best_metric_key
+            current_metric = float(accuracy)
+            if metrics is not None and self.best_metric_key in metrics:
+                try:
+                    current_metric = float(metrics[self.best_metric_key])
+                except Exception:
+                    current_metric = float(accuracy)
+
+            if current_metric > self._best["metric"]:
+                # 깊은 복사로 안전 보관
+                best_copy = [np.copy(x) for x in parameters_ndarrays]
+                self._best = {"metric": current_metric, "round": server_round, "params": best_copy}
+                logging.info(f"[BEST] round={server_round} {self.best_metric_key}={current_metric:.6f}")
+
             if metrics!=None:
                 return loss, {"accuracy": accuracy, **metrics}
             else:
@@ -209,7 +268,6 @@ class FLServer():
 
         today_time = datetime.datetime.today().strftime('%Y-%m-%d %H-%M-%S')
 
-
         # Loaded last global model or no global model in s3
         self.next_model, self.next_model_name, self.server.last_gl_model_v = server_utils.model_download_s3(self.task_id, self.model_type, self.init_model)
         
@@ -248,7 +306,7 @@ class FLServer():
             # Send server time result to performance pod
             server_api.ServerAPI(self.task_id).put_server_time_result(json_all_time_result)
             
-            # upload global model
+            # upload global model (최종 파일은 fl_server_start()에서 BEST로 덮어쓴 상태)
             if self.model_type == "Tensorflow":
                 global_model_file_name = f"{gl_model_name}_gl_model_V{self.server.gl_model_v}.h5"
                 server_utils.upload_model_to_bucket(self.task_id, global_model_file_name)

@@ -119,12 +119,12 @@ class _OptunaHPO:
         study.tell(trial_number, float(score))
 
 
-# ----- FedAvg 확장 전략 -----
+
 class ClusterOptunaFedAvg(FedAvg):
     def __init__(
         self,
         objective: str = "maximize_f1",
-        eps: float = 0.35,
+        eps: float = 0.3,
         min_samples: int = 1,
         search_lr_log: Tuple[float, float] = (-4.5, -2.0),
         search_bs_exp: Tuple[int, int] = (4, 7),

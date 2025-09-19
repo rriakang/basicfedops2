@@ -5,7 +5,7 @@ from torch import nn
 from torch import optim
 import torch.nn.functional as F
 from tqdm import tqdm 
-
+from torch.optim.lr_scheduler import CosineAnnealingLR
 # Define MNIST Model    
 class MNISTClassifier(nn.Module):
     # To properly utilize the config file, the output_size variable must be used in __init__().
@@ -37,37 +37,31 @@ class MNISTClassifier(nn.Module):
 # torch train
 def train_torch():
     def custom_train_torch(model, train_loader, epochs, cfg, hp=None):
-        """
-        Train the network on the training set.
-        Model must be the return value.
-        """
-        print("Starting training...")
-        
+        import torch
+        from torch import nn, optim
+
         criterion = nn.CrossEntropyLoss()
-        # hp에 learning_rate가 있으면 우선 적용
         lr = float(hp.get("learning_rate")) if (hp and "learning_rate" in hp) else float(cfg.learning_rate)
         optimizer = optim.Adam(model.parameters(), lr=lr)
 
+        # --- 추가: 스케줄러 ---
+        # Cosine: 마지막으로 갈수록 자연 감속
+        scheduler = CosineAnnealingLR(optimizer, T_max=max(1, epochs))
+
         device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         model.to(device)
-
         model.train()
         for epoch in range(epochs):
-            with tqdm(total=len(train_loader), desc=f'Epoch {epoch+1}/{epochs}', unit='batch') as pbar:
-                for inputs, labels in train_loader:
-                    inputs, labels = inputs.to(device), labels.to(device)
-                    optimizer.zero_grad()
-                    outputs = model(inputs)
-                    loss = criterion(outputs, labels)
-                    loss.backward()
-                    optimizer.step()
-                    
-                    pbar.update()  # Update the progress bar for each batch
-
+            for inputs, labels in train_loader:
+                inputs, labels = inputs.to(device), labels.to(device)
+                optimizer.zero_grad()
+                outputs = model(inputs)
+                loss = criterion(outputs, labels)
+                loss.backward()
+                optimizer.step()
+            scheduler.step()  # <-- epoch 끝마다 감속
         model.to("cpu")
-            
         return model
-    
     return custom_train_torch
 
 # torch test

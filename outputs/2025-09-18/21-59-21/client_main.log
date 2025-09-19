@@ -1,0 +1,212 @@
+[2025-09-18 21:59:22,665][root][INFO] - FL_Task - {"dataset": "MNIST", "start_execution_time": "2025-09-18 21:59:22"}
+[2025-09-18 21:59:22,989][__main__][INFO] - data loaded
+[2025-09-18 21:59:23,108][root][INFO] - init model_type: Pytorch
+[2025-09-18 22:05:36,169][root][INFO] - bulid model
+[2025-09-18 22:05:36,169][root][INFO] - FL start
+[2025-09-18 22:05:36,179][client_api][INFO] - FL_server_IP:port - ccl.gachon.ac.kr:40032
+[2025-09-18 22:05:36,180][root][INFO] - FL learning ready
+[2025-09-18 22:05:36,180][root][INFO] - fl_task_id: hyp
+[2025-09-18 22:05:36,180][root][INFO] - dataset: MNIST
+[2025-09-18 22:05:36,180][root][INFO] - output_size: 10
+[2025-09-18 22:05:36,180][root][INFO] - validation_split: 0.2
+[2025-09-18 22:05:36,181][root][INFO] - model_type: Pytorch
+[2025-09-18 22:05:36,181][root][INFO] - wandb_key: 38f6cf3c2c37660d42ebfe8ab434b72d34be3b31
+[2025-09-18 22:05:36,181][root][INFO] - wandb_account: rirakang@gachon.ac.kr
+[2025-09-18 22:05:40,839][flwr][WARNING] - DEPRECATED FEATURE: flwr.client.start_numpy_client() is deprecated. 
+	Instead, use `flwr.client.start_client()` by ensuring you first call the `.to_client()` method as shown below: 
+	flwr.client.start_client(
+		server_address='<IP>:<PORT>',
+		client=FlowerClient().to_client(), # <-- where FlowerClient is of type flwr.client.NumPyClient object
+	)
+	Using `start_numpy_client()` is deprecated.
+
+            This is a deprecated feature. It will be removed
+            entirely in future versions of Flower.
+        
+[2025-09-18 22:05:40,876][flwr][WARNING] - DEPRECATED FEATURE: flwr.client.start_client() is deprecated.
+	Instead, use the `flower-supernode` CLI command to start a SuperNode as shown below:
+
+		$ flower-supernode --insecure --superlink='<IP>:<PORT>'
+
+	To view all available options, run:
+
+		$ flower-supernode --help
+
+	Using `start_client()` is deprecated.
+
+            This is a deprecated feature. It will be removed
+            entirely in future versions of Flower.
+        
+[2025-09-18 22:05:40,943][flwr][DEBUG] - Opened insecure gRPC connection (no certificates were passed)
+[2025-09-18 22:05:41,272][flwr][DEBUG] - ChannelConnectivity.IDLE
+[2025-09-18 22:05:41,301][flwr][DEBUG] - ChannelConnectivity.READY
+[2025-09-18 22:05:41,506][flwr][INFO] - 
+[2025-09-18 22:05:41,506][flwr][INFO] - Received: train message 6f2b3520-2edc-43b9-ae6b-2b34ee950280
+[2025-09-18 22:09:06,593][client_fl][INFO] - train_performance - {"fl_task_id": "hyp", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "round": 1, "gl_model_v": 1, "train_loss": 0.17993790016952135, "train_accuracy": 0.9497777777777778, "train_f1_score": 0.9497279028603653, "val_loss": 0.18448735234585215, "val_accuracy": 0.9465, "val_f1_score": 0.9464642764851746, "train_time": 205.0183973312378, "wandb_name": "ccl-x-server-v0(2025-09-18 21:59:23.122031)"}
+[2025-09-18 22:09:07,052][flwr][INFO] - Sent reply
+[2025-09-18 22:09:10,702][flwr][INFO] - 
+[2025-09-18 22:09:10,703][flwr][INFO] - Received: evaluate message fdde96ac-b577-4ee5-8579-0c64fa8ac03e
+[2025-09-18 22:09:22,996][client_fl][INFO] - test - {"fl_task_id": "hyp", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "round": 1, "test_loss": 0.19301620934237826, "test_accuracy": 0.9440833333333334, "gl_model_v": 1, "wandb_name": "ccl-x-server-v0(2025-09-18 21:59:23.122031)"}
+[2025-09-18 22:09:23,086][flwr][INFO] - Sent reply
+[2025-09-18 22:09:23,496][flwr][INFO] - 
+[2025-09-18 22:09:23,497][flwr][INFO] - Received: train message 6c40e7c8-b459-4423-a5b6-06e436509adc
+[2025-09-18 22:11:31,098][client_fl][INFO] - train_performance - {"fl_task_id": "hyp", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "round": 2, "gl_model_v": 1, "train_loss": 0.11274194762958925, "train_accuracy": 0.9669166666666666, "train_f1_score": 0.9669632419096229, "val_loss": 0.13699078916552218, "val_accuracy": 0.96225, "val_f1_score": 0.9622970121403553, "train_time": 127.59345555305481, "wandb_name": "ccl-x-server-v0(2025-09-18 21:59:23.122031)"}
+[2025-09-18 22:11:31,270][flwr][INFO] - Sent reply
+[2025-09-18 22:11:34,659][flwr][INFO] - 
+[2025-09-18 22:11:34,661][flwr][INFO] - Received: evaluate message 24ac2ec9-1321-490c-a35f-43aec09e2b7f
+[2025-09-18 22:11:44,778][client_fl][INFO] - test - {"fl_task_id": "hyp", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "round": 2, "test_loss": 0.13907017368585506, "test_accuracy": 0.9583333333333334, "gl_model_v": 1, "wandb_name": "ccl-x-server-v0(2025-09-18 21:59:23.122031)"}
+[2025-09-18 22:11:44,797][flwr][INFO] - Sent reply
+[2025-09-18 22:11:45,195][flwr][INFO] - 
+[2025-09-18 22:11:45,196][flwr][INFO] - Received: train message 1451996f-2450-429e-8670-67c2551b690a
+[2025-09-18 22:12:50,913][client_fl][INFO] - train_performance - {"fl_task_id": "hyp", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "round": 3, "gl_model_v": 1, "train_loss": 0.0877764762232831, "train_accuracy": 0.9739722222222222, "train_f1_score": 0.9739900321426058, "val_loss": 0.11372173386328716, "val_accuracy": 0.9686666666666667, "val_f1_score": 0.9686668183581074, "train_time": 65.69525337219238, "wandb_name": "ccl-x-server-v0(2025-09-18 21:59:23.122031)"}
+[2025-09-18 22:12:50,983][flwr][INFO] - Sent reply
+[2025-09-18 22:12:54,443][flwr][INFO] - 
+[2025-09-18 22:12:54,443][flwr][INFO] - Received: evaluate message 23ec380b-6f98-4560-84cd-8ce318829da3
+[2025-09-18 22:13:04,161][client_fl][INFO] - test - {"fl_task_id": "hyp", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "round": 3, "test_loss": 0.11271672999050389, "test_accuracy": 0.9655833333333333, "gl_model_v": 1, "wandb_name": "ccl-x-server-v0(2025-09-18 21:59:23.122031)"}
+[2025-09-18 22:13:04,201][flwr][INFO] - Sent reply
+[2025-09-18 22:13:04,640][flwr][INFO] - 
+[2025-09-18 22:13:04,641][flwr][INFO] - Received: train message 33c36046-27d4-4f42-842b-b16b90c9c6a1
+[2025-09-18 22:19:03,286][client_fl][INFO] - train_performance - {"fl_task_id": "hyp", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "round": 4, "gl_model_v": 1, "train_loss": 0.04131810114223666, "train_accuracy": 0.9866666666666667, "train_f1_score": 0.9866645919857132, "val_loss": 0.07499303484454434, "val_accuracy": 0.9791666666666666, "val_f1_score": 0.9791583874369474, "train_time": 358.6375889778137, "wandb_name": "ccl-x-server-v0(2025-09-18 21:59:23.122031)"}
+[2025-09-18 22:19:03,624][flwr][INFO] - Sent reply
+[2025-09-18 22:19:06,981][flwr][INFO] - 
+[2025-09-18 22:19:06,982][flwr][INFO] - Received: evaluate message 8e261ff8-56a8-47df-b351-dfaed1575c22
+[2025-09-18 22:19:22,567][client_fl][INFO] - test - {"fl_task_id": "hyp", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "round": 4, "test_loss": 0.07272308130570232, "test_accuracy": 0.9768333333333333, "gl_model_v": 1, "wandb_name": "ccl-x-server-v0(2025-09-18 21:59:23.122031)"}
+[2025-09-18 22:19:22,588][flwr][INFO] - Sent reply
+[2025-09-18 22:19:23,004][flwr][INFO] - 
+[2025-09-18 22:19:23,009][flwr][INFO] - Received: train message fbfe529b-5d17-4805-914d-9da91c038fee
+[2025-09-18 22:22:24,226][client_fl][INFO] - train_performance - {"fl_task_id": "hyp", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "round": 5, "gl_model_v": 1, "train_loss": 0.03563142212493295, "train_accuracy": 0.9888611111111111, "train_f1_score": 0.9888624648986637, "val_loss": 0.07343570290113542, "val_accuracy": 0.9795, "val_f1_score": 0.9794941568039379, "train_time": 181.1865041255951, "wandb_name": "ccl-x-server-v0(2025-09-18 21:59:23.122031)"}
+[2025-09-18 22:22:24,481][flwr][INFO] - Sent reply
+[2025-09-18 22:22:27,837][flwr][INFO] - 
+[2025-09-18 22:22:27,838][flwr][INFO] - Received: evaluate message a2659606-118a-47cc-bfa7-948374f55685
+[2025-09-18 22:22:39,702][client_fl][INFO] - test - {"fl_task_id": "hyp", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "round": 5, "test_loss": 0.06977920126209551, "test_accuracy": 0.9791666666666666, "gl_model_v": 1, "wandb_name": "ccl-x-server-v0(2025-09-18 21:59:23.122031)"}
+[2025-09-18 22:22:39,721][flwr][INFO] - Sent reply
+[2025-09-18 22:22:40,000][flwr][INFO] - 
+[2025-09-18 22:22:40,001][flwr][INFO] - Received: train message fc7b0d9f-7213-4aed-962b-82ff682d963e
+[2025-09-18 22:24:40,368][client_fl][INFO] - train_performance - {"fl_task_id": "hyp", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "round": 6, "gl_model_v": 1, "train_loss": 0.0296061678623801, "train_accuracy": 0.9911666666666666, "train_f1_score": 0.9911655821399403, "val_loss": 0.06779118239919239, "val_accuracy": 0.9804166666666667, "val_f1_score": 0.980404687749725, "train_time": 120.35815978050232, "wandb_name": "ccl-x-server-v0(2025-09-18 21:59:23.122031)"}
+[2025-09-18 22:24:40,668][flwr][INFO] - Sent reply
+[2025-09-18 22:24:43,900][flwr][INFO] - 
+[2025-09-18 22:24:43,901][flwr][INFO] - Received: evaluate message 8407ad3a-d148-402f-8529-661f4138130c
+[2025-09-18 22:24:55,096][client_fl][INFO] - test - {"fl_task_id": "hyp", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "round": 6, "test_loss": 0.06741926613006186, "test_accuracy": 0.9795833333333334, "gl_model_v": 1, "wandb_name": "ccl-x-server-v0(2025-09-18 21:59:23.122031)"}
+[2025-09-18 22:24:55,157][flwr][INFO] - Sent reply
+[2025-09-18 22:24:55,522][flwr][INFO] - 
+[2025-09-18 22:24:55,522][flwr][INFO] - Received: train message 9f82d079-6be5-4652-9d24-d88cee7abcbe
+[2025-09-18 22:26:03,162][client_fl][INFO] - train_performance - {"fl_task_id": "hyp", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "round": 7, "gl_model_v": 1, "train_loss": 0.01972624939471708, "train_accuracy": 0.9941944444444445, "train_f1_score": 0.9941973062813676, "val_loss": 0.06739345892144248, "val_accuracy": 0.9811666666666666, "val_f1_score": 0.9811605179001905, "train_time": 67.63382411003113, "wandb_name": "ccl-x-server-v0(2025-09-18 21:59:23.122031)"}
+[2025-09-18 22:26:03,295][flwr][INFO] - Sent reply
+[2025-09-18 22:26:06,649][flwr][INFO] - 
+[2025-09-18 22:26:06,650][flwr][INFO] - Received: evaluate message 122bc83b-617b-4b07-9c17-1c3454806090
+[2025-09-18 22:26:16,004][client_fl][INFO] - test - {"fl_task_id": "hyp", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "round": 7, "test_loss": 0.07013244068428398, "test_accuracy": 0.98025, "gl_model_v": 1, "wandb_name": "ccl-x-server-v0(2025-09-18 21:59:23.122031)"}
+[2025-09-18 22:26:16,023][flwr][INFO] - Sent reply
+[2025-09-18 22:26:16,364][flwr][INFO] - 
+[2025-09-18 22:26:16,365][flwr][INFO] - Received: train message 4934dec7-00c4-42a7-879c-e89bd5225d60
+[2025-09-18 22:28:30,783][client_fl][INFO] - train_performance - {"fl_task_id": "hyp", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "round": 8, "gl_model_v": 1, "train_loss": 0.016550100388768543, "train_accuracy": 0.9951944444444445, "train_f1_score": 0.9951944786652827, "val_loss": 0.06638916160049353, "val_accuracy": 0.9826666666666667, "val_f1_score": 0.9826546261906769, "train_time": 134.40943002700806, "wandb_name": "ccl-x-server-v0(2025-09-18 21:59:23.122031)"}
+[2025-09-18 22:28:31,279][flwr][INFO] - Sent reply
+[2025-09-18 22:28:34,608][flwr][INFO] - 
+[2025-09-18 22:28:34,609][flwr][INFO] - Received: evaluate message 7f46deb2-2f2c-411e-9480-c2f89bba5a61
+[2025-09-18 22:28:50,753][client_fl][INFO] - test - {"fl_task_id": "hyp", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "round": 8, "test_loss": 0.07017076326078399, "test_accuracy": 0.9809166666666667, "gl_model_v": 1, "wandb_name": "ccl-x-server-v0(2025-09-18 21:59:23.122031)"}
+[2025-09-18 22:28:50,800][flwr][INFO] - Sent reply
+[2025-09-18 22:28:51,285][flwr][INFO] - 
+[2025-09-18 22:28:51,286][flwr][INFO] - Received: train message 5bb5ef06-c0a3-49c9-844f-7acc5d3a5ece
+[2025-09-18 22:31:32,610][client_fl][INFO] - train_performance - {"fl_task_id": "hyp", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "round": 9, "gl_model_v": 1, "train_loss": 0.012503228854383036, "train_accuracy": 0.9960277777777777, "train_f1_score": 0.9960269772772679, "val_loss": 0.0690826913589572, "val_accuracy": 0.9830833333333333, "val_f1_score": 0.9830681281557624, "train_time": 161.28414225578308, "wandb_name": "ccl-x-server-v0(2025-09-18 21:59:23.122031)"}
+[2025-09-18 22:31:33,034][flwr][INFO] - Sent reply
+[2025-09-18 22:31:36,515][flwr][INFO] - 
+[2025-09-18 22:31:36,516][flwr][INFO] - Received: evaluate message 283a66e2-5957-4367-9d79-713a20069774
+[2025-09-18 22:31:51,340][client_fl][INFO] - test - {"fl_task_id": "hyp", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "round": 9, "test_loss": 0.07977964151204821, "test_accuracy": 0.9798333333333333, "gl_model_v": 1, "wandb_name": "ccl-x-server-v0(2025-09-18 21:59:23.122031)"}
+[2025-09-18 22:31:51,382][flwr][INFO] - Sent reply
+[2025-09-18 22:31:51,774][flwr][INFO] - 
+[2025-09-18 22:31:51,775][flwr][INFO] - Received: train message be304881-3009-4b7b-a6c7-4834172f8ac4
+[2025-09-18 22:35:41,705][client_fl][INFO] - train_performance - {"fl_task_id": "hyp", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "round": 10, "gl_model_v": 1, "train_loss": 0.0055715920714766425, "train_accuracy": 0.9989166666666667, "train_f1_score": 0.9989165772455114, "val_loss": 0.06747771114571655, "val_accuracy": 0.9843333333333333, "val_f1_score": 0.984322360038675, "train_time": 229.89170932769775, "wandb_name": "ccl-x-server-v0(2025-09-18 21:59:23.122031)"}
+[2025-09-18 22:35:42,122][flwr][INFO] - Sent reply
+[2025-09-18 22:35:45,381][flwr][INFO] - 
+[2025-09-18 22:35:45,382][flwr][INFO] - Received: evaluate message e55770ff-25b4-4b18-acaf-491d1b482c01
+[2025-09-18 22:36:00,073][client_fl][INFO] - test - {"fl_task_id": "hyp", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "round": 10, "test_loss": 0.07735310081377665, "test_accuracy": 0.9826666666666667, "gl_model_v": 1, "wandb_name": "ccl-x-server-v0(2025-09-18 21:59:23.122031)"}
+[2025-09-18 22:36:00,126][flwr][INFO] - Sent reply
+[2025-09-18 22:36:00,616][flwr][INFO] - 
+[2025-09-18 22:36:00,617][flwr][INFO] - Received: train message 0480e2fb-fc0a-43ee-b7e3-38045d872bdc
+[2025-09-18 22:37:19,448][client_fl][INFO] - train_performance - {"fl_task_id": "hyp", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "round": 11, "gl_model_v": 1, "train_loss": 0.004805007981502488, "train_accuracy": 0.9991388888888889, "train_f1_score": 0.9991388640458101, "val_loss": 0.06807681098437937, "val_accuracy": 0.9845, "val_f1_score": 0.9844927874945283, "train_time": 78.79933428764343, "wandb_name": "ccl-x-server-v0(2025-09-18 21:59:23.122031)"}
+[2025-09-18 22:37:19,541][flwr][INFO] - Sent reply
+[2025-09-18 22:37:23,070][flwr][INFO] - 
+[2025-09-18 22:37:23,070][flwr][INFO] - Received: evaluate message 372b4a30-8626-4dea-b0a9-1d932d19dd58
+[2025-09-18 22:37:31,290][client_fl][INFO] - test - {"fl_task_id": "hyp", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "round": 11, "test_loss": 0.07839969510678202, "test_accuracy": 0.9824166666666667, "gl_model_v": 1, "wandb_name": "ccl-x-server-v0(2025-09-18 21:59:23.122031)"}
+[2025-09-18 22:37:31,307][flwr][INFO] - Sent reply
+[2025-09-18 22:37:31,629][flwr][INFO] - 
+[2025-09-18 22:37:31,630][flwr][INFO] - Received: train message 6010ebef-21ef-493e-8ae1-7e6586f6a3eb
+[2025-09-18 22:38:37,130][client_fl][INFO] - train_performance - {"fl_task_id": "hyp", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "round": 12, "gl_model_v": 1, "train_loss": 0.004739955071091952, "train_accuracy": 0.9991388888888889, "train_f1_score": 0.9991388694541294, "val_loss": 0.06839388901859453, "val_accuracy": 0.98475, "val_f1_score": 0.9847432453033156, "train_time": 65.48463106155396, "wandb_name": "ccl-x-server-v0(2025-09-18 21:59:23.122031)"}
+[2025-09-18 22:38:37,444][flwr][INFO] - Sent reply
+[2025-09-18 22:38:40,786][flwr][INFO] - 
+[2025-09-18 22:38:40,790][flwr][INFO] - Received: evaluate message d194494f-8aae-469d-b3e7-330372fabb37
+[2025-09-18 22:38:51,365][client_fl][INFO] - test - {"fl_task_id": "hyp", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "round": 12, "test_loss": 0.07898357818076546, "test_accuracy": 0.9826666666666667, "gl_model_v": 1, "wandb_name": "ccl-x-server-v0(2025-09-18 21:59:23.122031)"}
+[2025-09-18 22:38:51,392][flwr][INFO] - Sent reply
+[2025-09-18 22:38:51,772][flwr][INFO] - 
+[2025-09-18 22:38:51,773][flwr][INFO] - Received: train message 8e4307c1-d551-4036-8162-4cddf9f40487
+[2025-09-18 22:39:59,106][client_fl][INFO] - train_performance - {"fl_task_id": "hyp", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "round": 13, "gl_model_v": 1, "train_loss": 0.004632696360849168, "train_accuracy": 0.9991388888888889, "train_f1_score": 0.9991388694541294, "val_loss": 0.0686618835749501, "val_accuracy": 0.98475, "val_f1_score": 0.9847432453033156, "train_time": 67.32525491714478, "wandb_name": "ccl-x-server-v0(2025-09-18 21:59:23.122031)"}
+[2025-09-18 22:39:59,284][flwr][INFO] - Sent reply
+[2025-09-18 22:40:02,622][flwr][INFO] - 
+[2025-09-18 22:40:02,623][flwr][INFO] - Received: evaluate message f067ee82-ecd9-42ac-8fd3-f152752f959e
+[2025-09-18 22:40:11,796][client_fl][INFO] - test - {"fl_task_id": "hyp", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "round": 13, "test_loss": 0.07946476285925452, "test_accuracy": 0.9828333333333333, "gl_model_v": 1, "wandb_name": "ccl-x-server-v0(2025-09-18 21:59:23.122031)"}
+[2025-09-18 22:40:11,842][flwr][INFO] - Sent reply
+[2025-09-18 22:40:12,235][flwr][INFO] - 
+[2025-09-18 22:40:12,236][flwr][INFO] - Received: train message f699402d-4741-44c8-bebd-53282e718fa0
+[2025-09-18 22:41:14,213][client_fl][INFO] - train_performance - {"fl_task_id": "hyp", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "round": 14, "gl_model_v": 1, "train_loss": 0.0045577792999527, "train_accuracy": 0.9991666666666666, "train_f1_score": 0.9991666557246994, "val_loss": 0.06886391057923902, "val_accuracy": 0.98475, "val_f1_score": 0.9847432998558784, "train_time": 61.96938514709473, "wandb_name": "ccl-x-server-v0(2025-09-18 21:59:23.122031)"}
+[2025-09-18 22:41:14,565][flwr][INFO] - Sent reply
+[2025-09-18 22:41:17,881][flwr][INFO] - 
+[2025-09-18 22:41:17,882][flwr][INFO] - Received: evaluate message b69cf3cb-2493-4f82-8ef1-1d1f139dc5c7
+[2025-09-18 22:41:28,516][client_fl][INFO] - test - {"fl_task_id": "hyp", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "round": 14, "test_loss": 0.07978584139206585, "test_accuracy": 0.9828333333333333, "gl_model_v": 1, "wandb_name": "ccl-x-server-v0(2025-09-18 21:59:23.122031)"}
+[2025-09-18 22:41:28,572][flwr][INFO] - Sent reply
+[2025-09-18 22:41:28,987][flwr][INFO] - 
+[2025-09-18 22:41:28,988][flwr][INFO] - Received: train message 6705e286-0225-4ba3-b8e8-4608fafa0cc6
+[2025-09-18 22:44:05,719][client_fl][INFO] - train_performance - {"fl_task_id": "hyp", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "round": 15, "gl_model_v": 1, "train_loss": 0.004418431218919519, "train_accuracy": 0.9991944444444445, "train_f1_score": 0.9991944373526818, "val_loss": 0.06909646684622164, "val_accuracy": 0.98475, "val_f1_score": 0.9847432998558784, "train_time": 156.68214392662048, "wandb_name": "ccl-x-server-v0(2025-09-18 21:59:23.122031)"}
+[2025-09-18 22:44:06,182][flwr][INFO] - Sent reply
+[2025-09-18 22:44:09,724][flwr][INFO] - 
+[2025-09-18 22:44:09,725][flwr][INFO] - Received: evaluate message 2d0fe06d-d2f3-43d5-a4a5-cd2dfe6caed1
+[2025-09-18 22:44:24,311][client_fl][INFO] - test - {"fl_task_id": "hyp", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "round": 15, "test_loss": 0.08015204329747072, "test_accuracy": 0.98275, "gl_model_v": 1, "wandb_name": "ccl-x-server-v0(2025-09-18 21:59:23.122031)"}
+[2025-09-18 22:44:24,361][flwr][INFO] - Sent reply
+[2025-09-18 22:44:24,717][flwr][INFO] - 
+[2025-09-18 22:44:24,717][flwr][INFO] - Received: train message b3473208-e21b-46a1-bbad-d33541b239ce
+[2025-09-18 22:47:02,106][client_fl][INFO] - train_performance - {"fl_task_id": "hyp", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "round": 16, "gl_model_v": 1, "train_loss": 0.004154202517925792, "train_accuracy": 0.9992777777777778, "train_f1_score": 0.9992777425595638, "val_loss": 0.06964550919872907, "val_accuracy": 0.98475, "val_f1_score": 0.9847430817485299, "train_time": 157.28006839752197, "wandb_name": "ccl-x-server-v0(2025-09-18 21:59:23.122031)"}
+[2025-09-18 22:47:02,383][flwr][INFO] - Sent reply
+[2025-09-18 22:47:05,595][flwr][INFO] - 
+[2025-09-18 22:47:05,595][flwr][INFO] - Received: evaluate message a4c19b25-a89d-45d4-8e20-300b4b5667cb
+[2025-09-18 22:47:22,160][client_fl][INFO] - test - {"fl_task_id": "hyp", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "round": 16, "test_loss": 0.08086263249378077, "test_accuracy": 0.98275, "gl_model_v": 1, "wandb_name": "ccl-x-server-v0(2025-09-18 21:59:23.122031)"}
+[2025-09-18 22:47:22,225][flwr][INFO] - Sent reply
+[2025-09-18 22:47:22,618][flwr][INFO] - 
+[2025-09-18 22:47:22,620][flwr][INFO] - Received: train message b56aca73-0b4e-4e4c-a2f8-bc4a4cda55fe
+[2025-09-18 22:49:56,569][client_fl][INFO] - train_performance - {"fl_task_id": "hyp", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "round": 17, "gl_model_v": 1, "train_loss": 0.0040176865646550965, "train_accuracy": 0.9992777777777778, "train_f1_score": 0.9992777425595638, "val_loss": 0.07005725937902908, "val_accuracy": 0.9846666666666667, "val_f1_score": 0.984659206121531, "train_time": 153.9136095046997, "wandb_name": "ccl-x-server-v0(2025-09-18 21:59:23.122031)"}
+[2025-09-18 22:49:56,673][flwr][INFO] - Sent reply
+[2025-09-18 22:50:00,005][flwr][INFO] - 
+[2025-09-18 22:50:00,007][flwr][INFO] - Received: evaluate message c81143b0-f5dc-4041-9461-7a09ba0bde03
+[2025-09-18 22:50:10,799][client_fl][INFO] - test - {"fl_task_id": "hyp", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "round": 17, "test_loss": 0.0813625792135544, "test_accuracy": 0.98275, "gl_model_v": 1, "wandb_name": "ccl-x-server-v0(2025-09-18 21:59:23.122031)"}
+[2025-09-18 22:50:10,846][flwr][INFO] - Sent reply
+[2025-09-18 22:50:11,234][flwr][INFO] - 
+[2025-09-18 22:50:11,235][flwr][INFO] - Received: train message 9b6fd6c1-048c-497e-b8ad-785366e24269
+[2025-09-18 22:52:30,222][client_fl][INFO] - train_performance - {"fl_task_id": "hyp", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "round": 18, "gl_model_v": 1, "train_loss": 0.0018167537511273738, "train_accuracy": 0.9998888888888889, "train_f1_score": 0.9998888925337853, "val_loss": 0.0776564149361567, "val_accuracy": 0.9841666666666666, "val_f1_score": 0.9841593867014432, "train_time": 138.98049187660217, "wandb_name": "ccl-x-server-v0(2025-09-18 21:59:23.122031)"}
+[2025-09-18 22:52:30,565][flwr][INFO] - Sent reply
+[2025-09-18 22:52:34,005][flwr][INFO] - 
+[2025-09-18 22:52:34,007][flwr][INFO] - Received: evaluate message 8f9c3825-8a5d-4233-bc6c-e87357b6a4cd
+[2025-09-18 22:52:46,205][client_fl][INFO] - test - {"fl_task_id": "hyp", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "round": 18, "test_loss": 0.0895134568795874, "test_accuracy": 0.9830833333333333, "gl_model_v": 1, "wandb_name": "ccl-x-server-v0(2025-09-18 21:59:23.122031)"}
+[2025-09-18 22:52:46,296][flwr][INFO] - Sent reply
+[2025-09-18 22:52:46,740][flwr][INFO] - 
+[2025-09-18 22:52:46,758][flwr][INFO] - Received: train message cc8bd8c0-b691-448c-9fe2-1bb16f70aea2
+[2025-09-18 22:54:55,524][client_fl][INFO] - train_performance - {"fl_task_id": "hyp", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "round": 19, "gl_model_v": 1, "train_loss": 0.21761402399973162, "train_accuracy": 0.9455555555555556, "train_f1_score": 0.9455335523828354, "val_loss": 0.2451083892361915, "val_accuracy": 0.94, "val_f1_score": 0.9399360497100256, "train_time": 128.74782347679138, "wandb_name": "ccl-x-server-v0(2025-09-18 21:59:23.122031)"}
+[2025-09-18 22:54:55,621][flwr][INFO] - Sent reply
+[2025-09-18 22:54:59,015][flwr][INFO] - 
+[2025-09-18 22:54:59,015][flwr][INFO] - Received: evaluate message daeb97db-7df6-4c1c-b5a0-8903156d3d76
+[2025-09-18 22:55:09,607][client_fl][INFO] - test - {"fl_task_id": "hyp", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "round": 19, "test_loss": 0.2533764915263399, "test_accuracy": 0.9395833333333333, "gl_model_v": 1, "wandb_name": "ccl-x-server-v0(2025-09-18 21:59:23.122031)"}
+[2025-09-18 22:55:09,668][flwr][INFO] - Sent reply
+[2025-09-18 22:55:10,058][flwr][INFO] - 
+[2025-09-18 22:55:10,059][flwr][INFO] - Received: train message d1d0190e-b76b-42c4-893d-f65aa5e7384e
+[2025-09-18 22:58:33,896][client_fl][INFO] - train_performance - {"fl_task_id": "hyp", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "round": 20, "gl_model_v": 1, "train_loss": 0.1312941090856409, "train_accuracy": 0.9655, "train_f1_score": 0.9655059306567924, "val_loss": 0.15816319551556668, "val_accuracy": 0.9589166666666666, "val_f1_score": 0.9589174414207665, "train_time": 203.80916953086853, "wandb_name": "ccl-x-server-v0(2025-09-18 21:59:23.122031)"}
+[2025-09-18 22:58:34,178][flwr][INFO] - Sent reply
+[2025-09-18 22:58:37,666][flwr][INFO] - 
+[2025-09-18 22:58:37,667][flwr][INFO] - Received: evaluate message a3f4839f-85f1-4ac0-a11b-496075918567
+[2025-09-18 22:58:54,481][client_fl][INFO] - test - {"fl_task_id": "hyp", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "round": 20, "test_loss": 0.16664334727411576, "test_accuracy": 0.959, "gl_model_v": 1, "wandb_name": "ccl-x-server-v0(2025-09-18 21:59:23.122031)"}
+[2025-09-18 22:58:54,580][flwr][INFO] - Sent reply
+[2025-09-18 22:58:54,611][flwr][INFO] - 
+[2025-09-18 22:58:54,611][flwr][INFO] - Received: reconnect message db1606f1-d1ec-44bb-80d3-968c220d826d
+[2025-09-18 22:58:54,654][flwr][DEBUG] - gRPC channel closed
+[2025-09-18 22:58:54,655][flwr][INFO] - Disconnect and shut down
+[2025-09-18 22:58:54,657][root][INFO] - fl learning finished
+[2025-09-18 22:58:56,701][root][ERROR] - wandb system load error: Could not find project MNIST_hyp
+[2025-09-18 22:58:56,702][root][INFO] - client_operation_time - {"fl_task_id": "hyp", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "operation_time": 3193.822690010071, "gl_model_v": 1}
+[2025-09-18 22:58:56,725][root][INFO] - try notify_fin
+[2025-09-18 22:58:56,747][root][INFO] - trainFin
+[2025-09-18 22:58:56,747][root][INFO] - FL Client Learning Finish

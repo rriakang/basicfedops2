@@ -1,0 +1,50 @@
+2025-09-18 22:05:37,507 INFO    MainThread:3223803 [wandb_setup.py:_flush():67] Current SDK version is 0.19.9
+2025-09-18 22:05:37,507 INFO    MainThread:3223803 [wandb_setup.py:_flush():67] Configure stats pid to 3223803
+2025-09-18 22:05:37,507 INFO    MainThread:3223803 [wandb_setup.py:_flush():67] Loading settings from /home/ccl/.config/wandb/settings
+2025-09-18 22:05:37,507 INFO    MainThread:3223803 [wandb_setup.py:_flush():67] Loading settings from /home/ccl/Desktop/RR/FedOps2/fedopstest/wandb/settings
+2025-09-18 22:05:37,507 INFO    MainThread:3223803 [wandb_setup.py:_flush():67] Loading settings from environment variables
+2025-09-18 22:05:37,507 INFO    MainThread:3223803 [wandb_init.py:setup_run_log_directory():662] Logging user logs to /home/ccl/Desktop/RR/FedOps2/fedopstest/wandb/run-20250918_220537-byzk5li5/logs/debug.log
+2025-09-18 22:05:37,507 INFO    MainThread:3223803 [wandb_init.py:setup_run_log_directory():663] Logging internal logs to /home/ccl/Desktop/RR/FedOps2/fedopstest/wandb/run-20250918_220537-byzk5li5/logs/debug-internal.log
+2025-09-18 22:05:37,507 INFO    MainThread:3223803 [wandb_init.py:init():781] calling init triggers
+2025-09-18 22:05:37,507 INFO    MainThread:3223803 [wandb_init.py:init():786] wandb.init called with sweep_config: {}
+config: {'learning_rate': 0, 'optimizer': '', 'dataset': '', 'model_architecture': '', 'batch_size': 0, 'epochs': 0, 'num_rounds': 0, '_wandb': {}}
+2025-09-18 22:05:37,507 INFO    MainThread:3223803 [wandb_init.py:init():809] starting backend
+2025-09-18 22:05:37,507 INFO    MainThread:3223803 [wandb_init.py:init():813] sending inform_init request
+2025-09-18 22:05:37,601 INFO    MainThread:3223803 [backend.py:_multiprocessing_setup():101] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2025-09-18 22:05:37,603 INFO    MainThread:3223803 [wandb_init.py:init():823] backend started and connected
+2025-09-18 22:05:37,609 INFO    MainThread:3223803 [wandb_init.py:init():915] updated telemetry
+2025-09-18 22:05:37,782 INFO    MainThread:3223803 [wandb_init.py:init():939] communicating run to backend with 90.0 second timeout
+2025-09-18 22:05:38,515 INFO    MainThread:3223803 [wandb_init.py:init():1014] starting run threads in backend
+2025-09-18 22:05:40,832 INFO    MainThread:3223803 [wandb_run.py:_console_start():2454] atexit reg
+2025-09-18 22:05:40,833 INFO    MainThread:3223803 [wandb_run.py:_redirect():2306] redirect: wrap_raw
+2025-09-18 22:05:40,833 INFO    MainThread:3223803 [wandb_run.py:_redirect():2371] Wrapping output streams.
+2025-09-18 22:05:40,833 INFO    MainThread:3223803 [wandb_run.py:_redirect():2394] Redirects installed.
+2025-09-18 22:05:40,835 INFO    MainThread:3223803 [wandb_init.py:init():1056] run started, returning control to user process
+2025-09-18 22:05:41,563 INFO    ThreadPoolExecutor-0_0:3223803 [wandb_run.py:_config_callback():1327] config_cb None None {'batch_size': 128, 'epochs': 3, 'num_rounds': 20, 'hp_learning_rate': 2.798600963331298e-05, 'hp_batch_size': 128, 'hp_local_epochs': 3}
+2025-09-18 22:09:23,502 INFO    ThreadPoolExecutor-0_0:3223803 [wandb_run.py:_config_callback():1327] config_cb None None {'batch_size': 16, 'epochs': 2, 'num_rounds': 20, 'hp_learning_rate': 0.005993559126933864, 'hp_batch_size': 16, 'hp_local_epochs': 2}
+2025-09-18 22:11:45,215 INFO    ThreadPoolExecutor-0_0:3223803 [wandb_run.py:_config_callback():1327] config_cb None None {'batch_size': 64, 'epochs': 1, 'num_rounds': 20, 'hp_learning_rate': 5.097787103424596e-05, 'hp_batch_size': 64, 'hp_local_epochs': 1}
+2025-09-18 22:13:04,646 INFO    ThreadPoolExecutor-0_0:3223803 [wandb_run.py:_config_callback():1327] config_cb None None {'batch_size': 8, 'epochs': 3, 'num_rounds': 20, 'hp_learning_rate': 0.00012300645414916152, 'hp_batch_size': 8, 'hp_local_epochs': 3}
+2025-09-18 22:19:23,015 INFO    ThreadPoolExecutor-0_0:3223803 [wandb_run.py:_config_callback():1327] config_cb None None {'batch_size': 8, 'epochs': 1, 'num_rounds': 20, 'hp_learning_rate': 0.00012177413829905617, 'hp_batch_size': 8, 'hp_local_epochs': 1}
+2025-09-18 22:22:40,008 INFO    ThreadPoolExecutor-0_0:3223803 [wandb_run.py:_config_callback():1327] config_cb None None {'batch_size': 8, 'epochs': 1, 'num_rounds': 20, 'hp_learning_rate': 0.00037945897010972026, 'hp_batch_size': 8, 'hp_local_epochs': 1}
+2025-09-18 22:24:55,527 INFO    ThreadPoolExecutor-0_0:3223803 [wandb_run.py:_config_callback():1327] config_cb None None {'batch_size': 128, 'epochs': 1, 'num_rounds': 20, 'hp_learning_rate': 0.0011033065982252387, 'hp_batch_size': 128, 'hp_local_epochs': 1}
+2025-09-18 22:26:16,369 INFO    ThreadPoolExecutor-0_0:3223803 [wandb_run.py:_config_callback():1327] config_cb None None {'batch_size': 32, 'epochs': 2, 'num_rounds': 20, 'hp_learning_rate': 2.2945790299269136e-05, 'hp_batch_size': 32, 'hp_local_epochs': 2}
+2025-09-18 22:28:51,320 INFO    ThreadPoolExecutor-0_0:3223803 [wandb_run.py:_config_callback():1327] config_cb None None {'batch_size': 64, 'epochs': 2, 'num_rounds': 20, 'hp_learning_rate': 0.0010015675711160393, 'hp_batch_size': 64, 'hp_local_epochs': 2}
+2025-09-18 22:31:51,782 INFO    ThreadPoolExecutor-0_0:3223803 [wandb_run.py:_config_callback():1327] config_cb None None {'batch_size': 32, 'epochs': 3, 'num_rounds': 20, 'hp_learning_rate': 4.2081389330937944e-05, 'hp_batch_size': 32, 'hp_local_epochs': 3}
+2025-09-18 22:36:00,623 INFO    ThreadPoolExecutor-0_0:3223803 [wandb_run.py:_config_callback():1327] config_cb None None {'batch_size': 64, 'epochs': 1, 'num_rounds': 20, 'hp_learning_rate': 8.602577830281409e-05, 'hp_batch_size': 64, 'hp_local_epochs': 1}
+2025-09-18 22:37:31,640 INFO    ThreadPoolExecutor-0_0:3223803 [wandb_run.py:_config_callback():1327] config_cb None None {'batch_size': 128, 'epochs': 1, 'num_rounds': 20, 'hp_learning_rate': 1.0178457656217153e-05, 'hp_batch_size': 128, 'hp_local_epochs': 1}
+2025-09-18 22:38:51,779 INFO    ThreadPoolExecutor-0_0:3223803 [wandb_run.py:_config_callback():1327] config_cb None None {'batch_size': 128, 'epochs': 1, 'num_rounds': 20, 'hp_learning_rate': 1.0075629630568983e-05, 'hp_batch_size': 128, 'hp_local_epochs': 1}
+2025-09-18 22:40:12,242 INFO    ThreadPoolExecutor-0_0:3223803 [wandb_run.py:_config_callback():1327] config_cb None None {'batch_size': 128, 'epochs': 1, 'num_rounds': 20, 'hp_learning_rate': 1.0207519614920265e-05, 'hp_batch_size': 128, 'hp_local_epochs': 1}
+2025-09-18 22:41:28,999 INFO    ThreadPoolExecutor-0_0:3223803 [wandb_run.py:_config_callback():1327] config_cb None None {'batch_size': 128, 'epochs': 2, 'num_rounds': 20, 'hp_learning_rate': 1.0609773392836514e-05, 'hp_batch_size': 128, 'hp_local_epochs': 2}
+2025-09-18 22:44:24,723 INFO    ThreadPoolExecutor-0_0:3223803 [wandb_run.py:_config_callback():1327] config_cb None None {'batch_size': 128, 'epochs': 2, 'num_rounds': 20, 'hp_learning_rate': 2.612228698639148e-05, 'hp_batch_size': 128, 'hp_local_epochs': 2}
+2025-09-18 22:47:22,626 INFO    ThreadPoolExecutor-0_0:3223803 [wandb_run.py:_config_callback():1327] config_cb None None {'batch_size': 64, 'epochs': 2, 'num_rounds': 20, 'hp_learning_rate': 1.0299334870668363e-05, 'hp_batch_size': 64, 'hp_local_epochs': 2}
+2025-09-18 22:50:11,240 INFO    ThreadPoolExecutor-0_0:3223803 [wandb_run.py:_config_callback():1327] config_cb None None {'batch_size': 128, 'epochs': 3, 'num_rounds': 20, 'hp_learning_rate': 0.0003337265687615536, 'hp_batch_size': 128, 'hp_local_epochs': 3}
+2025-09-18 22:52:46,763 INFO    ThreadPoolExecutor-0_0:3223803 [wandb_run.py:_config_callback():1327] config_cb None None {'batch_size': 16, 'epochs': 2, 'num_rounds': 20, 'hp_learning_rate': 0.00967949738775022, 'hp_batch_size': 16, 'hp_local_epochs': 2}
+2025-09-18 22:55:10,069 INFO    ThreadPoolExecutor-0_0:3223803 [wandb_run.py:_config_callback():1327] config_cb None None {'batch_size': 64, 'epochs': 3, 'num_rounds': 20, 'hp_learning_rate': 2.3845504851116258e-05, 'hp_batch_size': 64, 'hp_local_epochs': 3}
+2025-09-18 22:58:54,658 INFO    MainThread:3223803 [wandb_run.py:_config_callback():1327] config_cb None None {'dataset': 'MNIST', 'model_architecture': 'MNISTClassifier'}
+2025-09-18 22:58:54,658 INFO    MainThread:3223803 [wandb_run.py:_finish():2189] finishing run rirakang123/MNIST_hyp/byzk5li5
+2025-09-18 22:58:54,658 INFO    MainThread:3223803 [wandb_run.py:_atexit_cleanup():2419] got exitcode: 0
+2025-09-18 22:58:54,659 INFO    MainThread:3223803 [wandb_run.py:_restore():2401] restore
+2025-09-18 22:58:54,659 INFO    MainThread:3223803 [wandb_run.py:_restore():2407] restore done
+2025-09-18 22:58:56,110 INFO    MainThread:3223803 [wandb_run.py:_footer_history_summary_info():4064] rendering history
+2025-09-18 22:58:56,111 INFO    MainThread:3223803 [wandb_run.py:_footer_history_summary_info():4096] rendering summary
+2025-09-18 22:58:56,111 INFO    MainThread:3223803 [wandb_run.py:_footer_sync_info():4025] logging synced files
