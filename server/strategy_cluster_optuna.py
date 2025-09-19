@@ -1,7 +1,7 @@
-# fedops/server/strategy_cluster_optuna.py
+# server/strategy_cluster_optuna.py
 from __future__ import annotations
 from typing import Dict, List, Tuple, Optional
-
+import logging, json
 import numpy as np
 import optuna
 from sklearn.cluster import DBSCAN
@@ -12,6 +12,7 @@ from flwr.server.client_manager import ClientManager
 from flwr.server.client_proxy import ClientProxy
 from flwr.common import Parameters, FitIns
 
+logger = logging.getLogger(__name__)
 
 # ----- 유틸: metrics에서 점수 뽑기 -----
 def _score_from_metrics(metrics: Dict[str, float]) -> Dict[str, float]:
@@ -131,7 +132,7 @@ class ClusterOptunaFedAvg(FedAvg):
         search_local_epochs: Tuple[int, int] = (1, 3),
         seed_points: Optional[List[Tuple[float, int, int]]] = None,
         warmup_rounds: int = 0,     # 이미 추가한 부분
-        recluster_every: int = 1,   # <<< 새로 추가
+        recluster_every: int = 1,   # 내부에 저장
         **fedavg_kwargs,
     ):
         super().__init__(**fedavg_kwargs)
@@ -145,11 +146,35 @@ class ClusterOptunaFedAvg(FedAvg):
             seed_points=seed_points,
         )
         self.warmup_rounds = warmup_rounds
-        self.recluster_every = recluster_every   # 내부에 저장
+        self.recluster_every = recluster_every
         self.client_profiles: Dict[str, Dict[str, float]] = {}
         self.assignments: Dict[str, int] = {}
         self.last_trial_by_cluster: Dict[int, int] = {}
 
+
+    def _log_cluster_summary(self, server_round: int) -> None:
+        """현재 self.assignments를 요약해서 로그로 남긴다."""
+        if not self.assignments:
+            logger.info(f"[CLUSTER][r{server_round}] no assignments yet")
+            return
+        # cluster_id -> [cid1, cid2, ...]
+        groups = {}
+        for cid, gid in self.assignments.items():
+            groups.setdefault(gid, []).append(cid)
+
+        summary = {
+            "round": server_round,
+            "num_clusters": len(groups),
+            "clusters": [
+                {
+                    "cluster_id": int(gid),
+                    "size": len(cids),
+                    "sample_cids": cids[:8],  # 너무 길어지지 않게 앞 8개만
+                }
+                for gid, cids in sorted(groups.items(), key=lambda kv: kv[0])
+            ],
+        }
+        logger.info("[CLUSTER] %s", json.dumps(summary, ensure_ascii=False))
 
     def configure_fit(
         self,
@@ -159,13 +184,14 @@ class ClusterOptunaFedAvg(FedAvg):
     ) -> List[Tuple[ClientProxy, FitIns]]:
         base = super().configure_fit(server_round, parameters, client_manager)
 
-        # 직전 라운드까지의 프로필로 클러스터링
-        self.assignments = self.clusterer.fit(self.client_profiles) if self.client_profiles else {}
+        # (선택) 재군집 주기를 쓰고 싶다면:
+        if (server_round == 1) or (self.recluster_every <= 1) or (server_round % self.recluster_every == 0):
+            self.assignments = self.clusterer.fit(self.client_profiles) if self.client_profiles else {}
+            # <<< 여기서 로그 남기기
+            self._log_cluster_summary(server_round)
 
-        # 이번 라운드 참여 클라이언트 → 클러스터 단위로 HPO ask() 1회씩
         picked: Dict[int, Dict] = {}
         out: List[Tuple[ClientProxy, FitIns]] = []
-
         for client, fitins in base:
             cid = client.cid
             cluster_id = self.assignments.get(cid, 0)
@@ -176,7 +202,7 @@ class ClusterOptunaFedAvg(FedAvg):
 
             hp = picked[cluster_id]["hp"]
             cfg = dict(fitins.config)
-            cfg.update(hp)  # hp_learning_rate, hp_batch_size, hp_local_epochs 주입
+            cfg.update(hp)
             out.append((client, FitIns(parameters=fitins.parameters, config=cfg)))
         return out
 
