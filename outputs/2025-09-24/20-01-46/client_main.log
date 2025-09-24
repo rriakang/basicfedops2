@@ -1,0 +1,78 @@
+[2025-09-24 20:01:46,187][root][INFO] - FL_Task - {"dataset": "MNIST", "start_execution_time": "2025-09-24 20:01:46"}
+[2025-09-24 20:01:46,462][__main__][INFO] - data loaded
+[2025-09-24 20:01:46,519][__main__][INFO] - Latest Local Model download
+[2025-09-24 20:01:46,520][root][INFO] - downloaded local_model_name: MNISTClassifier_local_model_V1.pth
+[2025-09-24 20:01:46,630][root][INFO] - init model_type: Pytorch
+[2025-09-24 20:05:26,801][root][INFO] - bulid model
+[2025-09-24 20:05:26,801][root][INFO] - FL start
+[2025-09-24 20:05:26,809][client_api][INFO] - FL_server_IP:port - ccl.gachon.ac.kr:40025
+[2025-09-24 20:05:26,810][root][INFO] - FL learning ready
+[2025-09-24 20:05:26,810][root][INFO] - fl_task_id: clustertest
+[2025-09-24 20:05:26,810][root][INFO] - dataset: MNIST
+[2025-09-24 20:05:26,810][root][INFO] - output_size: 10
+[2025-09-24 20:05:26,810][root][INFO] - validation_split: 0.2
+[2025-09-24 20:05:26,810][root][INFO] - model_type: Pytorch
+[2025-09-24 20:05:26,810][root][INFO] - wandb_key: 38f6cf3c2c37660d42ebfe8ab434b72d34be3b31
+[2025-09-24 20:05:26,810][root][INFO] - wandb_account: rirakang@gachon.ac.kr
+[2025-09-24 20:05:29,764][flwr][WARNING] - DEPRECATED FEATURE: flwr.client.start_numpy_client() is deprecated. 
+	Instead, use `flwr.client.start_client()` by ensuring you first call the `.to_client()` method as shown below: 
+	flwr.client.start_client(
+		server_address='<IP>:<PORT>',
+		client=FlowerClient().to_client(), # <-- where FlowerClient is of type flwr.client.NumPyClient object
+	)
+	Using `start_numpy_client()` is deprecated.
+
+            This is a deprecated feature. It will be removed
+            entirely in future versions of Flower.
+        
+[2025-09-24 20:05:29,780][flwr][WARNING] - DEPRECATED FEATURE: flwr.client.start_client() is deprecated.
+	Instead, use the `flower-supernode` CLI command to start a SuperNode as shown below:
+
+		$ flower-supernode --insecure --superlink='<IP>:<PORT>'
+
+	To view all available options, run:
+
+		$ flower-supernode --help
+
+	Using `start_client()` is deprecated.
+
+            This is a deprecated feature. It will be removed
+            entirely in future versions of Flower.
+        
+[2025-09-24 20:05:29,785][flwr][DEBUG] - Opened insecure gRPC connection (no certificates were passed)
+[2025-09-24 20:05:29,930][flwr][DEBUG] - ChannelConnectivity.IDLE
+[2025-09-24 20:05:29,944][flwr][DEBUG] - ChannelConnectivity.READY
+[2025-09-24 20:05:30,537][flwr][INFO] - 
+[2025-09-24 20:05:30,537][flwr][INFO] - Received: train message 2724d0f8-6081-49e4-85ba-578480bbd44f
+[2025-09-24 20:07:12,863][client_fl][INFO] - train_performance - {"fl_task_id": "clustertest", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "round": 1, "gl_model_v": 2, "train_loss": 0.00988062929370291, "train_accuracy": 0.9966666666666667, "train_f1_score": 0.9966642430370007, "val_loss": 0.04379490933082552, "val_accuracy": 0.9876666666666667, "val_f1_score": 0.987665699291447, "train_time": 102.30447578430176, "wandb_name": "ccl-x-server-v0(2025-09-24 20:01:46.632380)", "cluster_id": 0}
+[2025-09-24 20:07:13,180][flwr][INFO] - Sent reply
+[2025-09-24 20:07:17,093][flwr][INFO] - 
+[2025-09-24 20:07:17,094][flwr][INFO] - Received: evaluate message 02dd768d-67d2-42cc-83a7-005c503a2c2a
+[2025-09-24 20:07:26,709][client_fl][INFO] - test - {"fl_task_id": "clustertest", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "round": 1, "test_loss": 0.045151167452592955, "test_accuracy": 0.9878333333333333, "gl_model_v": 2, "wandb_name": "ccl-x-server-v0(2025-09-24 20:01:46.632380)", "cluster_id": 0}
+[2025-09-24 20:07:26,728][flwr][INFO] - Sent reply
+[2025-09-24 20:07:27,240][flwr][INFO] - 
+[2025-09-24 20:07:27,241][flwr][INFO] - Received: train message bd46b461-6674-44b8-b4bd-38a3901d4497
+[2025-09-24 20:08:32,387][client_fl][INFO] - train_performance - {"fl_task_id": "clustertest", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "round": 2, "gl_model_v": 2, "train_loss": 0.0023531161702568634, "train_accuracy": 0.9995833333333334, "train_f1_score": 0.9995833230331225, "val_loss": 0.0322707406797216, "val_accuracy": 0.9915, "val_f1_score": 0.9914942612949332, "train_time": 65.13332772254944, "wandb_name": "ccl-x-server-v0(2025-09-24 20:01:46.632380)", "cluster_id": 0}
+[2025-09-24 20:08:32,528][flwr][INFO] - Sent reply
+[2025-09-24 20:08:36,215][flwr][INFO] - 
+[2025-09-24 20:08:36,215][flwr][INFO] - Received: evaluate message 07c7b6fa-0783-487a-9a56-429fa10cf3c6
+[2025-09-24 20:08:46,192][client_fl][INFO] - test - {"fl_task_id": "clustertest", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "round": 2, "test_loss": 0.03715601150566301, "test_accuracy": 0.9909166666666667, "gl_model_v": 2, "wandb_name": "ccl-x-server-v0(2025-09-24 20:01:46.632380)", "cluster_id": 0}
+[2025-09-24 20:08:46,242][flwr][INFO] - Sent reply
+[2025-09-24 20:08:46,920][flwr][INFO] - 
+[2025-09-24 20:08:46,920][flwr][INFO] - Received: train message a24c4258-e1a7-4d33-ade1-70e4e088a46f
+[2025-09-24 20:09:47,665][client_fl][INFO] - train_performance - {"fl_task_id": "clustertest", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "round": 3, "gl_model_v": 2, "train_loss": 0.00119663648017214, "train_accuracy": 0.9996944444444444, "train_f1_score": 0.999694422787714, "val_loss": 0.03213145914722848, "val_accuracy": 0.9924166666666666, "val_f1_score": 0.9924129418217607, "train_time": 60.72407150268555, "wandb_name": "ccl-x-server-v0(2025-09-24 20:01:46.632380)", "cluster_id": 10000}
+[2025-09-24 20:09:47,804][flwr][INFO] - Sent reply
+[2025-09-24 20:09:53,258][flwr][INFO] - 
+[2025-09-24 20:09:53,258][flwr][INFO] - Received: evaluate message ae8dd26b-ff89-4c92-ac0b-9735ac3eb439
+[2025-09-24 20:10:01,029][client_fl][INFO] - test - {"fl_task_id": "clustertest", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "round": 3, "test_loss": 0.03761379927341972, "test_accuracy": 0.9910833333333333, "gl_model_v": 2, "wandb_name": "ccl-x-server-v0(2025-09-24 20:01:46.632380)", "cluster_id": 0}
+[2025-09-24 20:10:01,126][flwr][INFO] - Sent reply
+[2025-09-24 20:10:01,720][flwr][INFO] - 
+[2025-09-24 20:10:01,721][flwr][INFO] - Received: train message 06d58fce-4d26-485f-b6a6-359d4034299f
+[2025-09-24 20:12:03,299][client_fl][INFO] - train_performance - {"fl_task_id": "clustertest", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "round": 4, "gl_model_v": 2, "train_loss": 0.00040975624670848963, "train_accuracy": 0.9999444444444444, "train_f1_score": 0.9999444440976246, "val_loss": 0.03411149732822563, "val_accuracy": 0.99225, "val_f1_score": 0.9922464960098364, "train_time": 121.56949996948242, "wandb_name": "ccl-x-server-v0(2025-09-24 20:01:46.632380)", "cluster_id": 10000}
+[2025-09-24 20:12:03,436][flwr][INFO] - Sent reply
+[2025-09-24 20:12:07,370][flwr][INFO] - 
+[2025-09-24 20:12:07,371][flwr][INFO] - Received: evaluate message ab90141c-f22a-46ef-bd5a-dd578c7dfb29
+[2025-09-24 20:12:15,163][client_fl][INFO] - test - {"fl_task_id": "clustertest", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "round": 4, "test_loss": 0.03638805902548793, "test_accuracy": 0.99175, "gl_model_v": 2, "wandb_name": "ccl-x-server-v0(2025-09-24 20:01:46.632380)", "cluster_id": 0}
+[2025-09-24 20:12:15,183][flwr][INFO] - Sent reply
+[2025-09-24 20:12:15,763][flwr][INFO] - 
+[2025-09-24 20:12:15,764][flwr][INFO] - Received: train message 309fd977-cb47-493d-a9e3-a30c25c14460

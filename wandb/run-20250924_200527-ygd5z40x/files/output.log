@@ -1,0 +1,334 @@
+[93mWARNING [0m:   DEPRECATED FEATURE: flwr.client.start_numpy_client() is deprecated.
+	Instead, use `flwr.client.start_client()` by ensuring you first call the `.to_client()` method as shown below:
+	flwr.client.start_client(
+		server_address='<IP>:<PORT>',
+		client=FlowerClient().to_client(), # <-- where FlowerClient is of type flwr.client.NumPyClient object
+	)
+	Using `start_numpy_client()` is deprecated.
+
+            This is a deprecated feature. It will be removed
+            entirely in future versions of Flower.
+
+[2025-09-24 20:05:29,764][flwr][WARNING] - DEPRECATED FEATURE: flwr.client.start_numpy_client() is deprecated.
+	Instead, use `flwr.client.start_client()` by ensuring you first call the `.to_client()` method as shown below:
+	flwr.client.start_client(
+		server_address='<IP>:<PORT>',
+		client=FlowerClient().to_client(), # <-- where FlowerClient is of type flwr.client.NumPyClient object
+	)
+	Using `start_numpy_client()` is deprecated.
+
+            This is a deprecated feature. It will be removed
+            entirely in future versions of Flower.
+
+[93mWARNING [0m:   DEPRECATED FEATURE: flwr.client.start_client() is deprecated.
+	Instead, use the `flower-supernode` CLI command to start a SuperNode as shown below:
+
+		$ flower-supernode --insecure --superlink='<IP>:<PORT>'
+
+	To view all available options, run:
+
+		$ flower-supernode --help
+
+	Using `start_client()` is deprecated.
+
+            This is a deprecated feature. It will be removed
+            entirely in future versions of Flower.
+
+[2025-09-24 20:05:29,780][flwr][WARNING] - DEPRECATED FEATURE: flwr.client.start_client() is deprecated.
+	Instead, use the `flower-supernode` CLI command to start a SuperNode as shown below:
+
+		$ flower-supernode --insecure --superlink='<IP>:<PORT>'
+
+	To view all available options, run:
+
+		$ flower-supernode --help
+
+	Using `start_client()` is deprecated.
+
+            This is a deprecated feature. It will be removed
+            entirely in future versions of Flower.
+
+[2025-09-24 20:05:29,785][flwr][DEBUG] - Opened insecure gRPC connection (no certificates were passed)
+[2025-09-24 20:05:29,930][flwr][DEBUG] - ChannelConnectivity.IDLE
+[2025-09-24 20:05:29,944][flwr][DEBUG] - ChannelConnectivity.READY
+[92mINFO [0m:
+[2025-09-24 20:05:30,537][flwr][INFO] -
+[92mINFO [0m:      Received: train message 2724d0f8-6081-49e4-85ba-578480bbd44f
+[2025-09-24 20:05:30,537][flwr][INFO] - Received: train message 2724d0f8-6081-49e4-85ba-578480bbd44f
+config: {'hp_local_epochs': 2, 'batch_size': 128, 'hp_batch_size': 64, 'cluster_id': 0, 'num_rounds': 20, 'hp_learning_rate': 0.0012370009115597145, 'local_epochs': 1}
+Starting evalutation...
+Testing: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 563/563 [00:30<00:00, 18.64batch/s]
+Starting evalutation...
+Testing: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 94/94 [00:10<00:00,  9.38batch/s]
+[2025-09-24 20:07:12,863][client_fl][INFO] - train_performance - {"fl_task_id": "clustertest", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "round": 1, "gl_model_v": 2, "train_loss": 0.00988062929370291, "train_accuracy": 0.9966666666666667, "train_f1_score": 0.9966642430370007, "val_loss": 0.04379490933082552, "val_accuracy": 0.9876666666666667, "val_f1_score": 0.987665699291447, "train_time": 102.30447578430176, "wandb_name": "ccl-x-server-v0(2025-09-24 20:01:46.632380)", "cluster_id": 0}
+[92mINFO [0m:      Sent reply
+[2025-09-24 20:07:13,180][flwr][INFO] - Sent reply
+[92mINFO [0m:
+[2025-09-24 20:07:17,093][flwr][INFO] -
+[92mINFO [0m:      Received: evaluate message 02dd768d-67d2-42cc-83a7-005c503a2c2a
+[2025-09-24 20:07:17,094][flwr][INFO] - Received: evaluate message 02dd768d-67d2-42cc-83a7-005c503a2c2a
+Starting evalutation...
+Testing: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 94/94 [00:09<00:00, 10.18batch/s]
+[2025-09-24 20:07:26,709][client_fl][INFO] - test - {"fl_task_id": "clustertest", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "round": 1, "test_loss": 0.045151167452592955, "test_accuracy": 0.9878333333333333, "gl_model_v": 2, "wandb_name": "ccl-x-server-v0(2025-09-24 20:01:46.632380)", "cluster_id": 0}
+[92mINFO [0m:      Sent reply
+[2025-09-24 20:07:26,728][flwr][INFO] - Sent reply
+[92mINFO [0m:
+[2025-09-24 20:07:27,240][flwr][INFO] -
+[92mINFO [0m:      Received: train message bd46b461-6674-44b8-b4bd-38a3901d4497
+[2025-09-24 20:07:27,241][flwr][INFO] - Received: train message bd46b461-6674-44b8-b4bd-38a3901d4497
+config: {'hp_local_epochs': 1, 'batch_size': 128, 'hp_batch_size': 64, 'cluster_id': 0, 'num_rounds': 20, 'hp_learning_rate': 2.3105939952559665e-05, 'local_epochs': 1}
+Starting evalutation...
+Testing: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 563/563 [00:23<00:00, 23.61batch/s]
+Starting evalutation...
+Testing: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 94/94 [00:09<00:00, 10.18batch/s]
+[2025-09-24 20:08:32,387][client_fl][INFO] - train_performance - {"fl_task_id": "clustertest", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "round": 2, "gl_model_v": 2, "train_loss": 0.0023531161702568634, "train_accuracy": 0.9995833333333334, "train_f1_score": 0.9995833230331225, "val_loss": 0.0322707406797216, "val_accuracy": 0.9915, "val_f1_score": 0.9914942612949332, "train_time": 65.13332772254944, "wandb_name": "ccl-x-server-v0(2025-09-24 20:01:46.632380)", "cluster_id": 0}
+[92mINFO [0m:      Sent reply
+[2025-09-24 20:08:32,528][flwr][INFO] - Sent reply
+[92mINFO [0m:
+[2025-09-24 20:08:36,215][flwr][INFO] -
+[92mINFO [0m:      Received: evaluate message 07c7b6fa-0783-487a-9a56-429fa10cf3c6
+[2025-09-24 20:08:36,215][flwr][INFO] - Received: evaluate message 07c7b6fa-0783-487a-9a56-429fa10cf3c6
+Starting evalutation...
+Testing: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 94/94 [00:09<00:00,  9.85batch/s]
+[2025-09-24 20:08:46,192][client_fl][INFO] - test - {"fl_task_id": "clustertest", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "round": 2, "test_loss": 0.03715601150566301, "test_accuracy": 0.9909166666666667, "gl_model_v": 2, "wandb_name": "ccl-x-server-v0(2025-09-24 20:01:46.632380)", "cluster_id": 0}
+[92mINFO [0m:      Sent reply
+[2025-09-24 20:08:46,242][flwr][INFO] - Sent reply
+[92mINFO [0m:
+[2025-09-24 20:08:46,920][flwr][INFO] -
+[92mINFO [0m:      Received: train message a24c4258-e1a7-4d33-ade1-70e4e088a46f
+[2025-09-24 20:08:46,920][flwr][INFO] - Received: train message a24c4258-e1a7-4d33-ade1-70e4e088a46f
+config: {'hp_local_epochs': 1, 'batch_size': 128, 'hp_batch_size': 128, 'cluster_id': 10000, 'num_rounds': 20, 'hp_learning_rate': 5.351689897677028e-05, 'local_epochs': 1}
+Starting evalutation...
+Testing: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 282/282 [00:21<00:00, 13.16batch/s]
+Starting evalutation...
+Testing: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 94/94 [00:09<00:00,  9.48batch/s]
+[2025-09-24 20:09:47,665][client_fl][INFO] - train_performance - {"fl_task_id": "clustertest", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "round": 3, "gl_model_v": 2, "train_loss": 0.00119663648017214, "train_accuracy": 0.9996944444444444, "train_f1_score": 0.999694422787714, "val_loss": 0.03213145914722848, "val_accuracy": 0.9924166666666666, "val_f1_score": 0.9924129418217607, "train_time": 60.72407150268555, "wandb_name": "ccl-x-server-v0(2025-09-24 20:01:46.632380)", "cluster_id": 10000}
+[92mINFO [0m:      Sent reply
+[2025-09-24 20:09:47,804][flwr][INFO] - Sent reply
+[92mINFO [0m:
+[2025-09-24 20:09:53,258][flwr][INFO] -
+[92mINFO [0m:      Received: evaluate message ae8dd26b-ff89-4c92-ac0b-9735ac3eb439
+[2025-09-24 20:09:53,258][flwr][INFO] - Received: evaluate message ae8dd26b-ff89-4c92-ac0b-9735ac3eb439
+Starting evalutation...
+Testing: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 94/94 [00:07<00:00, 12.86batch/s]
+[2025-09-24 20:10:01,029][client_fl][INFO] - test - {"fl_task_id": "clustertest", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "round": 3, "test_loss": 0.03761379927341972, "test_accuracy": 0.9910833333333333, "gl_model_v": 2, "wandb_name": "ccl-x-server-v0(2025-09-24 20:01:46.632380)", "cluster_id": 0}
+[92mINFO [0m:      Sent reply
+[2025-09-24 20:10:01,126][flwr][INFO] - Sent reply
+[92mINFO [0m:
+[2025-09-24 20:10:01,720][flwr][INFO] -
+[92mINFO [0m:      Received: train message 06d58fce-4d26-485f-b6a6-359d4034299f
+[2025-09-24 20:10:01,721][flwr][INFO] - Received: train message 06d58fce-4d26-485f-b6a6-359d4034299f
+config: {'hp_local_epochs': 3, 'batch_size': 128, 'hp_batch_size': 64, 'cluster_id': 10000, 'num_rounds': 20, 'hp_learning_rate': 0.0006692202951714678, 'local_epochs': 1}
+[32mINFO[0m:     127.0.0.1:54054 - "[1mGET /online HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     127.0.0.1:60284 - "[1mGET /online HTTP/1.1[0m" [32m200 OK[0m
+Starting evalutation...
+Testing: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 563/563 [00:23<00:00, 23.71batch/s]
+Starting evalutation...
+Testing: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 94/94 [00:07<00:00, 11.90batch/s]
+[2025-09-24 20:12:03,299][client_fl][INFO] - train_performance - {"fl_task_id": "clustertest", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "round": 4, "gl_model_v": 2, "train_loss": 0.00040975624670848963, "train_accuracy": 0.9999444444444444, "train_f1_score": 0.9999444440976246, "val_loss": 0.03411149732822563, "val_accuracy": 0.99225, "val_f1_score": 0.9922464960098364, "train_time": 121.56949996948242, "wandb_name": "ccl-x-server-v0(2025-09-24 20:01:46.632380)", "cluster_id": 10000}
+[92mINFO [0m:      Sent reply
+[2025-09-24 20:12:03,436][flwr][INFO] - Sent reply
+[92mINFO [0m:
+[2025-09-24 20:12:07,370][flwr][INFO] -
+[92mINFO [0m:      Received: evaluate message ab90141c-f22a-46ef-bd5a-dd578c7dfb29
+[2025-09-24 20:12:07,371][flwr][INFO] - Received: evaluate message ab90141c-f22a-46ef-bd5a-dd578c7dfb29
+Starting evalutation...
+Testing: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 94/94 [00:07<00:00, 12.54batch/s]
+[2025-09-24 20:12:15,163][client_fl][INFO] - test - {"fl_task_id": "clustertest", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "round": 4, "test_loss": 0.03638805902548793, "test_accuracy": 0.99175, "gl_model_v": 2, "wandb_name": "ccl-x-server-v0(2025-09-24 20:01:46.632380)", "cluster_id": 0}
+[92mINFO [0m:      Sent reply
+[2025-09-24 20:12:15,183][flwr][INFO] - Sent reply
+[92mINFO [0m:
+[2025-09-24 20:12:15,763][flwr][INFO] -
+[92mINFO [0m:      Received: train message 309fd977-cb47-493d-a9e3-a30c25c14460
+[2025-09-24 20:12:15,764][flwr][INFO] - Received: train message 309fd977-cb47-493d-a9e3-a30c25c14460
+config: {'hp_local_epochs': 3, 'batch_size': 128, 'hp_batch_size': 32, 'cluster_id': 10000, 'num_rounds': 20, 'hp_learning_rate': 1.4140932462747883e-05, 'local_epochs': 1}
+[32mINFO[0m:     127.0.0.1:46194 - "[1mGET /online HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     127.0.0.1:51824 - "[1mGET /online HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     Shutting down
+[32mINFO[0m:     Waiting for background tasks to complete. (CTRL+C to force quit)
+[32mINFO[0m:     Finished server process [[36m1711084[0m]
+[31mERROR[0m:    Traceback (most recent call last):
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "uvloop/loop.pyx", line 1512, in uvloop.loop.Loop.run_until_complete
+  File "uvloop/loop.pyx", line 1505, in uvloop.loop.Loop.run_until_complete
+  File "uvloop/loop.pyx", line 1379, in uvloop.loop.Loop.run_forever
+  File "uvloop/loop.pyx", line 557, in uvloop.loop.Loop._run
+  File "uvloop/loop.pyx", line 476, in uvloop.loop.Loop._on_idle
+  File "uvloop/cbhandles.pyx", line 83, in uvloop.loop.Handle._run
+  File "uvloop/cbhandles.pyx", line 63, in uvloop.loop.Handle._run
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/site-packages/uvicorn/server.py", line 70, in serve
+    await self._serve(sockets)
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/contextlib.py", line 126, in __exit__
+    next(self.gen)
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/site-packages/uvicorn/server.py", line 330, in capture_signals
+    signal.raise_signal(captured_signal)
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/site-packages/starlette/routing.py", line 699, in lifespan
+    await receive()
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/site-packages/uvicorn/lifespan/on.py", line 137, in receive
+    return await self.receive_queue.get()
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/asyncio/queues.py", line 166, in get
+    await getter
+asyncio.exceptions.CancelledError
+
+[31mERROR[0m:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "uvloop/loop.pyx", line 1512, in uvloop.loop.Loop.run_until_complete
+  File "uvloop/loop.pyx", line 1505, in uvloop.loop.Loop.run_until_complete
+  File "uvloop/loop.pyx", line 1379, in uvloop.loop.Loop.run_forever
+  File "uvloop/loop.pyx", line 557, in uvloop.loop.Loop._run
+  File "uvloop/loop.pyx", line 476, in uvloop.loop.Loop._on_idle
+  File "uvloop/cbhandles.pyx", line 83, in uvloop.loop.Handle._run
+  File "uvloop/cbhandles.pyx", line 63, in uvloop.loop.Handle._run
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/site-packages/uvicorn/server.py", line 70, in serve
+    await self._serve(sockets)
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/contextlib.py", line 126, in __exit__
+    next(self.gen)
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/site-packages/uvicorn/server.py", line 330, in capture_signals
+    signal.raise_signal(captured_signal)
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/site-packages/uvicorn/protocols/http/httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/site-packages/starlette/applications.py", line 112, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/site-packages/starlette/middleware/errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/site-packages/starlette/routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/site-packages/starlette/routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/site-packages/starlette/routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/site-packages/starlette/routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/site-packages/starlette/routing.py", line 74, in app
+    await response(scope, receive, send)
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/site-packages/starlette/responses.py", line 160, in __call__
+    await self.background()
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/site-packages/starlette/background.py", line 41, in __call__
+    await task()
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/site-packages/starlette/background.py", line 26, in __call__
+    await self.func(*self.args, **self.kwargs)
+  File "/home/ccl/Desktop/RR/FedOps2/fedopstest/app.py", line 124, in fl_client_start
+    await loop.run_in_executor(None, client_start)
+asyncio.exceptions.CancelledError
+Error executing job with overrides: []
+Traceback (most recent call last):
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/site-packages/urllib3/connection.py", line 174, in _new_conn
+    conn = connection.create_connection(
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/site-packages/urllib3/util/connection.py", line 95, in create_connection
+    raise err
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/site-packages/urllib3/connectionpool.py", line 716, in urlopen
+    httplib_response = self._make_request(
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/site-packages/urllib3/connectionpool.py", line 416, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/site-packages/urllib3/connection.py", line 244, in request
+    super(HTTPConnection, self).request(method, url, body=body, headers=headers)
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/http/client.py", line 1285, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/http/client.py", line 1331, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/http/client.py", line 1280, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/http/client.py", line 1040, in _send_output
+    self.send(msg)
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/http/client.py", line 980, in send
+    self.connect()
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/site-packages/urllib3/connection.py", line 205, in connect
+    conn = self._new_conn()
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/site-packages/urllib3/connection.py", line 186, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x7f326bf5c910>: Failed to establish a new connection: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ccl/.local/lib/python3.9/site-packages/requests/adapters.py", line 667, in send
+    resp = conn.urlopen(
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/site-packages/urllib3/connectionpool.py", line 802, in urlopen
+    retries = retries.increment(
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/site-packages/urllib3/util/retry.py", line 594, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='localhost', port=8004): Max retries exceeded with url: /flclient_out (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f326bf5c910>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ccl/Desktop/RR/FedOps2/fedopstest/client_main.py", line 84, in main
+    fl_client.start()
+  File "/home/ccl/Desktop/RR/FedOps2/fedopstest/app.py", line 214, in start
+    client_api.ClientMangerAPI().get_client_out()
+  File "/home/ccl/Desktop/RR/FedOps2/fedopstest/client_api.py", line 36, in get_client_out
+    requests.get(self.client_manager_addr + '/flclient_out')
+  File "/home/ccl/.local/lib/python3.9/site-packages/requests/api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+  File "/home/ccl/.local/lib/python3.9/site-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/home/ccl/.local/lib/python3.9/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/ccl/.local/lib/python3.9/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/ccl/.local/lib/python3.9/site-packages/requests/adapters.py", line 700, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='localhost', port=8004): Max retries exceeded with url: /flclient_out (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f326bf5c910>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.
+Exception ignored in: <module 'threading' from '/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/threading.py'>Exception in thread Thread-9
+:
+Traceback (most recent call last):
+  File "uvloop/loop.pyx", line 3254, in uvloop.loop.Loop._do_shutdown
+  File "uvloop/loop.pyx", line 1290, in uvloop.loop.Loop.call_soon_threadsafe
+  File "uvloop/loop.pyx", line 673, in uvloop.loop.Loop._append_ready_handle
+  File "uvloop/loop.pyx", line 705, in uvloop.loop.Loop._check_closed
+RuntimeError: Event loop is closed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/threading.py", line 980, in _bootstrap_inner
+    self.run()
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/threading.py", line 917, in run
+    self._target(*self._args, **self._kwargs)
+  File "uvloop/loop.pyx", line 3256, in uvloop.loop.Loop._do_shutdown
+  File "uvloop/loop.pyx", line 1290, in uvloop.loop.Loop.call_soon_threadsafe
+  File "uvloop/loop.pyx", line 673, in uvloop.loop.Loop._append_ready_handle
+  File "uvloop/loop.pyx", line 705, in uvloop.loop.Loop._check_closed
+RuntimeError: Event loop is closed
+Traceback (most recent call last):
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/threading.py", line 1447, in _shutdown
+    atexit_call()
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/concurrent/futures/thread.py", line 31, in _python_exit
+    t.join()
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/threading.py", line 1060, in join
+    self._wait_for_tstate_lock()
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/threading.py", line 1080, in _wait_for_tstate_lock
+    if lock.acquire(block, timeout):
+KeyboardInterrupt:

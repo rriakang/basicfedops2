@@ -1,0 +1,15 @@
+{"time":"2025-09-24T19:12:49.844978605+09:00","level":"INFO","msg":"stream: starting","core version":"0.19.9","symlink path":"/home/ccl/Desktop/RR/FedOps2/fedopstest/wandb/run-20250924_191249-id32jbzf/logs/debug-core.log"}
+{"time":"2025-09-24T19:12:50.545253573+09:00","level":"INFO","msg":"created new stream","id":"id32jbzf"}
+{"time":"2025-09-24T19:12:50.545304844+09:00","level":"INFO","msg":"stream: started","id":"id32jbzf"}
+{"time":"2025-09-24T19:12:50.546460101+09:00","level":"INFO","msg":"sender: started","stream_id":"id32jbzf"}
+{"time":"2025-09-24T19:12:50.546505873+09:00","level":"INFO","msg":"handler: started","stream_id":"id32jbzf"}
+{"time":"2025-09-24T19:12:50.546525407+09:00","level":"INFO","msg":"writer: Do: started","stream_id":"id32jbzf"}
+{"time":"2025-09-24T19:12:50.877603492+09:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-09-24T19:18:46.348972438+09:00","level":"INFO","msg":"stream: closing","id":"id32jbzf"}
+{"time":"2025-09-24T19:18:46.34899929+09:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-09-24T19:18:46.349084248+09:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-09-24T19:18:47.136699357+09:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-24T19:18:47.521365622+09:00","level":"INFO","msg":"handler: closed","stream_id":"id32jbzf"}
+{"time":"2025-09-24T19:18:47.521393649+09:00","level":"INFO","msg":"writer: Close: closed","stream_id":"id32jbzf"}
+{"time":"2025-09-24T19:18:47.521446139+09:00","level":"INFO","msg":"sender: closed","stream_id":"id32jbzf"}
+{"time":"2025-09-24T19:18:47.521458492+09:00","level":"INFO","msg":"stream: closed","id":"id32jbzf"}

@@ -64,7 +64,16 @@ class ClientServerAPI():
     def put_train_result(self, train_result_json):
         # send train_result to client_performance pod
         requests.put(f"http://{self.ccl_address}:{self.client_performance_port}/client_perf/train_result/{self.task_id}", data=train_result_json)
-
+    
+    # ✨ 추가: 클러스터 업서트
+    def put_cluster_assign(self, client_mac, cluster_id):  # ✨
+        import requests                                      # ✨ (상단 import 있으면 생략 가능)
+        requests.put(                                         # ✨
+            f"http://{self.ccl_address}:{self.server_manager_port}/FLSe/cluster/{self.task_id}",  # ✨
+            json={"client_mac": client_mac, "cluster_id": cluster_id},                             # ✨
+            timeout=3,                                                                             # ✨
+        ) 
+        
     def put_test_result(self, test_result_json):
         requests.put(f"http://{self.ccl_address}:{self.client_performance_port}/client_perf/test_result/{self.task_id}", data=test_result_json)
 

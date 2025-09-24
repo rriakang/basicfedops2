@@ -103,6 +103,14 @@ class FLClient(fl.client.NumPyClient):
         """Train parameters on the locally held training set."""
         cluster_id = int(config.get("cluster_id", 0))
 
+        # ✨ 추가: 받은 cluster_id를 서버 매니저로 업서트
+        try:                                                                                 # ✨
+            client_api.ClientServerAPI(self.fl_task_id).put_cluster_assign(                  # ✨
+                self.client_mac, int(cluster_id) if cluster_id is not None else None         # ✨
+            )                                                                                # ✨
+        except Exception as e:                                                               # ✨
+            logger.warning(f"[cluster-upsert] failed: {e}")                                  # ✨
+
         print(f"config: {config}")
         # 기본 하이퍼파라미터
         batch_size: int = config.get("batch_size", self.cfg.batch_size)
