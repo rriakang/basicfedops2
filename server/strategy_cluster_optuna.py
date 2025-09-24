@@ -5,12 +5,13 @@ import logging, json
 import numpy as np
 import optuna
 from sklearn.cluster import DBSCAN
-
 import flwr as fl
 from flwr.server.strategy import FedAvg
 from flwr.server.client_manager import ClientManager
 from flwr.server.client_proxy import ClientProxy
 from flwr.common import Parameters, FitIns
+
+# 실험중이니 이후에 방법이 바뀔수도있음 일단 버전 1 클러스터링 + optuna 
 
 logger = logging.getLogger(__name__)
 
@@ -25,7 +26,8 @@ def _score_from_metrics(metrics: Dict[str, float]) -> Dict[str, float]:
     }
 
 
-# ----- DBSCAN 클러스터러 -----
+# ----- DBSCAN 클러스터링 -----
+## 나중에 추가로 eps를 동적으로 작업하는 내용 추가할 예정 지금은 일단 고정
 class _DBSCANClusterer:
     def __init__(self, eps: float = 0.35, min_samples: int = 1):
         self.eps = eps
@@ -169,13 +171,14 @@ class ClusterOptunaFedAvg(FedAvg):
                 {
                     "cluster_id": int(gid),
                     "size": len(cids),
-                    "sample_cids": cids[:8],  # 너무 길어지지 않게 앞 8개만
+                    "sample_cids": cids[:8],  # 너무 길어지지 않게 일단 앞 8개만
                 }
                 for gid, cids in sorted(groups.items(), key=lambda kv: kv[0])
             ],
         }
         logger.info("[CLUSTER] %s", json.dumps(summary, ensure_ascii=False))
 
+    
     def configure_fit(
         self,
         server_round: int,
@@ -184,10 +187,8 @@ class ClusterOptunaFedAvg(FedAvg):
     ) -> List[Tuple[ClientProxy, FitIns]]:
         base = super().configure_fit(server_round, parameters, client_manager)
 
-        # (선택) 재군집 주기를 쓰고 싶다면:
         if (server_round == 1) or (self.recluster_every <= 1) or (server_round % self.recluster_every == 0):
             self.assignments = self.clusterer.fit(self.client_profiles) if self.client_profiles else {}
-            # <<< 여기서 로그 남기기
             self._log_cluster_summary(server_round)
 
         picked: Dict[int, Dict] = {}
@@ -195,6 +196,7 @@ class ClusterOptunaFedAvg(FedAvg):
         for client, fitins in base:
             cid = client.cid
             cluster_id = self.assignments.get(cid, 0)
+
             if cluster_id not in picked:
                 hp, trial_num = self.hpo.ask(cluster_id)
                 picked[cluster_id] = {"hp": hp, "trial": trial_num}
@@ -203,8 +205,13 @@ class ClusterOptunaFedAvg(FedAvg):
             hp = picked[cluster_id]["hp"]
             cfg = dict(fitins.config)
             cfg.update(hp)
+
+            # ★ 여기 추가: 각 클라이언트에 자신의 cluster_id 전달
+            cfg["cluster_id"] = int(cluster_id)
+
             out.append((client, FitIns(parameters=fitins.parameters, config=cfg)))
         return out
+
 
     def aggregate_fit(
         self,

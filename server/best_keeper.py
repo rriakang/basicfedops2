@@ -2,6 +2,11 @@
 import os, json, torch
 from flwr.common import parameters_to_ndarrays, ndarrays_to_parameters
 
+# 목적: 연합학습중 가장 좋은 전역 가중치를 잃지 않도록 매 라운드의 평가 지표를 모니터링하여 최고 성능 모델을 즉시 저장/복원하기 위함.
+#       - 마지막 라운드가 항상 최고 성능이 아닐 수 있어 안전하게 최고 성능을 보존
+#       - 실험 재현/중단 후 재개/테스트셋 최종 평가 등에 바로 활용
+#       - 메타(라운드, 점수)도 함께 저장해 결과 추적 용이
+
 class BestKeeper:
     def __init__(self, save_dir="./gl_best", metric_key="accuracy"):
         self.best = None  # {"metric": float, "round": int, "params": Parameters}

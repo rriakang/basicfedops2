@@ -20,7 +20,7 @@ dataset:
 
 
 # client
-task_id: 'hyp' # Input your Task Name that you register in FedOps Website
+task_id: 'clustertest' # Input your Task Name that you register in FedOps Website
 
 wandb: 
   use: true # Whether to use wandb

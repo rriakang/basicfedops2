@@ -1,0 +1,17 @@
+{"time":"2025-09-24T13:13:13.445070734+09:00","level":"INFO","msg":"stream: starting","core version":"0.19.9","symlink path":"/home/ccl/Desktop/RR/FedOps2/fedopstest/wandb/run-20250924_131313-irkwcuzv/logs/debug-core.log"}
+{"time":"2025-09-24T13:13:13.878629313+09:00","level":"INFO","msg":"created new stream","id":"irkwcuzv"}
+{"time":"2025-09-24T13:13:13.878688299+09:00","level":"INFO","msg":"stream: started","id":"irkwcuzv"}
+{"time":"2025-09-24T13:13:13.878794836+09:00","level":"INFO","msg":"writer: Do: started","stream_id":"irkwcuzv"}
+{"time":"2025-09-24T13:13:13.87886537+09:00","level":"INFO","msg":"handler: started","stream_id":"irkwcuzv"}
+{"time":"2025-09-24T13:13:13.878953195+09:00","level":"INFO","msg":"sender: started","stream_id":"irkwcuzv"}
+{"time":"2025-09-24T13:13:14.281352983+09:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-09-24T13:23:43.881211483+09:00","level":"WARN","msg":"handler: ignoring partial history record","step":3,"current":20}
+{"time":"2025-09-24T13:23:43.884299374+09:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-09-24T13:23:43.884354556+09:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-09-24T13:23:44.887018618+09:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2025-09-24T13:23:45.283514489+09:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-24T13:23:47.084917796+09:00","level":"INFO","msg":"stream: closing","id":"irkwcuzv"}
+{"time":"2025-09-24T13:23:47.084969159+09:00","level":"INFO","msg":"handler: closed","stream_id":"irkwcuzv"}
+{"time":"2025-09-24T13:23:47.084992815+09:00","level":"INFO","msg":"writer: Close: closed","stream_id":"irkwcuzv"}
+{"time":"2025-09-24T13:23:47.085019026+09:00","level":"INFO","msg":"sender: closed","stream_id":"irkwcuzv"}
+{"time":"2025-09-24T13:23:47.085104681+09:00","level":"INFO","msg":"stream: closed","id":"irkwcuzv"}

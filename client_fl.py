@@ -6,6 +6,7 @@ import time
 import os
 from functools import partial
 # from . import client_api
+import client_utils
 import client_api
 
 # set log format
@@ -100,6 +101,7 @@ class FLClient(fl.client.NumPyClient):
 
     def fit(self, parameters, config):
         """Train parameters on the locally held training set."""
+        cluster_id = int(config.get("cluster_id", 0))
 
         print(f"config: {config}")
         # 기본 하이퍼파라미터
@@ -243,7 +245,7 @@ class FLClient(fl.client.NumPyClient):
                 self.wandb_run.log({key: value, "round": self.fl_round}, step=self.fl_round)
 
         results = {"fl_task_id": self.fl_task_id, "client_mac": self.client_mac, "client_name": self.client_name, "round": self.fl_round, "gl_model_v": self.gl_model,
-                        **train_results_prefixed, **val_results_prefixed,"train_time": round_end_time, 'wandb_name': self.wandb_name}
+                        **train_results_prefixed, **val_results_prefixed,"train_time": round_end_time, 'wandb_name': self.wandb_name,"cluster_id": cluster_id}
 
         json_result = json.dumps(results)
         logger.info(f'train_performance - {json_result}')
@@ -256,7 +258,7 @@ class FLClient(fl.client.NumPyClient):
 
     def evaluate(self, parameters, config):
         """Evaluate parameters on the locally held test set."""
-
+        cluster_id = int(config.get("cluster_id", 0))
         # Get config values
         batch_size: int = config.get("batch_size", self.cfg.batch_size)
 
@@ -301,7 +303,7 @@ class FLClient(fl.client.NumPyClient):
                     self.wandb_run.log({metric_name: metric_value}, step=self.fl_round)
 
         test_result = {"fl_task_id": self.fl_task_id, "client_mac": self.client_mac, "client_name": self.client_name, "round": self.fl_round,
-                         "test_loss": test_loss, "test_accuracy": test_accuracy, "gl_model_v": self.gl_model, 'wandb_name': self.wandb_name}
+                         "test_loss": test_loss, "test_accuracy": test_accuracy, "gl_model_v": self.gl_model, 'wandb_name': self.wandb_name,"cluster_id": cluster_id,}
         json_result = json.dumps(test_result)
         logger.info(f'test - {json_result}')
 
