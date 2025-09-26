@@ -1,0 +1,6 @@
+[2025-09-26 14:43:26,241][root][INFO] - FL_Task - {"dataset": "MNIST", "start_execution_time": "2025-09-26 14:43:26"}
+[2025-09-26 14:43:26,697][__main__][INFO] - data loaded
+[2025-09-26 14:43:26,785][__main__][INFO] - Latest Local Model download
+[2025-09-26 14:43:26,785][root][INFO] - downloaded local_model_name: MNISTClassifier_local_model_V5.pth
+[2025-09-26 14:43:26,996][root][INFO] - init model_type: Pytorch
+[2025-09-26 14:43:27,158][root][INFO] - ccl-x-server;43:56:51:a9:43:53-client close

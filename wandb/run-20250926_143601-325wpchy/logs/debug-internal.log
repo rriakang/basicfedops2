@@ -1,0 +1,7 @@
+{"time":"2025-09-26T14:36:01.185669137+09:00","level":"INFO","msg":"stream: starting","core version":"0.19.9","symlink path":"/home/ccl/Desktop/RR/FedOps2/fedopstest/wandb/run-20250926_143601-325wpchy/logs/debug-core.log"}
+{"time":"2025-09-26T14:36:01.679689387+09:00","level":"INFO","msg":"created new stream","id":"325wpchy"}
+{"time":"2025-09-26T14:36:01.679723667+09:00","level":"INFO","msg":"stream: started","id":"325wpchy"}
+{"time":"2025-09-26T14:36:01.679733274+09:00","level":"INFO","msg":"writer: Do: started","stream_id":"325wpchy"}
+{"time":"2025-09-26T14:36:01.679758505+09:00","level":"INFO","msg":"handler: started","stream_id":"325wpchy"}
+{"time":"2025-09-26T14:36:01.679736476+09:00","level":"INFO","msg":"sender: started","stream_id":"325wpchy"}
+{"time":"2025-09-26T14:36:02.053570899+09:00","level":"INFO","msg":"Starting system monitor"}

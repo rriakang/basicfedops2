@@ -1,0 +1,16 @@
+{"time":"2025-09-26T13:56:16.325531939+09:00","level":"INFO","msg":"stream: starting","core version":"0.19.9","symlink path":"/home/ccl/Desktop/RR/FedOps2/fedopstest/wandb/run-20250926_135616-5u60746i/logs/debug-core.log"}
+{"time":"2025-09-26T13:56:16.973665418+09:00","level":"INFO","msg":"created new stream","id":"5u60746i"}
+{"time":"2025-09-26T13:56:16.97370333+09:00","level":"INFO","msg":"stream: started","id":"5u60746i"}
+{"time":"2025-09-26T13:56:16.973808821+09:00","level":"INFO","msg":"writer: Do: started","stream_id":"5u60746i"}
+{"time":"2025-09-26T13:56:16.973892418+09:00","level":"INFO","msg":"handler: started","stream_id":"5u60746i"}
+{"time":"2025-09-26T13:56:16.973906498+09:00","level":"INFO","msg":"sender: started","stream_id":"5u60746i"}
+{"time":"2025-09-26T13:56:17.341289892+09:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-09-26T13:58:14.586045652+09:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-09-26T13:58:14.586107655+09:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-09-26T13:58:15.600199097+09:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading config.yaml","runtime_seconds":0.298433215,"progress":"1021B/1021B"}],"total_operations":1}}
+{"time":"2025-09-26T13:58:15.679111188+09:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-26T13:58:16.047058412+09:00","level":"INFO","msg":"stream: closing","id":"5u60746i"}
+{"time":"2025-09-26T13:58:16.047072899+09:00","level":"INFO","msg":"handler: closed","stream_id":"5u60746i"}
+{"time":"2025-09-26T13:58:16.047081044+09:00","level":"INFO","msg":"writer: Close: closed","stream_id":"5u60746i"}
+{"time":"2025-09-26T13:58:16.047130975+09:00","level":"INFO","msg":"sender: closed","stream_id":"5u60746i"}
+{"time":"2025-09-26T13:58:16.047136142+09:00","level":"INFO","msg":"stream: closed","id":"5u60746i"}

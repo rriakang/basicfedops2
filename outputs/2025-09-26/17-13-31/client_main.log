@@ -1,0 +1,125 @@
+[2025-09-26 17:13:31,732][root][INFO] - FL_Task - {"dataset": "MNIST", "start_execution_time": "2025-09-26 17:13:31"}
+[2025-09-26 17:13:31,984][__main__][INFO] - data loaded
+[2025-09-26 17:13:32,073][__main__][INFO] - Latest Local Model download
+[2025-09-26 17:13:32,073][root][INFO] - downloaded local_model_name: MNISTClassifier_local_model_V10.pth
+[2025-09-26 17:13:32,195][root][INFO] - init model_type: Pytorch
+[2025-09-26 17:20:20,657][root][INFO] - bulid model
+[2025-09-26 17:20:20,657][root][INFO] - FL start
+[2025-09-26 17:20:20,663][client_api][INFO] - FL_server_IP:port - ccl.gachon.ac.kr:40032
+[2025-09-26 17:20:20,664][root][INFO] - FL learning ready
+[2025-09-26 17:20:20,665][root][INFO] - fl_task_id: clustertest
+[2025-09-26 17:20:20,665][root][INFO] - dataset: MNIST
+[2025-09-26 17:20:20,665][root][INFO] - output_size: 10
+[2025-09-26 17:20:20,665][root][INFO] - validation_split: 0.2
+[2025-09-26 17:20:20,665][root][INFO] - model_type: Pytorch
+[2025-09-26 17:20:20,666][root][INFO] - wandb_key: 38f6cf3c2c37660d42ebfe8ab434b72d34be3b31
+[2025-09-26 17:20:20,666][root][INFO] - wandb_account: rirakang@gachon.ac.kr
+[2025-09-26 17:20:23,249][flwr][WARNING] - DEPRECATED FEATURE: flwr.client.start_numpy_client() is deprecated. 
+	Instead, use `flwr.client.start_client()` by ensuring you first call the `.to_client()` method as shown below: 
+	flwr.client.start_client(
+		server_address='<IP>:<PORT>',
+		client=FlowerClient().to_client(), # <-- where FlowerClient is of type flwr.client.NumPyClient object
+	)
+	Using `start_numpy_client()` is deprecated.
+
+            This is a deprecated feature. It will be removed
+            entirely in future versions of Flower.
+        
+[2025-09-26 17:20:23,251][flwr][WARNING] - DEPRECATED FEATURE: flwr.client.start_client() is deprecated.
+	Instead, use the `flower-supernode` CLI command to start a SuperNode as shown below:
+
+		$ flower-supernode --insecure --superlink='<IP>:<PORT>'
+
+	To view all available options, run:
+
+		$ flower-supernode --help
+
+	Using `start_client()` is deprecated.
+
+            This is a deprecated feature. It will be removed
+            entirely in future versions of Flower.
+        
+[2025-09-26 17:20:23,345][flwr][DEBUG] - Opened insecure gRPC connection (no certificates were passed)
+[2025-09-26 17:20:23,352][flwr][DEBUG] - ChannelConnectivity.IDLE
+[2025-09-26 17:20:23,430][flwr][DEBUG] - ChannelConnectivity.CONNECTING
+[2025-09-26 17:20:23,436][flwr][DEBUG] - ChannelConnectivity.READY
+[2025-09-26 17:21:00,597][flwr][INFO] - 
+[2025-09-26 17:21:00,599][flwr][INFO] - Received: evaluate message 692ab080-3fca-4742-9e64-d3460b325518
+[2025-09-26 17:21:08,684][client_fl][INFO] - test - {"fl_task_id": "clustertest", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "round": 1, "test_loss": 0.0380292722069537, "test_accuracy": 0.9919166666666667, "gl_model_v": 11, "wandb_name": "ccl-x-server-v0(2025-09-26 17:13:32.197421)", "cluster_id": 0}
+[2025-09-26 17:21:08,701][flwr][INFO] - Sent reply
+[2025-09-26 17:21:09,358][flwr][INFO] - 
+[2025-09-26 17:21:09,358][flwr][INFO] - Received: train message 834b0c3a-c1f2-4b17-a46a-0ac6ec77a782
+[2025-09-26 17:22:05,779][client_fl][INFO] - train_performance - {"fl_task_id": "clustertest", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "round": 2, "gl_model_v": 11, "train_loss": 0.1165912860707924, "train_accuracy": 0.9668888888888889, "train_f1_score": 0.9669694960920491, "val_loss": 0.1335497473346743, "val_accuracy": 0.9625, "val_f1_score": 0.9626606179559712, "train_time": 56.40583062171936, "wandb_name": "ccl-x-server-v0(2025-09-26 17:13:32.197421)", "cluster_id": 0}
+[2025-09-26 17:22:05,947][flwr][INFO] - Sent reply
+[2025-09-26 17:22:09,923][flwr][INFO] - 
+[2025-09-26 17:22:09,924][flwr][INFO] - Received: evaluate message 6421a819-2e46-4905-b65a-fd5f9c4acb05
+[2025-09-26 17:22:15,551][client_fl][INFO] - test - {"fl_task_id": "clustertest", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "round": 2, "test_loss": 0.15987650330792716, "test_accuracy": 0.9611666666666666, "gl_model_v": 11, "wandb_name": "ccl-x-server-v0(2025-09-26 17:13:32.197421)", "cluster_id": 0}
+[2025-09-26 17:22:15,591][flwr][INFO] - Sent reply
+[2025-09-26 17:22:15,607][flwr][INFO] - 
+[2025-09-26 17:22:15,608][flwr][INFO] - Received: reconnect message 12fb7ab8-b142-419d-acb0-404b68b57075
+[2025-09-26 17:22:15,612][flwr][DEBUG] - gRPC channel closed
+[2025-09-26 17:22:15,613][flwr][INFO] - Disconnect and shut down
+[2025-09-26 17:22:15,766][root][INFO] - fl learning finished
+[2025-09-26 17:22:17,733][root][ERROR] - wandb system load error: Could not find project MNIST_clustertest
+[2025-09-26 17:22:17,734][root][INFO] - client_operation_time - {"fl_task_id": "clustertest", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "operation_time": 112.52470302581787, "gl_model_v": 11}
+[2025-09-26 17:22:17,744][root][INFO] - try notify_fin
+[2025-09-26 17:22:17,755][root][INFO] - trainFin
+[2025-09-26 17:22:17,755][root][INFO] - FL Client Learning Finish
+[2025-09-26 17:43:38,380][root][INFO] - bulid model
+[2025-09-26 17:43:38,380][root][INFO] - FL start
+[2025-09-26 17:43:38,388][client_api][INFO] - FL_server_IP:port - ccl.gachon.ac.kr:40032
+[2025-09-26 17:43:38,389][root][INFO] - FL learning ready
+[2025-09-26 17:43:38,390][root][INFO] - fl_task_id: clustertest
+[2025-09-26 17:43:38,390][root][INFO] - dataset: MNIST
+[2025-09-26 17:43:38,390][root][INFO] - output_size: 10
+[2025-09-26 17:43:38,390][root][INFO] - validation_split: 0.2
+[2025-09-26 17:43:38,391][root][INFO] - model_type: Pytorch
+[2025-09-26 17:43:38,391][root][INFO] - wandb_key: 38f6cf3c2c37660d42ebfe8ab434b72d34be3b31
+[2025-09-26 17:43:38,391][root][INFO] - wandb_account: rirakang@gachon.ac.kr
+[2025-09-26 17:43:40,877][flwr][WARNING] - DEPRECATED FEATURE: flwr.client.start_numpy_client() is deprecated. 
+	Instead, use `flwr.client.start_client()` by ensuring you first call the `.to_client()` method as shown below: 
+	flwr.client.start_client(
+		server_address='<IP>:<PORT>',
+		client=FlowerClient().to_client(), # <-- where FlowerClient is of type flwr.client.NumPyClient object
+	)
+	Using `start_numpy_client()` is deprecated.
+
+            This is a deprecated feature. It will be removed
+            entirely in future versions of Flower.
+        
+[2025-09-26 17:43:40,882][flwr][WARNING] - DEPRECATED FEATURE: flwr.client.start_client() is deprecated.
+	Instead, use the `flower-supernode` CLI command to start a SuperNode as shown below:
+
+		$ flower-supernode --insecure --superlink='<IP>:<PORT>'
+
+	To view all available options, run:
+
+		$ flower-supernode --help
+
+	Using `start_client()` is deprecated.
+
+            This is a deprecated feature. It will be removed
+            entirely in future versions of Flower.
+        
+[2025-09-26 17:43:40,883][flwr][DEBUG] - Opened insecure gRPC connection (no certificates were passed)
+[2025-09-26 17:43:41,263][flwr][DEBUG] - ChannelConnectivity.IDLE
+[2025-09-26 17:43:41,267][flwr][DEBUG] - ChannelConnectivity.CONNECTING
+[2025-09-26 17:43:41,267][flwr][DEBUG] - ChannelConnectivity.READY
+[2025-09-26 17:43:42,067][flwr][INFO] - 
+[2025-09-26 17:43:42,068][flwr][INFO] - Received: train message ce9d53a6-bb97-4126-ab14-849b06db3543
+[2025-09-26 17:46:24,533][client_fl][INFO] - train_performance - {"fl_task_id": "clustertest", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "round": 1, "gl_model_v": 12, "train_loss": 0.00040629551503316053, "train_accuracy": 0.9999444444444444, "train_f1_score": 0.9999444445982093, "val_loss": 0.03854194250629433, "val_accuracy": 0.9931666666666666, "val_f1_score": 0.9931652908424782, "train_time": 162.39796543121338, "wandb_name": "ccl-x-server-v0(2025-09-26 17:13:32.197421)", "cluster_id": 0}
+[2025-09-26 17:46:25,273][flwr][INFO] - Sent reply
+[2025-09-26 17:46:32,036][flwr][INFO] - 
+[2025-09-26 17:46:32,037][flwr][INFO] - Received: train message 582dd8c5-5627-40c0-964f-296b89f6a724
+[2025-09-26 17:49:01,090][client_fl][INFO] - train_performance - {"fl_task_id": "clustertest", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "round": 1, "gl_model_v": 12, "train_loss": 0.012733566622356488, "train_accuracy": 0.9960277777777777, "train_f1_score": 0.9960280097866163, "val_loss": 0.046907323176515574, "val_accuracy": 0.9888333333333333, "val_f1_score": 0.9888395580796278, "train_time": 149.02752256393433, "wandb_name": "ccl-x-server-v0(2025-09-26 17:13:32.197421)", "cluster_id": 10000}
+[2025-09-26 17:49:01,190][flwr][INFO] - Sent reply
+[2025-09-26 17:49:07,583][flwr][INFO] - 
+[2025-09-26 17:49:07,584][flwr][INFO] - Received: reconnect message 99f78cc7-d33d-40c2-92eb-c8641298f044
+[2025-09-26 17:49:07,612][flwr][DEBUG] - gRPC channel closed
+[2025-09-26 17:49:07,613][flwr][INFO] - Disconnect and shut down
+[2025-09-26 17:49:07,614][root][INFO] - fl learning finished
+[2025-09-26 17:49:09,879][root][ERROR] - wandb system load error: Could not find project MNIST_clustertest
+[2025-09-26 17:49:09,880][root][INFO] - client_operation_time - {"fl_task_id": "clustertest", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "operation_time": 327.06123757362366, "gl_model_v": 12}
+[2025-09-26 17:49:09,890][root][INFO] - try notify_fin
+[2025-09-26 17:49:09,902][root][INFO] - trainFin
+[2025-09-26 17:49:09,902][root][INFO] - FL Client Learning Finish

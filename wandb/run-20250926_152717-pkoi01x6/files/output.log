@@ -1,0 +1,103 @@
+[93mWARNING [0m:   DEPRECATED FEATURE: flwr.client.start_numpy_client() is deprecated.
+	Instead, use `flwr.client.start_client()` by ensuring you first call the `.to_client()` method as shown below:
+	flwr.client.start_client(
+		server_address='<IP>:<PORT>',
+		client=FlowerClient().to_client(), # <-- where FlowerClient is of type flwr.client.NumPyClient object
+	)
+	Using `start_numpy_client()` is deprecated.
+
+            This is a deprecated feature. It will be removed
+            entirely in future versions of Flower.
+
+[2025-09-26 15:27:19,590][flwr][WARNING] - DEPRECATED FEATURE: flwr.client.start_numpy_client() is deprecated.
+	Instead, use `flwr.client.start_client()` by ensuring you first call the `.to_client()` method as shown below:
+	flwr.client.start_client(
+		server_address='<IP>:<PORT>',
+		client=FlowerClient().to_client(), # <-- where FlowerClient is of type flwr.client.NumPyClient object
+	)
+	Using `start_numpy_client()` is deprecated.
+
+            This is a deprecated feature. It will be removed
+            entirely in future versions of Flower.
+
+[93mWARNING [0m:   DEPRECATED FEATURE: flwr.client.start_client() is deprecated.
+	Instead, use the `flower-supernode` CLI command to start a SuperNode as shown below:
+
+		$ flower-supernode --insecure --superlink='<IP>:<PORT>'
+
+	To view all available options, run:
+
+		$ flower-supernode --help
+
+	Using `start_client()` is deprecated.
+
+            This is a deprecated feature. It will be removed
+            entirely in future versions of Flower.
+
+[2025-09-26 15:27:19,590][flwr][WARNING] - DEPRECATED FEATURE: flwr.client.start_client() is deprecated.
+	Instead, use the `flower-supernode` CLI command to start a SuperNode as shown below:
+
+		$ flower-supernode --insecure --superlink='<IP>:<PORT>'
+
+	To view all available options, run:
+
+		$ flower-supernode --help
+
+	Using `start_client()` is deprecated.
+
+            This is a deprecated feature. It will be removed
+            entirely in future versions of Flower.
+
+[2025-09-26 15:27:19,591][flwr][DEBUG] - Opened insecure gRPC connection (no certificates were passed)
+[2025-09-26 15:27:19,951][flwr][DEBUG] - ChannelConnectivity.IDLE
+[2025-09-26 15:27:19,952][flwr][DEBUG] - ChannelConnectivity.READY
+[92mINFO [0m:
+[2025-09-26 15:27:20,503][flwr][INFO] -
+[92mINFO [0m:      Received: train message 51c2ddf8-a3e3-4e40-91e9-6a8004410695
+[2025-09-26 15:27:20,509][flwr][INFO] - Received: train message 51c2ddf8-a3e3-4e40-91e9-6a8004410695
+config: {'hp_local_epochs': 1, 'batch_size': 128, 'hp_batch_size': 16, 'cluster_id': 0, 'num_rounds': 2, 'hp_learning_rate': 2.8599208693337024e-05, 'local_epochs': 1}
+Starting evalutation...
+Testing: 100%|█| 2250/2250 [00:28<00:00, 77
+Starting evalutation...
+Testing: 100%|█| 94/94 [00:07<00:00, 13.16b
+[2025-09-26 15:28:36,799][client_fl][INFO] - train_performance - {"fl_task_id": "clustertest", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "round": 1, "gl_model_v": 8, "train_loss": 0.000905773419036581, "train_accuracy": 0.9998055555555555, "train_f1_score": 0.9998055590760331, "val_loss": 0.035386816861415704, "val_accuracy": 0.9925, "val_f1_score": 0.9924975854932112, "train_time": 76.14766097068787, "wandb_name": "ccl-x-server-v0(2025-09-26 14:55:45.284595)", "cluster_id": 0}
+[92mINFO [0m:      Sent reply
+[2025-09-26 15:28:36,940][flwr][INFO] - Sent reply
+[92mINFO [0m:
+[2025-09-26 15:28:40,768][flwr][INFO] -
+[92mINFO [0m:      Received: evaluate message 193603d3-5ef9-4ab4-bdbd-6a5ef96c8d34
+[2025-09-26 15:28:40,773][flwr][INFO] - Received: evaluate message 193603d3-5ef9-4ab4-bdbd-6a5ef96c8d34
+Starting evalutation...
+Testing: 100%|█| 94/94 [00:06<00:00, 13.89b
+[2025-09-26 15:28:47,776][client_fl][INFO] - test - {"fl_task_id": "clustertest", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "round": 1, "test_loss": 0.03904061211548477, "test_accuracy": 0.99175, "gl_model_v": 8, "wandb_name": "ccl-x-server-v0(2025-09-26 14:55:45.284595)", "cluster_id": 0}
+[92mINFO [0m:      Sent reply
+[2025-09-26 15:28:47,790][flwr][INFO] - Sent reply
+[92mINFO [0m:
+[2025-09-26 15:28:48,357][flwr][INFO] -
+[92mINFO [0m:      Received: train message 1a374824-829c-4530-aeff-9667e758ecae
+[2025-09-26 15:28:48,359][flwr][INFO] - Received: train message 1a374824-829c-4530-aeff-9667e758ecae
+config: {'hp_local_epochs': 2, 'batch_size': 128, 'hp_batch_size': 8, 'cluster_id': 0, 'num_rounds': 2, 'hp_learning_rate': 3.19638908999558e-05, 'local_epochs': 1}
+Starting evalutation...
+Testing: 100%|█| 4500/4500 [00:28<00:00, 15
+Starting evalutation...
+Testing: 100%|█| 94/94 [00:07<00:00, 12.98b
+[2025-09-26 15:30:53,267][client_fl][INFO] - train_performance - {"fl_task_id": "clustertest", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "round": 2, "gl_model_v": 8, "train_loss": 0.0002154738425880913, "train_accuracy": 0.9999722222222223, "train_f1_score": 0.9999722220696975, "val_loss": 0.04021246705763907, "val_accuracy": 0.9925, "val_f1_score": 0.992497095706559, "train_time": 124.89018964767456, "wandb_name": "ccl-x-server-v0(2025-09-26 14:55:45.284595)", "cluster_id": 0}
+[92mINFO [0m:      Sent reply
+[2025-09-26 15:30:53,341][flwr][INFO] - Sent reply
+[92mINFO [0m:
+[2025-09-26 15:30:57,284][flwr][INFO] -
+[92mINFO [0m:      Received: evaluate message 9d6a0914-0214-4b69-95ec-d3d951f3ccf6
+[2025-09-26 15:30:57,284][flwr][INFO] - Received: evaluate message 9d6a0914-0214-4b69-95ec-d3d951f3ccf6
+Starting evalutation...
+Testing: 100%|█| 94/94 [00:06<00:00, 15.15b
+[2025-09-26 15:31:03,720][client_fl][INFO] - test - {"fl_task_id": "clustertest", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "round": 2, "test_loss": 0.04446921679624075, "test_accuracy": 0.9921666666666666, "gl_model_v": 8, "wandb_name": "ccl-x-server-v0(2025-09-26 14:55:45.284595)", "cluster_id": 0}
+[92mINFO [0m:      Sent reply
+[2025-09-26 15:31:03,739][flwr][INFO] - Sent reply
+[92mINFO [0m:
+[2025-09-26 15:31:03,757][flwr][INFO] -
+[92mINFO [0m:      Received: reconnect message 057cfab6-5120-4acf-b322-1d3a0ed24176
+[2025-09-26 15:31:03,758][flwr][INFO] - Received: reconnect message 057cfab6-5120-4acf-b322-1d3a0ed24176
+[2025-09-26 15:31:03,765][flwr][DEBUG] - gRPC channel closed
+[92mINFO [0m:      Disconnect and shut down
+[2025-09-26 15:31:03,765][flwr][INFO] - Disconnect and shut down
+[2025-09-26 15:31:03,766][root][INFO] - fl learning finished

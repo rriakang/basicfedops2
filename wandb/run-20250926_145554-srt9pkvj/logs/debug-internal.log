@@ -1,0 +1,23 @@
+{"time":"2025-09-26T14:55:54.694589126+09:00","level":"INFO","msg":"stream: starting","core version":"0.19.9","symlink path":"/home/ccl/Desktop/RR/FedOps2/fedopstest/wandb/run-20250926_145554-srt9pkvj/logs/debug-core.log"}
+{"time":"2025-09-26T14:55:55.427464182+09:00","level":"INFO","msg":"created new stream","id":"srt9pkvj"}
+{"time":"2025-09-26T14:55:55.427499633+09:00","level":"INFO","msg":"stream: started","id":"srt9pkvj"}
+{"time":"2025-09-26T14:55:55.428425304+09:00","level":"INFO","msg":"handler: started","stream_id":"srt9pkvj"}
+{"time":"2025-09-26T14:55:55.428457546+09:00","level":"INFO","msg":"writer: Do: started","stream_id":"srt9pkvj"}
+{"time":"2025-09-26T14:55:55.428602043+09:00","level":"INFO","msg":"sender: started","stream_id":"srt9pkvj"}
+{"time":"2025-09-26T14:55:55.675063289+09:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-09-26T15:05:08.234297252+09:00","level":"WARN","msg":"handler: ignoring partial history record","step":1,"current":2}
+{"time":"2025-09-26T15:05:08.23441028+09:00","level":"WARN","msg":"handler: ignoring partial history record","step":1,"current":2}
+{"time":"2025-09-26T15:05:08.234417074+09:00","level":"WARN","msg":"handler: ignoring partial history record","step":1,"current":2}
+{"time":"2025-09-26T15:05:08.234471195+09:00","level":"WARN","msg":"handler: ignoring partial history record","step":1,"current":2}
+{"time":"2025-09-26T15:05:08.234538072+09:00","level":"WARN","msg":"handler: ignoring partial history record","step":1,"current":2}
+{"time":"2025-09-26T15:05:08.234610912+09:00","level":"WARN","msg":"handler: ignoring partial history record","step":1,"current":2}
+{"time":"2025-09-26T15:05:08.234682575+09:00","level":"WARN","msg":"handler: ignoring partial history record","step":1,"current":2}
+{"time":"2025-09-26T15:05:14.678286501+09:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-09-26T15:05:14.678332911+09:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-09-26T15:05:15.68713771+09:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading config.yaml","runtime_seconds":0.230900951,"progress":"1.0KB/1.0KB"}],"total_operations":1}}
+{"time":"2025-09-26T15:05:15.71680559+09:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-26T15:05:16.103962275+09:00","level":"INFO","msg":"stream: closing","id":"srt9pkvj"}
+{"time":"2025-09-26T15:05:16.103975134+09:00","level":"INFO","msg":"handler: closed","stream_id":"srt9pkvj"}
+{"time":"2025-09-26T15:05:16.103983105+09:00","level":"INFO","msg":"writer: Close: closed","stream_id":"srt9pkvj"}
+{"time":"2025-09-26T15:05:16.104034267+09:00","level":"INFO","msg":"sender: closed","stream_id":"srt9pkvj"}
+{"time":"2025-09-26T15:05:16.104039509+09:00","level":"INFO","msg":"stream: closed","id":"srt9pkvj"}

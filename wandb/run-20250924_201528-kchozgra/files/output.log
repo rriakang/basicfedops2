@@ -1,0 +1,355 @@
+[32mINFO[0m:     127.0.0.1:56544 - "[1mGET /online HTTP/1.1[0m" [32m200 OK[0m
+[93mWARNING [0m:   DEPRECATED FEATURE: flwr.client.start_numpy_client() is deprecated.
+	Instead, use `flwr.client.start_client()` by ensuring you first call the `.to_client()` method as shown below:
+	flwr.client.start_client(
+		server_address='<IP>:<PORT>',
+		client=FlowerClient().to_client(), # <-- where FlowerClient is of type flwr.client.NumPyClient object
+	)
+	Using `start_numpy_client()` is deprecated.
+
+            This is a deprecated feature. It will be removed
+            entirely in future versions of Flower.
+
+[2025-09-24 20:15:29,790][flwr][WARNING] - DEPRECATED FEATURE: flwr.client.start_numpy_client() is deprecated.
+	Instead, use `flwr.client.start_client()` by ensuring you first call the `.to_client()` method as shown below:
+	flwr.client.start_client(
+		server_address='<IP>:<PORT>',
+		client=FlowerClient().to_client(), # <-- where FlowerClient is of type flwr.client.NumPyClient object
+	)
+	Using `start_numpy_client()` is deprecated.
+
+            This is a deprecated feature. It will be removed
+            entirely in future versions of Flower.
+
+[93mWARNING [0m:   DEPRECATED FEATURE: flwr.client.start_client() is deprecated.
+	Instead, use the `flower-supernode` CLI command to start a SuperNode as shown below:
+
+		$ flower-supernode --insecure --superlink='<IP>:<PORT>'
+
+	To view all available options, run:
+
+		$ flower-supernode --help
+
+	Using `start_client()` is deprecated.
+
+            This is a deprecated feature. It will be removed
+            entirely in future versions of Flower.
+
+[2025-09-24 20:15:29,792][flwr][WARNING] - DEPRECATED FEATURE: flwr.client.start_client() is deprecated.
+	Instead, use the `flower-supernode` CLI command to start a SuperNode as shown below:
+
+		$ flower-supernode --insecure --superlink='<IP>:<PORT>'
+
+	To view all available options, run:
+
+		$ flower-supernode --help
+
+	Using `start_client()` is deprecated.
+
+            This is a deprecated feature. It will be removed
+            entirely in future versions of Flower.
+
+[2025-09-24 20:15:29,865][flwr][DEBUG] - Opened insecure gRPC connection (no certificates were passed)
+[2025-09-24 20:15:29,886][flwr][DEBUG] - ChannelConnectivity.IDLE
+[2025-09-24 20:15:29,887][flwr][DEBUG] - ChannelConnectivity.CONNECTING
+[2025-09-24 20:15:30,005][flwr][DEBUG] - ChannelConnectivity.TRANSIENT_FAILURE
+[2025-09-24 20:15:30,207][flwr][DEBUG] - gRPC channel closed
+--- Logging error ---
+Traceback (most recent call last):
+  File "/home/ccl/Desktop/RR/FedOps2/fedopstest/app.py", line 124, in fl_client_start
+    await loop.run_in_executor(None, client_start)
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/home/ccl/.local/lib/python3.9/site-packages/flwr/compat/client/app.py", line 627, in start_numpy_client
+    start_client(
+  File "/home/ccl/.local/lib/python3.9/site-packages/flwr/compat/client/app.py", line 184, in start_client
+    start_client_internal(
+  File "/home/ccl/.local/lib/python3.9/site-packages/flwr/compat/client/app.py", line 395, in start_client_internal
+    message = receive()
+  File "/home/ccl/.local/lib/python3.9/site-packages/flwr/compat/client/grpc_client/connection.py", line 142, in receive
+    proto = next(server_message_iterator)
+  File "/home/ccl/.local/lib/python3.9/site-packages/grpc/_channel.py", line 543, in __next__
+    return self._next()
+  File "/home/ccl/.local/lib/python3.9/site-packages/grpc/_channel.py", line 969, in _next
+    raise self
+grpc._channel._MultiThreadedRendezvous: <_MultiThreadedRendezvous of RPC that terminated with:
+	status = StatusCode.UNAVAILABLE
+	details = "failed to connect to all addresses; last error: UNAVAILABLE: ipv4:192.9.201.228:40025: Socket closed"
+	debug_error_string = "UNKNOWN:Error received from peer  {grpc_status:14, grpc_message:"failed to connect to all addresses; last error: UNAVAILABLE: ipv4:192.9.201.228:40025: Socket closed"}"
+>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/logging/__init__.py", line 1083, in emit
+    msg = self.format(record)
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/logging/__init__.py", line 927, in format
+    return fmt.format(record)
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/logging/__init__.py", line 663, in format
+    record.message = record.getMessage()
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/logging/__init__.py", line 367, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/site-packages/starlette/background.py", line 26, in __call__
+    await self.func(*self.args, **self.kwargs)
+  File "/home/ccl/Desktop/RR/FedOps2/fedopstest/app.py", line 163, in fl_client_start
+    logging.info('[E][PC0002] learning', e)
+Message: '[E][PC0002] learning'
+Arguments: (<_MultiThreadedRendezvous of RPC that terminated with:
+	status = StatusCode.UNAVAILABLE
+	details = "failed to connect to all addresses; last error: UNAVAILABLE: ipv4:192.9.201.228:40025: Socket closed"
+	debug_error_string = "UNKNOWN:Error received from peer  {grpc_status:14, grpc_message:"failed to connect to all addresses; last error: UNAVAILABLE: ipv4:192.9.201.228:40025: Socket closed"}"
+>,)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/home/ccl/Desktop/RR/FedOps2/fedopstest/app.py", line 124, in fl_client_start
+    await loop.run_in_executor(None, client_start)
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/home/ccl/.local/lib/python3.9/site-packages/flwr/compat/client/app.py", line 627, in start_numpy_client
+    start_client(
+  File "/home/ccl/.local/lib/python3.9/site-packages/flwr/compat/client/app.py", line 184, in start_client
+    start_client_internal(
+  File "/home/ccl/.local/lib/python3.9/site-packages/flwr/compat/client/app.py", line 395, in start_client_internal
+    message = receive()
+  File "/home/ccl/.local/lib/python3.9/site-packages/flwr/compat/client/grpc_client/connection.py", line 142, in receive
+    proto = next(server_message_iterator)
+  File "/home/ccl/.local/lib/python3.9/site-packages/grpc/_channel.py", line 543, in __next__
+    return self._next()
+  File "/home/ccl/.local/lib/python3.9/site-packages/grpc/_channel.py", line 969, in _next
+    raise self
+grpc._channel._MultiThreadedRendezvous: <_MultiThreadedRendezvous of RPC that terminated with:
+	status = StatusCode.UNAVAILABLE
+	details = "failed to connect to all addresses; last error: UNAVAILABLE: ipv4:192.9.201.228:40025: Socket closed"
+	debug_error_string = "UNKNOWN:Error received from peer  {grpc_status:14, grpc_message:"failed to connect to all addresses; last error: UNAVAILABLE: ipv4:192.9.201.228:40025: Socket closed"}"
+>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/logging/__init__.py", line 1083, in emit
+    msg = self.format(record)
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/logging/__init__.py", line 927, in format
+    return fmt.format(record)
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/logging/__init__.py", line 663, in format
+    record.message = record.getMessage()
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/logging/__init__.py", line 367, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/site-packages/starlette/background.py", line 26, in __call__
+    await self.func(*self.args, **self.kwargs)
+  File "/home/ccl/Desktop/RR/FedOps2/fedopstest/app.py", line 163, in fl_client_start
+    logging.info('[E][PC0002] learning', e)
+Message: '[E][PC0002] learning'
+Arguments: (<_MultiThreadedRendezvous of RPC that terminated with:
+	status = StatusCode.UNAVAILABLE
+	details = "failed to connect to all addresses; last error: UNAVAILABLE: ipv4:192.9.201.228:40025: Socket closed"
+	debug_error_string = "UNKNOWN:Error received from peer  {grpc_status:14, grpc_message:"failed to connect to all addresses; last error: UNAVAILABLE: ipv4:192.9.201.228:40025: Socket closed"}"
+>,)
+[2025-09-24 20:15:30,229][root][INFO] - notify_fail start
+[2025-09-24 20:15:30,243][root][ERROR] - trainFin
+[31mERROR[0m:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/site-packages/uvicorn/protocols/http/httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/site-packages/starlette/applications.py", line 112, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/site-packages/starlette/middleware/errors.py", line 187, in __call__
+    raise exc
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/site-packages/starlette/middleware/errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/site-packages/starlette/routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/site-packages/starlette/routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/site-packages/starlette/routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/site-packages/starlette/routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/site-packages/starlette/routing.py", line 74, in app
+    await response(scope, receive, send)
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/site-packages/starlette/responses.py", line 160, in __call__
+    await self.background()
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/site-packages/starlette/background.py", line 41, in __call__
+    await task()
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/site-packages/starlette/background.py", line 26, in __call__
+    await self.func(*self.args, **self.kwargs)
+  File "/home/ccl/Desktop/RR/FedOps2/fedopstest/app.py", line 166, in fl_client_start
+    raise e
+  File "/home/ccl/Desktop/RR/FedOps2/fedopstest/app.py", line 124, in fl_client_start
+    await loop.run_in_executor(None, client_start)
+  File "/home/ccl/anaconda3/envs/rrfedops/lib/python3.9/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/home/ccl/.local/lib/python3.9/site-packages/flwr/compat/client/app.py", line 627, in start_numpy_client
+    start_client(
+  File "/home/ccl/.local/lib/python3.9/site-packages/flwr/compat/client/app.py", line 184, in start_client
+    start_client_internal(
+  File "/home/ccl/.local/lib/python3.9/site-packages/flwr/compat/client/app.py", line 395, in start_client_internal
+    message = receive()
+  File "/home/ccl/.local/lib/python3.9/site-packages/flwr/compat/client/grpc_client/connection.py", line 142, in receive
+    proto = next(server_message_iterator)
+  File "/home/ccl/.local/lib/python3.9/site-packages/grpc/_channel.py", line 543, in __next__
+    return self._next()
+  File "/home/ccl/.local/lib/python3.9/site-packages/grpc/_channel.py", line 969, in _next
+    raise self
+grpc._channel._MultiThreadedRendezvous: <_MultiThreadedRendezvous of RPC that terminated with:
+	status = StatusCode.UNAVAILABLE
+	details = "failed to connect to all addresses; last error: UNAVAILABLE: ipv4:192.9.201.228:40025: Socket closed"
+	debug_error_string = "UNKNOWN:Error received from peer  {grpc_status:14, grpc_message:"failed to connect to all addresses; last error: UNAVAILABLE: ipv4:192.9.201.228:40025: Socket closed"}"
+>
+[32mINFO[0m:     127.0.0.1:56556 - "[1mGET /online HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     127.0.0.1:53380 - "[1mGET /online HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     127.0.0.1:49120 - "[1mGET /online HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     127.0.0.1:49122 - "[1mGET /online HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     127.0.0.1:56914 - "[1mGET /online HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     127.0.0.1:42286 - "[1mGET /online HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     127.0.0.1:42294 - "[1mGET /online HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     127.0.0.1:33950 - "[1mGET /online HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     127.0.0.1:39808 - "[1mGET /online HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     127.0.0.1:39812 - "[1mGET /online HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     127.0.0.1:51722 - "[1mGET /online HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     127.0.0.1:43012 - "[1mGET /online HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     127.0.0.1:43018 - "[1mGET /online HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     127.0.0.1:39260 - "[1mGET /online HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     127.0.0.1:46194 - "[1mGET /online HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     127.0.0.1:46208 - "[1mGET /online HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     127.0.0.1:39378 - "[1mGET /online HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     127.0.0.1:39394 - "[1mGET /online HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     127.0.0.1:60204 - "[1mGET /online HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     127.0.0.1:45690 - "[1mGET /online HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     127.0.0.1:45706 - "[1mGET /online HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     127.0.0.1:55952 - "[1mGET /online HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     127.0.0.1:59830 - "[1mGET /online HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     127.0.0.1:59832 - "[1mGET /online HTTP/1.1[0m" [32m200 OK[0m
+[2025-09-24 20:18:11,909][root][INFO] - bulid model
+[2025-09-24 20:18:11,909][root][INFO] - FL start
+[2025-09-24 20:18:11,917][client_api][INFO] - FL_server_IP:port - ccl.gachon.ac.kr:40025
+[32mINFO[0m:     127.0.0.1:40360 - "[1mPOST /start HTTP/1.1[0m" [32m200 OK[0m
+[2025-09-24 20:18:11,918][root][INFO] - FL learning ready
+[2025-09-24 20:18:11,918][root][INFO] - fl_task_id: clustertest
+[2025-09-24 20:18:11,918][root][INFO] - dataset: MNIST
+[2025-09-24 20:18:11,918][root][INFO] - output_size: 10
+[2025-09-24 20:18:11,918][root][INFO] - validation_split: 0.2
+[2025-09-24 20:18:11,919][root][INFO] - model_type: Pytorch
+[2025-09-24 20:18:11,919][root][INFO] - wandb_key: 38f6cf3c2c37660d42ebfe8ab434b72d34be3b31
+[2025-09-24 20:18:11,919][root][INFO] - wandb_account: rirakang@gachon.ac.kr
+[34m[1mwandb[0m: [33mWARNING[0m Calling wandb.login() after wandb.init() has no effect.
+[93mWARNING [0m:   DEPRECATED FEATURE: flwr.client.start_numpy_client() is deprecated.
+	Instead, use `flwr.client.start_client()` by ensuring you first call the `.to_client()` method as shown below:
+	flwr.client.start_client(
+		server_address='<IP>:<PORT>',
+		client=FlowerClient().to_client(), # <-- where FlowerClient is of type flwr.client.NumPyClient object
+	)
+	Using `start_numpy_client()` is deprecated.
+
+            This is a deprecated feature. It will be removed
+            entirely in future versions of Flower.
+
+[2025-09-24 20:18:11,938][flwr][WARNING] - DEPRECATED FEATURE: flwr.client.start_numpy_client() is deprecated.
+	Instead, use `flwr.client.start_client()` by ensuring you first call the `.to_client()` method as shown below:
+	flwr.client.start_client(
+		server_address='<IP>:<PORT>',
+		client=FlowerClient().to_client(), # <-- where FlowerClient is of type flwr.client.NumPyClient object
+	)
+	Using `start_numpy_client()` is deprecated.
+
+            This is a deprecated feature. It will be removed
+            entirely in future versions of Flower.
+
+[93mWARNING [0m:   DEPRECATED FEATURE: flwr.client.start_client() is deprecated.
+	Instead, use the `flower-supernode` CLI command to start a SuperNode as shown below:
+
+		$ flower-supernode --insecure --superlink='<IP>:<PORT>'
+
+	To view all available options, run:
+
+		$ flower-supernode --help
+
+	Using `start_client()` is deprecated.
+
+            This is a deprecated feature. It will be removed
+            entirely in future versions of Flower.
+
+[2025-09-24 20:18:11,938][flwr][WARNING] - DEPRECATED FEATURE: flwr.client.start_client() is deprecated.
+	Instead, use the `flower-supernode` CLI command to start a SuperNode as shown below:
+
+		$ flower-supernode --insecure --superlink='<IP>:<PORT>'
+
+	To view all available options, run:
+
+		$ flower-supernode --help
+
+	Using `start_client()` is deprecated.
+
+            This is a deprecated feature. It will be removed
+            entirely in future versions of Flower.
+
+[2025-09-24 20:18:11,939][flwr][DEBUG] - Opened insecure gRPC connection (no certificates were passed)
+[2025-09-24 20:18:12,085][flwr][DEBUG] - ChannelConnectivity.IDLE
+[2025-09-24 20:18:12,128][flwr][DEBUG] - ChannelConnectivity.READY
+[92mINFO [0m:
+[2025-09-24 20:18:12,675][flwr][INFO] -
+[92mINFO [0m:      Received: train message 45892620-ee16-49b0-8d82-00cb681b44db
+[2025-09-24 20:18:12,677][flwr][INFO] - Received: train message 45892620-ee16-49b0-8d82-00cb681b44db
+config: {'hp_local_epochs': 3, 'batch_size': 128, 'hp_batch_size': 16, 'cluster_id': 0, 'num_rounds': 2, 'hp_learning_rate': 0.005189831448346905, 'local_epochs': 1}
+Starting evalutation...
+Testing: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 2250/2250 [00:34<00:00, 64.68batch/s]
+Starting evalutation...
+Testing: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 94/94 [00:08<00:00, 11.32batch/s]
+[2025-09-24 20:21:09,368][client_fl][INFO] - train_performance - {"fl_task_id": "clustertest", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "round": 1, "gl_model_v": 2, "train_loss": 0.018053927481730594, "train_accuracy": 0.9942777777777778, "train_f1_score": 0.9942775117304586, "val_loss": 0.05757409751791745, "val_accuracy": 0.9858333333333333, "val_f1_score": 0.9858366113376843, "train_time": 176.4545955657959, "wandb_name": "ccl-x-server-v0(2025-09-24 20:15:10.102307)", "cluster_id": 0}
+[92mINFO [0m:      Sent reply
+[2025-09-24 20:21:09,459][flwr][INFO] - Sent reply
+[92mINFO [0m:
+[2025-09-24 20:21:13,222][flwr][INFO] -
+[92mINFO [0m:      Received: evaluate message 86c0f71f-8696-4e9d-945e-de54e72e3ab3
+[2025-09-24 20:21:13,222][flwr][INFO] - Received: evaluate message 86c0f71f-8696-4e9d-945e-de54e72e3ab3
+Starting evalutation...
+Testing: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 94/94 [00:09<00:00,  9.93batch/s]
+[2025-09-24 20:21:23,065][client_fl][INFO] - test - {"fl_task_id": "clustertest", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "round": 1, "test_loss": 0.06169186067826887, "test_accuracy": 0.9845, "gl_model_v": 2, "wandb_name": "ccl-x-server-v0(2025-09-24 20:15:10.102307)", "cluster_id": 0}
+[92mINFO [0m:      Sent reply
+[2025-09-24 20:21:23,085][flwr][INFO] - Sent reply
+[92mINFO [0m:
+[2025-09-24 20:21:23,640][flwr][INFO] -
+[92mINFO [0m:      Received: train message d1eb56a3-c869-42bb-b901-790f02827e53
+[2025-09-24 20:21:23,654][flwr][INFO] - Received: train message d1eb56a3-c869-42bb-b901-790f02827e53
+config: {'hp_local_epochs': 1, 'batch_size': 128, 'hp_batch_size': 128, 'cluster_id': 0, 'num_rounds': 2, 'hp_learning_rate': 4.3231428505582966e-05, 'local_epochs': 1}
+Starting evalutation...
+Testing: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 282/282 [00:25<00:00, 11.07batch/s]
+Starting evalutation...
+Testing: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 94/94 [00:07<00:00, 12.25batch/s]
+[2025-09-24 20:22:23,582][client_fl][INFO] - train_performance - {"fl_task_id": "clustertest", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "round": 2, "gl_model_v": 2, "train_loss": 0.012271233959604324, "train_accuracy": 0.9961388888888889, "train_f1_score": 0.9961391902092787, "val_loss": 0.04998852445327855, "val_accuracy": 0.9868333333333333, "val_f1_score": 0.986839867862398, "train_time": 59.90780210494995, "wandb_name": "ccl-x-server-v0(2025-09-24 20:15:10.102307)", "cluster_id": 0}
+[92mINFO [0m:      Sent reply
+[2025-09-24 20:22:23,652][flwr][INFO] - Sent reply
+[92mINFO [0m:
+[2025-09-24 20:22:27,450][flwr][INFO] -
+[92mINFO [0m:      Received: evaluate message 92f54cfd-138d-454e-9500-db1f538384f6
+[2025-09-24 20:22:27,462][flwr][INFO] - Received: evaluate message 92f54cfd-138d-454e-9500-db1f538384f6
+Starting evalutation...
+Testing: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 94/94 [00:06<00:00, 14.08batch/s]
+[2025-09-24 20:22:34,493][client_fl][INFO] - test - {"fl_task_id": "clustertest", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "round": 2, "test_loss": 0.05392162708387254, "test_accuracy": 0.9866666666666667, "gl_model_v": 2, "wandb_name": "ccl-x-server-v0(2025-09-24 20:15:10.102307)", "cluster_id": 0}
+[92mINFO [0m:      Sent reply
+[2025-09-24 20:22:34,574][flwr][INFO] - Sent reply
+[92mINFO [0m:
+[2025-09-24 20:22:34,590][flwr][INFO] -
+[92mINFO [0m:      Received: reconnect message c01b11cd-a98c-4ea4-98a2-de854d0b4e71
+[2025-09-24 20:22:34,591][flwr][INFO] - Received: reconnect message c01b11cd-a98c-4ea4-98a2-de854d0b4e71
+[2025-09-24 20:22:34,609][flwr][DEBUG] - gRPC channel closed
+[92mINFO [0m:      Disconnect and shut down
+[2025-09-24 20:22:34,609][flwr][INFO] - Disconnect and shut down
+[2025-09-24 20:22:34,610][root][INFO] - fl learning finished

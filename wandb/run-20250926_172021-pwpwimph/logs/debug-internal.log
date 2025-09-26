@@ -1,0 +1,16 @@
+{"time":"2025-09-26T17:20:21.759774692+09:00","level":"INFO","msg":"stream: starting","core version":"0.19.9","symlink path":"/home/ccl/Desktop/RR/FedOps2/fedopstest/wandb/run-20250926_172021-pwpwimph/logs/debug-core.log"}
+{"time":"2025-09-26T17:20:22.299329346+09:00","level":"INFO","msg":"created new stream","id":"pwpwimph"}
+{"time":"2025-09-26T17:20:22.29940483+09:00","level":"INFO","msg":"stream: started","id":"pwpwimph"}
+{"time":"2025-09-26T17:20:22.300560362+09:00","level":"INFO","msg":"writer: Do: started","stream_id":"pwpwimph"}
+{"time":"2025-09-26T17:20:22.300676309+09:00","level":"INFO","msg":"handler: started","stream_id":"pwpwimph"}
+{"time":"2025-09-26T17:20:22.300777467+09:00","level":"INFO","msg":"sender: started","stream_id":"pwpwimph"}
+{"time":"2025-09-26T17:20:22.601718051+09:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-09-26T17:22:15.770557833+09:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-09-26T17:22:15.770604998+09:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-09-26T17:22:16.793965757+09:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading config.yaml","runtime_seconds":0.264355022,"progress":"1018B/1018B"}],"total_operations":1}}
+{"time":"2025-09-26T17:22:16.874178832+09:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-26T17:22:17.211854666+09:00","level":"INFO","msg":"stream: closing","id":"pwpwimph"}
+{"time":"2025-09-26T17:22:17.211867906+09:00","level":"INFO","msg":"handler: closed","stream_id":"pwpwimph"}
+{"time":"2025-09-26T17:22:17.211874736+09:00","level":"INFO","msg":"writer: Close: closed","stream_id":"pwpwimph"}
+{"time":"2025-09-26T17:22:17.21191809+09:00","level":"INFO","msg":"sender: closed","stream_id":"pwpwimph"}
+{"time":"2025-09-26T17:22:17.211924131+09:00","level":"INFO","msg":"stream: closed","id":"pwpwimph"}

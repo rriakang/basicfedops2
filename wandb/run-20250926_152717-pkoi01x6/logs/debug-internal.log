@@ -1,0 +1,16 @@
+{"time":"2025-09-26T15:27:17.688238515+09:00","level":"INFO","msg":"stream: starting","core version":"0.19.9","symlink path":"/home/ccl/Desktop/RR/FedOps2/fedopstest/wandb/run-20250926_152717-pkoi01x6/logs/debug-core.log"}
+{"time":"2025-09-26T15:27:18.294410576+09:00","level":"INFO","msg":"created new stream","id":"pkoi01x6"}
+{"time":"2025-09-26T15:27:18.294440908+09:00","level":"INFO","msg":"stream: started","id":"pkoi01x6"}
+{"time":"2025-09-26T15:27:18.294983534+09:00","level":"INFO","msg":"handler: started","stream_id":"pkoi01x6"}
+{"time":"2025-09-26T15:27:18.295012291+09:00","level":"INFO","msg":"writer: Do: started","stream_id":"pkoi01x6"}
+{"time":"2025-09-26T15:27:18.295128912+09:00","level":"INFO","msg":"sender: started","stream_id":"pkoi01x6"}
+{"time":"2025-09-26T15:27:18.627110812+09:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-09-26T15:31:03.814889886+09:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-09-26T15:31:03.814927943+09:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-09-26T15:31:04.818501132+09:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading config.yaml","runtime_seconds":0.221970148,"progress":"1015B/1015B"}],"total_operations":1}}
+{"time":"2025-09-26T15:31:04.948857621+09:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-26T15:31:05.302475737+09:00","level":"INFO","msg":"stream: closing","id":"pkoi01x6"}
+{"time":"2025-09-26T15:31:05.302490471+09:00","level":"INFO","msg":"handler: closed","stream_id":"pkoi01x6"}
+{"time":"2025-09-26T15:31:05.302506813+09:00","level":"INFO","msg":"writer: Close: closed","stream_id":"pkoi01x6"}
+{"time":"2025-09-26T15:31:05.302559007+09:00","level":"INFO","msg":"sender: closed","stream_id":"pkoi01x6"}
+{"time":"2025-09-26T15:31:05.302564474+09:00","level":"INFO","msg":"stream: closed","id":"pkoi01x6"}
