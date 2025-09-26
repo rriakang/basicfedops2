@@ -1,0 +1,88 @@
+_wandb:
+    value:
+        cli_version: 0.22.0
+        e:
+            sy9l0q3bdxux7xn38dy6gs1253ic2i21:
+                codePath: client_main.py
+                codePathLocal: client_main.py
+                cpu_count: 18
+                cpu_count_logical: 36
+                cudaVersion: "12.2"
+                disk:
+                    /:
+                        total: "1967317549056"
+                        used: "1358444675072"
+                email: rirakang@gachon.ac.kr
+                executable: /home/ccl/anaconda3/envs/rrhypo/bin/python
+                git:
+                    commit: 430dae3932816e9f1d9b939871a52d64c162e056
+                    remote: https://github.com/rriakang/Clusterfedops-test.git
+                gpu: NVIDIA GeForce RTX 3070 Ti
+                gpu_count: 2
+                gpu_nvidia:
+                    - architecture: Ampere
+                      cudaCores: 6144
+                      memoryTotal: "8589934592"
+                      name: NVIDIA GeForce RTX 3070 Ti
+                      uuid: GPU-41699f34-baf7-0393-e3d5-f78c5a67928e
+                    - architecture: Ampere
+                      cudaCores: 6144
+                      memoryTotal: "8589934592"
+                      name: NVIDIA GeForce RTX 3070 Ti
+                      uuid: GPU-a58b43bb-080c-cea6-1128-f4a7f0750efb
+                host: ccl-y-server
+                memory:
+                    total: "134724751360"
+                os: Linux-5.15.0-139-generic-x86_64-with-glibc2.31
+                program: /home/ccl/Desktop/rirakang/fedops/Clusterfedops-test/client_main.py
+                python: CPython 3.9.23
+                root: /home/ccl/Desktop/rirakang/fedops/Clusterfedops-test
+                startedAt: "2025-09-26T05:48:16.036452Z"
+                writerId: sy9l0q3bdxux7xn38dy6gs1253ic2i21
+        m: []
+        python_version: 3.9.23
+        t:
+            "1":
+                - 1
+                - 5
+                - 30
+                - 41
+                - 50
+                - 53
+            "2":
+                - 1
+                - 5
+                - 30
+                - 41
+                - 50
+                - 53
+            "3":
+                - 2
+                - 13
+                - 16
+                - 24
+                - 61
+            "4": 3.9.23
+            "5": 0.22.0
+            "12": 0.22.0
+            "13": linux-x86_64
+batch_size:
+    value: 64
+dataset:
+    value: MNIST
+epochs:
+    value: 1
+hp_batch_size:
+    value: 64
+hp_learning_rate:
+    value: 1.3000599068444763e-05
+hp_local_epochs:
+    value: 1
+learning_rate:
+    value: 0
+model_architecture:
+    value: MNISTClassifier
+num_rounds:
+    value: 2
+optimizer:
+    value: ""

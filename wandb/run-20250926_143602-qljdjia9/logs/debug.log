@@ -1,0 +1,24 @@
+2025-09-26 14:36:02,012 INFO    MainThread:2084412 [wandb_init.py:setup_run_log_directory():686] Logging user logs to /home/ccl/Desktop/rirakang/fedops/Clusterfedops-test/wandb/run-20250926_143602-qljdjia9/logs/debug.log
+2025-09-26 14:36:02,012 INFO    MainThread:2084412 [wandb_init.py:setup_run_log_directory():687] Logging internal logs to /home/ccl/Desktop/rirakang/fedops/Clusterfedops-test/wandb/run-20250926_143602-qljdjia9/logs/debug-internal.log
+2025-09-26 14:36:02,012 INFO    MainThread:2084412 [wandb_init.py:init():813] calling init triggers
+2025-09-26 14:36:02,012 INFO    MainThread:2084412 [wandb_init.py:init():818] wandb.init called with sweep_config: {}
+config: {'learning_rate': 0, 'optimizer': '', 'dataset': '', 'model_architecture': '', 'batch_size': 0, 'epochs': 0, 'num_rounds': 0, '_wandb': {}}
+2025-09-26 14:36:02,012 INFO    MainThread:2084412 [wandb_init.py:init():861] starting backend
+2025-09-26 14:36:02,013 INFO    MainThread:2084412 [wandb_init.py:init():864] sending inform_init request
+2025-09-26 14:36:02,013 INFO    MainThread:2084412 [wandb_init.py:init():872] backend started and connected
+2025-09-26 14:36:02,016 INFO    MainThread:2084412 [wandb_init.py:init():942] updated telemetry
+2025-09-26 14:36:02,083 INFO    MainThread:2084412 [wandb_init.py:init():966] communicating run to backend with 90.0 second timeout
+2025-09-26 14:36:02,777 INFO    MainThread:2084412 [wandb_init.py:init():1017] starting run threads in backend
+2025-09-26 14:36:02,911 INFO    MainThread:2084412 [wandb_run.py:_console_start():2506] atexit reg
+2025-09-26 14:36:02,912 INFO    MainThread:2084412 [wandb_run.py:_redirect():2354] redirect: wrap_raw
+2025-09-26 14:36:02,912 INFO    MainThread:2084412 [wandb_run.py:_redirect():2423] Wrapping output streams.
+2025-09-26 14:36:02,912 INFO    MainThread:2084412 [wandb_run.py:_redirect():2446] Redirects installed.
+2025-09-26 14:36:02,914 INFO    MainThread:2084412 [wandb_init.py:init():1057] run started, returning control to user process
+2025-09-26 14:36:03,582 INFO    ThreadPoolExecutor-0_0:2084412 [wandb_run.py:_config_callback():1392] config_cb None None {'batch_size': 64, 'epochs': 1, 'num_rounds': 2, 'hp_learning_rate': 0.0016149579735375828, 'hp_batch_size': 64, 'hp_local_epochs': 1}
+2025-09-26 14:36:26,766 INFO    ThreadPoolExecutor-0_0:2084412 [wandb_run.py:_config_callback():1392] config_cb None None {'batch_size': 32, 'epochs': 3, 'num_rounds': 2, 'hp_learning_rate': 0.0013095176389295502, 'hp_batch_size': 32, 'hp_local_epochs': 3}
+2025-09-26 14:37:10,014 INFO    MainThread:2084412 [wandb_run.py:_config_callback():1392] config_cb None None {'dataset': 'MNIST', 'model_architecture': 'MNISTClassifier'}
+2025-09-26 14:37:10,015 INFO    MainThread:2084412 [wandb_run.py:_finish():2272] finishing run rirakang123/MNIST_clustertest/qljdjia9
+2025-09-26 14:37:10,052 INFO    MainThread:2084412 [wandb_run.py:_atexit_cleanup():2471] got exitcode: 0
+2025-09-26 14:37:10,054 INFO    MainThread:2084412 [wandb_run.py:_restore():2453] restore
+2025-09-26 14:37:10,055 INFO    MainThread:2084412 [wandb_run.py:_restore():2459] restore done
+2025-09-26 14:37:11,174 INFO    MainThread:2084412 [wandb_run.py:_footer_sync_info():3867] logging synced files
