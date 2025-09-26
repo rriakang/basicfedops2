@@ -46,7 +46,7 @@ server:
 
     # === 클러스터링/HPO 옵션 ===
     warmup_rounds: 1
-    recluster_every: 3
+    recluster_every: 1
     eps: 0.5
     min_samples: 2
     objective: "maximize_f1"        # "maximize_acc" / "minimize_loss" 도 가능

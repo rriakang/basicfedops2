@@ -1,0 +1,74 @@
+[93mWARNING [0m:   DEPRECATED FEATURE: flwr.client.start_numpy_client() is deprecated.
+	Instead, use `flwr.client.start_client()` by ensuring you first call the `.to_client()` method as shown below:
+	flwr.client.start_client(
+		server_address='<IP>:<PORT>',
+		client=FlowerClient().to_client(), # <-- where FlowerClient is of type flwr.client.NumPyClient object
+	)
+	Using `start_numpy_client()` is deprecated.
+
+            This is a deprecated feature. It will be removed
+            entirely in future versions of Flower.
+
+[2025-09-26 17:06:25,401][flwr][WARNING] - DEPRECATED FEATURE: flwr.client.start_numpy_client() is deprecated.
+	Instead, use `flwr.client.start_client()` by ensuring you first call the `.to_client()` method as shown below:
+	flwr.client.start_client(
+		server_address='<IP>:<PORT>',
+		client=FlowerClient().to_client(), # <-- where FlowerClient is of type flwr.client.NumPyClient object
+	)
+	Using `start_numpy_client()` is deprecated.
+
+            This is a deprecated feature. It will be removed
+            entirely in future versions of Flower.
+
+[32mINFO[0m:     127.0.0.1:53582 - "[1mGET /online HTTP/1.1[0m" [32m200 OK[0m
+[93mWARNING [0m:   DEPRECATED FEATURE: flwr.client.start_client() is deprecated.
+	Instead, use the `flower-supernode` CLI command to start a SuperNode as shown below:
+
+		$ flower-supernode --insecure --superlink='<IP>:<PORT>'
+
+	To view all available options, run:
+
+		$ flower-supernode --help
+
+	Using `start_client()` is deprecated.
+
+            This is a deprecated feature. It will be removed
+            entirely in future versions of Flower.
+
+[2025-09-26 17:06:25,412][flwr][WARNING] - DEPRECATED FEATURE: flwr.client.start_client() is deprecated.
+	Instead, use the `flower-supernode` CLI command to start a SuperNode as shown below:
+
+		$ flower-supernode --insecure --superlink='<IP>:<PORT>'
+
+	To view all available options, run:
+
+		$ flower-supernode --help
+
+	Using `start_client()` is deprecated.
+
+            This is a deprecated feature. It will be removed
+            entirely in future versions of Flower.
+
+[2025-09-26 17:06:25,415][flwr][DEBUG] - Opened insecure gRPC connection (no certificates were passed)
+[2025-09-26 17:06:25,453][flwr][DEBUG] - ChannelConnectivity.IDLE
+[2025-09-26 17:06:25,457][flwr][DEBUG] - ChannelConnectivity.READY
+[92mINFO [0m:
+[2025-09-26 17:06:26,046][flwr][INFO] -
+[92mINFO [0m:      Received: train message ee796438-8708-47cb-8ca2-6f7e7c0369cb
+[2025-09-26 17:06:26,048][flwr][INFO] - Received: train message ee796438-8708-47cb-8ca2-6f7e7c0369cb
+config: {'hp_local_epochs': 1, 'batch_size': 128, 'hp_batch_size': 64, 'cluster_id': 0, 'num_rounds': 2, 'hp_learning_rate': 0.0021422294571082985, 'local_epochs': 1}
+Starting evalutation...
+Testing: 100%|██████████████████████████████████████████████████████████████████████████████| 563/563 [00:06<00:00, 88.70batch/s]
+Starting evalutation...
+Testing: 100%|████████████████████████████████████████████████████████████████████████████████| 94/94 [00:02<00:00, 46.42batch/s]
+[2025-09-26 17:06:42,350][client_fl][INFO] - train_performance - {"fl_task_id": "clustertest", "client_mac": "f0:2f:74:96:d6:64", "client_name": "ccl-y-server", "round": 1, "gl_model_v": 10, "train_loss": 0.02867853070653625, "train_accuracy": 0.9916944444444444, "train_f1_score": 0.9916953932122214, "val_loss": 0.05903423760839282, "val_accuracy": 0.9844166666666667, "val_f1_score": 0.9844205550278659, "train_time": 16.278589487075806, "wandb_name": "ccl-y-server-v0(2025-09-26 13:47:28.230866)", "cluster_id": 0}
+[92mINFO [0m:      Sent reply
+[2025-09-26 17:06:42,410][flwr][INFO] - Sent reply
+[92mINFO [0m:
+[2025-09-26 17:08:03,917][flwr][INFO] -
+[92mINFO [0m:      Received: reconnect message c4a85dd0-14b5-4a5f-8df6-b2b9cce1bd9a
+[2025-09-26 17:08:03,918][flwr][INFO] - Received: reconnect message c4a85dd0-14b5-4a5f-8df6-b2b9cce1bd9a
+[2025-09-26 17:08:03,926][flwr][DEBUG] - gRPC channel closed
+[92mINFO [0m:      Disconnect and shut down
+[2025-09-26 17:08:03,927][flwr][INFO] - Disconnect and shut down
+[2025-09-26 17:08:03,929][root][INFO] - fl learning finished

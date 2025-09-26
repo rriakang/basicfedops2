@@ -1,0 +1,5 @@
+2025-09-26 15:03:18,830 INFO    MainThread:2084412 [wandb_init.py:setup_run_log_directory():686] Logging user logs to /home/ccl/Desktop/rirakang/fedops/Clusterfedops-test/wandb/run-20250926_150318-48e2ifzo/logs/debug.log
+2025-09-26 15:03:18,830 INFO    MainThread:2084412 [wandb_init.py:setup_run_log_directory():687] Logging internal logs to /home/ccl/Desktop/rirakang/fedops/Clusterfedops-test/wandb/run-20250926_150318-48e2ifzo/logs/debug-internal.log
+2025-09-26 15:03:18,830 INFO    MainThread:2084412 [wandb_init.py:init():813] calling init triggers
+2025-09-26 15:03:18,830 INFO    MainThread:2084412 [wandb_init.py:init():818] wandb.init called with sweep_config: {}
+config: {'learning_rate': 0, 'optimizer': '', 'dataset': '', 'model_architecture': '', 'batch_size': 0, 'epochs': 0, 'num_rounds': 0, '_wandb': {}}
