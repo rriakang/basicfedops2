@@ -1,0 +1,32 @@
+2025-09-27 17:25:24,022 INFO    MainThread:3178680 [wandb_setup.py:_flush():67] Current SDK version is 0.19.9
+2025-09-27 17:25:24,022 INFO    MainThread:3178680 [wandb_setup.py:_flush():67] Configure stats pid to 3178680
+2025-09-27 17:25:24,022 INFO    MainThread:3178680 [wandb_setup.py:_flush():67] Loading settings from /home/ccl/.config/wandb/settings
+2025-09-27 17:25:24,022 INFO    MainThread:3178680 [wandb_setup.py:_flush():67] Loading settings from /home/ccl/Desktop/RR/FedOps2/fedopstest/wandb/settings
+2025-09-27 17:25:24,022 INFO    MainThread:3178680 [wandb_setup.py:_flush():67] Loading settings from environment variables
+2025-09-27 17:25:24,022 INFO    MainThread:3178680 [wandb_init.py:setup_run_log_directory():662] Logging user logs to /home/ccl/Desktop/RR/FedOps2/fedopstest/wandb/run-20250927_172524-ptj6yh7u/logs/debug.log
+2025-09-27 17:25:24,022 INFO    MainThread:3178680 [wandb_init.py:setup_run_log_directory():663] Logging internal logs to /home/ccl/Desktop/RR/FedOps2/fedopstest/wandb/run-20250927_172524-ptj6yh7u/logs/debug-internal.log
+2025-09-27 17:25:24,022 INFO    MainThread:3178680 [wandb_init.py:init():781] calling init triggers
+2025-09-27 17:25:24,022 INFO    MainThread:3178680 [wandb_init.py:init():786] wandb.init called with sweep_config: {}
+config: {'learning_rate': 0, 'optimizer': '', 'dataset': '', 'model_architecture': '', 'batch_size': 0, 'epochs': 0, 'num_rounds': 0, '_wandb': {}}
+2025-09-27 17:25:24,022 INFO    MainThread:3178680 [wandb_init.py:init():809] starting backend
+2025-09-27 17:25:24,022 INFO    MainThread:3178680 [wandb_init.py:init():813] sending inform_init request
+2025-09-27 17:25:24,069 INFO    MainThread:3178680 [backend.py:_multiprocessing_setup():101] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2025-09-27 17:25:24,070 INFO    MainThread:3178680 [wandb_init.py:init():823] backend started and connected
+2025-09-27 17:25:24,073 INFO    MainThread:3178680 [wandb_init.py:init():915] updated telemetry
+2025-09-27 17:25:24,097 INFO    MainThread:3178680 [wandb_init.py:init():939] communicating run to backend with 90.0 second timeout
+2025-09-27 17:25:24,876 INFO    MainThread:3178680 [wandb_init.py:init():1014] starting run threads in backend
+2025-09-27 17:25:25,110 INFO    MainThread:3178680 [wandb_run.py:_console_start():2454] atexit reg
+2025-09-27 17:25:25,110 INFO    MainThread:3178680 [wandb_run.py:_redirect():2306] redirect: wrap_raw
+2025-09-27 17:25:25,110 INFO    MainThread:3178680 [wandb_run.py:_redirect():2371] Wrapping output streams.
+2025-09-27 17:25:25,110 INFO    MainThread:3178680 [wandb_run.py:_redirect():2394] Redirects installed.
+2025-09-27 17:25:25,112 INFO    MainThread:3178680 [wandb_init.py:init():1056] run started, returning control to user process
+2025-09-27 17:25:30,960 INFO    ThreadPoolExecutor-0_0:3178680 [wandb_run.py:_config_callback():1327] config_cb None None {'batch_size': 32, 'epochs': 2, 'num_rounds': 2, 'hp_learning_rate': 0.0005308882146756027, 'hp_batch_size': 32, 'hp_local_epochs': 2}
+2025-09-27 17:27:09,581 INFO    ThreadPoolExecutor-0_0:3178680 [wandb_run.py:_config_callback():1327] config_cb None None {'batch_size': 16, 'epochs': 3, 'num_rounds': 2, 'hp_learning_rate': 2.8325503948166946e-05, 'hp_batch_size': 16, 'hp_local_epochs': 3}
+2025-09-27 17:30:17,594 INFO    MainThread:3178680 [wandb_run.py:_config_callback():1327] config_cb None None {'dataset': 'MNIST', 'model_architecture': 'MNISTClassifier'}
+2025-09-27 17:30:17,595 INFO    MainThread:3178680 [wandb_run.py:_finish():2189] finishing run rirakang123/MNIST_clustertest/ptj6yh7u
+2025-09-27 17:30:17,595 INFO    MainThread:3178680 [wandb_run.py:_atexit_cleanup():2419] got exitcode: 0
+2025-09-27 17:30:17,595 INFO    MainThread:3178680 [wandb_run.py:_restore():2401] restore
+2025-09-27 17:30:17,596 INFO    MainThread:3178680 [wandb_run.py:_restore():2407] restore done
+2025-09-27 17:30:18,939 INFO    MainThread:3178680 [wandb_run.py:_footer_history_summary_info():4064] rendering history
+2025-09-27 17:30:18,940 INFO    MainThread:3178680 [wandb_run.py:_footer_history_summary_info():4096] rendering summary
+2025-09-27 17:30:18,940 INFO    MainThread:3178680 [wandb_run.py:_footer_sync_info():4025] logging synced files

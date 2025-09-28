@@ -1,0 +1,106 @@
+[93mWARNING [0m:   DEPRECATED FEATURE: flwr.client.start_numpy_client() is deprecated.
+	Instead, use `flwr.client.start_client()` by ensuring you first call the `.to_client()` method as shown below:
+	flwr.client.start_client(
+		server_address='<IP>:<PORT>',
+		client=FlowerClient().to_client(), # <-- where FlowerClient is of type flwr.client.NumPyClient object
+	)
+	Using `start_numpy_client()` is deprecated.
+
+            This is a deprecated feature. It will be removed
+            entirely in future versions of Flower.
+
+[2025-09-27 17:37:13,397][flwr][WARNING] - DEPRECATED FEATURE: flwr.client.start_numpy_client() is deprecated.
+	Instead, use `flwr.client.start_client()` by ensuring you first call the `.to_client()` method as shown below:
+	flwr.client.start_client(
+		server_address='<IP>:<PORT>',
+		client=FlowerClient().to_client(), # <-- where FlowerClient is of type flwr.client.NumPyClient object
+	)
+	Using `start_numpy_client()` is deprecated.
+
+            This is a deprecated feature. It will be removed
+            entirely in future versions of Flower.
+
+[93mWARNING [0m:   DEPRECATED FEATURE: flwr.client.start_client() is deprecated.
+	Instead, use the `flower-supernode` CLI command to start a SuperNode as shown below:
+
+		$ flower-supernode --insecure --superlink='<IP>:<PORT>'
+
+	To view all available options, run:
+
+		$ flower-supernode --help
+
+	Using `start_client()` is deprecated.
+
+            This is a deprecated feature. It will be removed
+            entirely in future versions of Flower.
+
+[2025-09-27 17:37:13,397][flwr][WARNING] - DEPRECATED FEATURE: flwr.client.start_client() is deprecated.
+	Instead, use the `flower-supernode` CLI command to start a SuperNode as shown below:
+
+		$ flower-supernode --insecure --superlink='<IP>:<PORT>'
+
+	To view all available options, run:
+
+		$ flower-supernode --help
+
+	Using `start_client()` is deprecated.
+
+            This is a deprecated feature. It will be removed
+            entirely in future versions of Flower.
+
+[2025-09-27 17:37:13,398][flwr][DEBUG] - Opened insecure gRPC connection (no certificates were passed)
+[2025-09-27 17:37:13,506][flwr][DEBUG] - ChannelConnectivity.IDLE
+[2025-09-27 17:37:13,507][flwr][DEBUG] - ChannelConnectivity.CONNECTING
+[2025-09-27 17:37:13,517][flwr][DEBUG] - ChannelConnectivity.READY
+[92mINFO [0m:
+[2025-09-27 17:37:14,099][flwr][INFO] -
+[92mINFO [0m:      Received: train message 8d6601ac-1ee3-40bd-8982-ab3745782dea
+[2025-09-27 17:37:14,116][flwr][INFO] - Received: train message 8d6601ac-1ee3-40bd-8982-ab3745782dea
+[2025-09-27 17:37:14,184][client_api][INFO] - [cluster-upsert] success (task_id=clustertest, mac=43:56:51:a9:43:53, cluster_id=0)
+config: {'hp_local_epochs': 1, 'batch_size': 128, 'hp_batch_size': 32, 'cluster_id': 0, 'num_rounds': 2, 'hp_learning_rate': 0.006614772277168694, 'local_epochs': 1}
+Starting evalutation...
+Testing: 100%|█████████████████████████████████████| 1125/1125 [00:31<00:00, 35.90batch/s]
+Starting evalutation...
+Testing: 100%|█████████████████████████████████████████| 94/94 [00:09<00:00, 10.19batch/s]
+[2025-09-27 17:38:30,511][client_fl][INFO] - train_performance - {"fl_task_id": "clustertest", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "round": 1, "gl_model_v": 19, "train_loss": 0.11549224886919061, "train_accuracy": 0.9654166666666667, "train_f1_score": 0.965513266153593, "val_loss": 0.14538361025141908, "val_accuracy": 0.9585, "val_f1_score": 0.9585845327363783, "train_time": 76.32429909706116, "wandb_name": "ccl-x-server-v0(2025-09-27 17:21:17.432471)", "cluster_id": 0}
+[92mINFO [0m:      Sent reply
+[2025-09-27 17:38:30,678][flwr][INFO] - Sent reply
+[92mINFO [0m:
+[2025-09-27 17:38:34,528][flwr][INFO] -
+[92mINFO [0m:      Received: evaluate message f33f77d7-d106-4e1d-88a8-0622580733bc
+[2025-09-27 17:38:34,528][flwr][INFO] - Received: evaluate message f33f77d7-d106-4e1d-88a8-0622580733bc
+Starting evalutation...
+Testing: 100%|█████████████████████████████████████████| 94/94 [00:09<00:00, 10.27batch/s]
+[2025-09-27 17:38:44,115][client_fl][INFO] - test - {"fl_task_id": "clustertest", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "round": 1, "test_loss": 0.10955638224457173, "test_accuracy": 0.97575, "gl_model_v": 19, "wandb_name": "ccl-x-server-v0(2025-09-27 17:21:17.432471)", "cluster_id": 0}
+[92mINFO [0m:      Sent reply
+[2025-09-27 17:38:44,140][flwr][INFO] - Sent reply
+[92mINFO [0m:
+[2025-09-27 17:38:44,786][flwr][INFO] -
+[92mINFO [0m:      Received: train message 6fe01b79-42bd-402a-b5c9-43881f56cde9
+[2025-09-27 17:38:44,805][flwr][INFO] - Received: train message 6fe01b79-42bd-402a-b5c9-43881f56cde9
+[2025-09-27 17:38:44,824][client_api][INFO] - [cluster-upsert] success (task_id=clustertest, mac=43:56:51:a9:43:53, cluster_id=0)
+config: {'hp_local_epochs': 3, 'batch_size': 128, 'hp_batch_size': 32, 'cluster_id': 0, 'num_rounds': 2, 'hp_learning_rate': 0.004712349595082094, 'local_epochs': 1}
+Starting evalutation...
+Testing: 100%|█████████████████████████████████████| 1125/1125 [00:30<00:00, 37.24batch/s]
+Starting evalutation...
+Testing: 100%|█████████████████████████████████████████| 94/94 [00:08<00:00, 11.18batch/s]
+[2025-09-27 17:41:07,173][client_fl][INFO] - train_performance - {"fl_task_id": "clustertest", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "round": 2, "gl_model_v": 19, "train_loss": 0.008060044474924023, "train_accuracy": 0.99775, "train_f1_score": 0.9977505403255523, "val_loss": 0.04444939633035671, "val_accuracy": 0.9896666666666667, "val_f1_score": 0.9896677971123605, "train_time": 142.3370716571808, "wandb_name": "ccl-x-server-v0(2025-09-27 17:21:17.432471)", "cluster_id": 0}
+[92mINFO [0m:      Sent reply
+[2025-09-27 17:41:07,347][flwr][INFO] - Sent reply
+[92mINFO [0m:
+[2025-09-27 17:41:11,202][flwr][INFO] -
+[92mINFO [0m:      Received: evaluate message c97c3fa1-f0c9-46c2-909a-54365eaed91f
+[2025-09-27 17:41:11,203][flwr][INFO] - Received: evaluate message c97c3fa1-f0c9-46c2-909a-54365eaed91f
+Starting evalutation...
+Testing: 100%|█████████████████████████████████████████| 94/94 [00:07<00:00, 12.29batch/s]
+[2025-09-27 17:41:19,264][client_fl][INFO] - test - {"fl_task_id": "clustertest", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "round": 2, "test_loss": 0.047809989538360784, "test_accuracy": 0.98725, "gl_model_v": 19, "wandb_name": "ccl-x-server-v0(2025-09-27 17:21:17.432471)", "cluster_id": 0}
+[92mINFO [0m:      Sent reply
+[2025-09-27 17:41:19,290][flwr][INFO] - Sent reply
+[92mINFO [0m:
+[2025-09-27 17:41:19,345][flwr][INFO] -
+[92mINFO [0m:      Received: reconnect message 22153c5b-b330-4da9-af02-abfce15ae590
+[2025-09-27 17:41:19,347][flwr][INFO] - Received: reconnect message 22153c5b-b330-4da9-af02-abfce15ae590
+[2025-09-27 17:41:19,362][flwr][DEBUG] - gRPC channel closed
+[92mINFO [0m:      Disconnect and shut down
+[2025-09-27 17:41:19,362][flwr][INFO] - Disconnect and shut down
+[2025-09-27 17:41:19,433][root][INFO] - fl learning finished

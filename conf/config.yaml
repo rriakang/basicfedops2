@@ -60,3 +60,9 @@ server:
 client:
   id: 0
   port: 8003
+  federated:
+  num_clients: 4
+partition:
+  strategy: dirichlet   # "iid" 또는 "dirichlet"
+  alpha: 0.1
+  seed: 42
