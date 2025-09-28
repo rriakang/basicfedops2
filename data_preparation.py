@@ -77,4 +77,3 @@ def gl_model_torch_validation(batch_size):
 
     return gl_val_loader
 
-그니까 그냥 함수내에서 가르는걸 결정해라고 
