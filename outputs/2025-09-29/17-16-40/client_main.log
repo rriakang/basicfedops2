@@ -1,0 +1,4 @@
+[2025-09-29 17:16:40,641][root][INFO] - {"dataset": "MNIST", "start_execution_time": "2025-09-29 17:16:40", "client_id": 0, "num_clients": 3, "partition": "dirichlet:0.1", "seed": 42}
+[2025-09-29 17:16:40,702][__main__][INFO] - data loaded
+[2025-09-29 17:16:40,720][__main__][INFO] - Latest Local Model download
+[2025-09-29 17:16:40,721][root][INFO] - downloaded local_model_name: MNISTClassifier_local_model_V10.pth

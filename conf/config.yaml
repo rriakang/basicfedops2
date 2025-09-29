@@ -56,13 +56,3 @@ server:
     # seed_points: [[0.001, 128], [0.005, 64], [0.01, 32]]  # 선택: warm start
 
 
-#   # 새로 추가
-# client:
-#   id: 0
-#   port: 8003
-#   federated:
-#   num_clients: 3
-# partition:
-#   strategy: dirichlet   # "iid" 또는 "dirichlet"
-#   alpha: 0.1
-#   seed: 42
