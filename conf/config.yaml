@@ -47,7 +47,7 @@ server:
     # === 클러스터링/HPO 옵션 ===
     warmup_rounds: 1
     recluster_every: 1
-    eps: 0.5
+    eps: 0.2
     min_samples: 2
     objective: "maximize_f1"        # "maximize_acc" / "minimize_loss" 도 가능
     search_lr_log: [-5.0, -2.0]     # 1e-5 ~ 1e-2

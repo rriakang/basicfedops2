@@ -1,0 +1,17 @@
+{"time":"2025-09-29T09:05:20.929002266+09:00","level":"INFO","msg":"stream: starting","core version":"0.19.9","symlink path":"/home/ccl/Desktop/RR/FedOps2/fedopstest/wandb/run-20250929_090520-7okckeog/logs/debug-core.log"}
+{"time":"2025-09-29T09:05:21.337724218+09:00","level":"INFO","msg":"created new stream","id":"7okckeog"}
+{"time":"2025-09-29T09:05:21.337785665+09:00","level":"INFO","msg":"stream: started","id":"7okckeog"}
+{"time":"2025-09-29T09:05:21.337832264+09:00","level":"INFO","msg":"writer: Do: started","stream_id":"7okckeog"}
+{"time":"2025-09-29T09:05:21.337913648+09:00","level":"INFO","msg":"sender: started","stream_id":"7okckeog"}
+{"time":"2025-09-29T09:05:21.337944561+09:00","level":"INFO","msg":"handler: started","stream_id":"7okckeog"}
+{"time":"2025-09-29T09:05:21.717220438+09:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-09-29T09:06:48.854696409+09:00","level":"WARN","msg":"handler: ignoring partial history record","step":1,"current":2}
+{"time":"2025-09-29T09:06:48.854985494+09:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-09-29T09:06:48.855023871+09:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-09-29T09:06:49.630053667+09:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-29T09:06:49.856731325+09:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading history steps 0-1, summary, console lines 76-92","runtime_seconds":0.226547327}],"total_operations":1}}
+{"time":"2025-09-29T09:06:49.953507995+09:00","level":"INFO","msg":"stream: closing","id":"7okckeog"}
+{"time":"2025-09-29T09:06:49.953535758+09:00","level":"INFO","msg":"handler: closed","stream_id":"7okckeog"}
+{"time":"2025-09-29T09:06:49.953548747+09:00","level":"INFO","msg":"writer: Close: closed","stream_id":"7okckeog"}
+{"time":"2025-09-29T09:06:49.953556269+09:00","level":"INFO","msg":"sender: closed","stream_id":"7okckeog"}
+{"time":"2025-09-29T09:06:49.953630899+09:00","level":"INFO","msg":"stream: closed","id":"7okckeog"}
