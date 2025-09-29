@@ -61,10 +61,7 @@ class ClientServerAPI():
         else:
             logger.error(f"Failed to get the port for task {self.task_id} from the server at {self.ccl_address}")
 
-    def put_train_result(self, train_result_json):
-        # send train_result to client_performance pod
-        requests.put(f"http://{self.ccl_address}:{self.client_performance_port}/client_perf/train_result/{self.task_id}", data=train_result_json)
-        
+   
         # client_api.py 내부 - 기존 함수만 교체
     def put_cluster_assign(self, client_mac, cluster_id):
         url = f"http://{self.ccl_address}:{self.server_manager_port}/FLSe/cluster/{self.task_id}"
@@ -103,7 +100,10 @@ class ClientServerAPI():
                 f"[cluster-upsert] request failed: {e} "
                 f"(task_id={self.task_id}, mac={client_mac}, cluster_id={cid})"
         )
-
+    def put_train_result(self, train_result_json):
+        # send train_result to client_performance pod
+        requests.put(f"http://{self.ccl_address}:{self.client_performance_port}/client_perf/train_result/{self.task_id}", data=train_result_json)
+        
         
     def put_test_result(self, test_result_json):
         requests.put(f"http://{self.ccl_address}:{self.client_performance_port}/client_perf/test_result/{self.task_id}", data=test_result_json)
@@ -114,4 +114,6 @@ class ClientServerAPI():
     def put_client_system(self, client_system_json):
         requests.put(f"http://{self.ccl_address}:{self.client_performance_port}/client_perf/client_system/{self.task_id}", data=client_system_json)
 
+    def put_client_xai_result(self, xai_result_json):
+        requests.put(f"http://{self.ccl_address}:{self.client_performance_port}/client_perf/xai_result/{self.task_id}", data=xai_result_json)
 

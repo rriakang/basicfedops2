@@ -5,7 +5,8 @@ import flwr as fl
 import time
 import os
 from functools import partial
-# from . import client_api
+# from . import client_api 
+# 위 코드는 from import client_api로 나중에 바꿔야됌
 import client_utils
 import client_api
 
@@ -78,6 +79,7 @@ class FLClient(fl.client.NumPyClient):
             keys = [k for k in self.model.state_dict().keys() if "bn" not in k] # Excluding parameters of BN layers
             params_dict = zip(keys, parameters)
             state_dict = OrderedDict({k: torch.tensor(v) for k, v in params_dict})
+            # self.model.load_state_dict(state_dict, strict=True)
             self.model.load_state_dict(state_dict, strict=False)
 
         elif self.model_type in ["Huggingface"]:
@@ -101,37 +103,45 @@ class FLClient(fl.client.NumPyClient):
 
     def fit(self, parameters, config):
         """Train parameters on the locally held training set."""
-        cluster_id = int(config.get("cluster_id", 0))
+        # _target_: server.strategy_cluster_optuna.ClusterOptunaFedAvg 설정시
+        has_cluster_id = "cluster_id" in config   # ✨
+        cluster_id = int(config["cluster_id"]) if has_cluster_id else None  # ✨
+        # cluster_id = int(config.get("cluster_id", 0))  
+        if has_cluster_id and (cluster_id is not None):  # ✨
+            try:
+                client_api.ClientServerAPI(self.fl_task_id).put_cluster_assign(self.client_mac, cluster_id)  # ✨
+            except Exception as e:  # ✨
+                logger.warning(f"[cluster-upsert] failed: {e}")  # ✨
 
-        # ✨ 추가: 받은 cluster_id를 서버 매니저로 업서트
-        try:                                                                                 # ✨
-            client_api.ClientServerAPI(self.fl_task_id).put_cluster_assign(                  # ✨
-                self.client_mac, int(cluster_id) if cluster_id is not None else None         # ✨
-            )                                                                                # ✨
-        except Exception as e:                                                               # ✨
-            logger.warning(f"[cluster-upsert] failed: {e}")                                  # ✨
+        # try:                                                                                 
+        #     client_api.ClientServerAPI(self.fl_task_id).put_cluster_assign(                  
+        #         self.client_mac, int(cluster_id) if cluster_id is not None else None         
+        #     )                                                                                
+        # except Exception as e:                                                               
+        #     logger.warning(f"[cluster-upsert] failed: {e}")                                  
 
-        print(f"config: {config}")
-        # 기본 하이퍼파라미터
+        # print(f"config: {config}")
+        
+        # Get hyperparameters for this round
         batch_size: int = config.get("batch_size", self.cfg.batch_size)
         epochs: int = config.get("local_epochs", self.cfg.num_epochs)
         num_rounds: int = config.get("num_rounds", self.cfg.num_rounds)
 
-        # HPO override (서버 전략에서 내려준 값)
-        hp_lr = config.get("hp_learning_rate", None)
-        hp_bs = config.get("hp_batch_size", None)
-        hp_ep = config.get("hp_local_epochs", None)
-        if hp_bs is not None:
-            batch_size = int(hp_bs)
-        if hp_ep is not None:
-            epochs = int(hp_ep)
-
+        # HPO override (서버 전략에서 내려준 값) 하이퍼파라미터 튜닝을 하게되면 바뀌니까.
+        hp_lr = config.get("hp_learning_rate", None) # ✨
+        hp_bs = config.get("hp_batch_size", None) # ✨
+        hp_ep = config.get("hp_local_epochs", None) # ✨
+        if hp_bs is not None: # ✨
+            batch_size = int(hp_bs) # ✨
+        if hp_ep is not None: # ✨
+            epochs = int(hp_ep) # ✨
+ 
         if self.wandb_use:
             # add wandb config
-            wb_cfg = {"batch_size": batch_size, "epochs": epochs, "num_rounds": num_rounds}
-            if hp_lr is not None: wb_cfg["hp_learning_rate"] = float(hp_lr)
-            if hp_bs is not None: wb_cfg["hp_batch_size"] = int(hp_bs)
-            if hp_ep is not None: wb_cfg["hp_local_epochs"] = int(hp_ep)
+            wb_cfg = {"batch_size": batch_size, "epochs": epochs, "num_rounds": num_rounds} 
+            if hp_lr is not None: wb_cfg["hp_learning_rate"] = float(hp_lr) # ✨
+            if hp_bs is not None: wb_cfg["hp_batch_size"] = int(hp_bs) # ✨ 
+            if hp_ep is not None: wb_cfg["hp_local_epochs"] = int(hp_ep) # ✨
             self.wandb_run.config.update(wb_cfg, allow_val_change=True)
 
         # start round time
@@ -181,7 +191,7 @@ class FLClient(fl.client.NumPyClient):
             # Update local model parameters
             self.set_parameters(parameters)
 
-            # 필요 시 HPO 배치로 로더 재생성
+            # clustering change
             train_loader = self.train_loader
             if hp_bs is not None:
                 train_loader = DataLoader(self.train_loader.dataset, batch_size=int(hp_bs), shuffle=True)
@@ -190,7 +200,7 @@ class FLClient(fl.client.NumPyClient):
             hp = {}
             if hp_lr is not None:
                 hp["learning_rate"] = float(hp_lr)
-
+             # clustering change end
             trained_model = self.train_torch(self.model, train_loader, epochs, self.cfg, hp=hp)
             
             train_loss, train_accuracy, train_metrics = self.test_torch(trained_model, train_loader, self.cfg)
@@ -209,7 +219,7 @@ class FLClient(fl.client.NumPyClient):
 
             # Return updated model parameters
             parameters_prime = self.get_parameters()
-            # num_examples는 '데이터 샘플 수'로 잡자
+           
             num_examples_train = len(train_loader.dataset) if hasattr(train_loader, "dataset") else len(train_loader)
             
             # Save model weights
@@ -251,9 +261,12 @@ class FLClient(fl.client.NumPyClient):
             # Log validation results
             for key, value in val_results_prefixed.items():
                 self.wandb_run.log({key: value, "round": self.fl_round}, step=self.fl_round)
-
+        
+        # ✨
         results = {"fl_task_id": self.fl_task_id, "client_mac": self.client_mac, "client_name": self.client_name, "round": self.fl_round, "gl_model_v": self.gl_model,
-                        **train_results_prefixed, **val_results_prefixed,"train_time": round_end_time, 'wandb_name': self.wandb_name,"cluster_id": cluster_id}
+                        **train_results_prefixed, **val_results_prefixed,"train_time": round_end_time, 'wandb_name': self.wandb_name,}
+        if cluster_id is not None:
+            results["cluster_id"] = int(cluster_id)
 
         json_result = json.dumps(results)
         logger.info(f'train_performance - {json_result}')
@@ -266,7 +279,8 @@ class FLClient(fl.client.NumPyClient):
 
     def evaluate(self, parameters, config):
         """Evaluate parameters on the locally held test set."""
-        cluster_id = int(config.get("cluster_id", 0))
+        cluster_id = config.get("cluster_id", None)
+        # cluster_id = int(config.get("cluster_id", 0))
         # Get config values
         batch_size: int = config.get("batch_size", self.cfg.batch_size)
 
@@ -311,7 +325,9 @@ class FLClient(fl.client.NumPyClient):
                     self.wandb_run.log({metric_name: metric_value}, step=self.fl_round)
 
         test_result = {"fl_task_id": self.fl_task_id, "client_mac": self.client_mac, "client_name": self.client_name, "round": self.fl_round,
-                         "test_loss": test_loss, "test_accuracy": test_accuracy, "gl_model_v": self.gl_model, 'wandb_name': self.wandb_name,"cluster_id": cluster_id,}
+                         "test_loss": test_loss, "test_accuracy": test_accuracy, "gl_model_v": self.gl_model, 'wandb_name': self.wandb_name,}
+        if cluster_id is not None:
+            test_result["cluster_id"] = int(cluster_id)
         json_result = json.dumps(test_result)
         logger.info(f'test - {json_result}')
 

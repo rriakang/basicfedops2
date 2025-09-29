@@ -1,4 +1,88 @@
-# data_preparation.py
+# # data_preparation.py
+
+# import json
+# import logging
+# from collections import Counter
+# from datetime import datetime
+
+# import torch
+# from torch.utils.data import DataLoader, Dataset, random_split
+# from torchvision import datasets, transforms
+
+
+# # set log format
+# handlers_list = [logging.StreamHandler()]
+
+# logging.basicConfig(level=logging.DEBUG, format="%(asctime)s [%(levelname)8.8s] %(message)s",
+#                     handlers=handlers_list)
+
+# logger = logging.getLogger(__name__)
+
+
+# """
+# Create your data loader for training/testing local & global model.
+# Keep the value of the return variable for normal operation.
+# """
+# # Pytorch version
+
+# # MNIST
+# def load_partition(dataset, validation_split, batch_size):
+#     """
+#     The variables train_loader, val_loader, and test_loader must be returned fixedly.
+#     """
+#     now = datetime.now()
+#     now_str = now.strftime('%Y-%m-%d %H:%M:%S')
+#     fl_task = {"dataset": dataset, "start_execution_time": now_str}
+#     fl_task_json = json.dumps(fl_task)
+#     logging.info(f'FL_Task - {fl_task_json}')
+
+#     # MNIST Data Preprocessing
+#     transform = transforms.Compose([
+#         transforms.ToTensor(),
+#         transforms.Normalize((0.5,), (0.5,))  # Adjusted for grayscale
+#     ])
+
+#     # Download MNIST Dataset
+#     full_dataset = datasets.MNIST(root='./dataset/mnist', train=True, download=True, transform=transform)
+
+#     # Splitting the full dataset into train, validation, and test sets
+#     test_split = 0.2
+#     train_size = int((1 - validation_split - test_split) * len(full_dataset))
+#     validation_size = int(validation_split * len(full_dataset))
+#     test_size = len(full_dataset) - train_size - validation_size
+#     train_dataset, val_dataset, test_dataset = random_split(full_dataset, [train_size, validation_size, test_size])
+
+#     # DataLoader for training, validation, and test
+#     train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
+#     val_loader = DataLoader(val_dataset, batch_size=batch_size)
+#     test_loader = DataLoader(test_dataset, batch_size=batch_size)
+
+#     return train_loader, val_loader, test_loader
+
+# def gl_model_torch_validation(batch_size):
+#     """
+#     Setting up a dataset to evaluate a global model on the server
+#     """
+#     transform = transforms.Compose([
+#         transforms.ToTensor(),
+#         transforms.Normalize((0.5,), (0.5,))  # Adjusted for grayscale
+#     ])
+
+#     # Load the test set of MNIST Dataset
+#     val_dataset = datasets.MNIST(root='./dataset/mnist', train=False, download=True, transform=transform)
+
+#     # DataLoader for validation
+#     gl_val_loader = DataLoader(val_dataset, batch_size=batch_size)
+
+#     return gl_val_loader
+
+
+#  If you would like to recreate a noniid situation, please remove the comment below   
+
+
+
+
+
 import os, json, logging, math, errno
 from datetime import datetime
 from collections import defaultdict, Counter
@@ -9,17 +93,18 @@ import torch
 from torch.utils.data import DataLoader, Subset, random_split
 from torchvision import datasets, transforms
 
+
+ 
+# set log format
 handlers_list = [logging.StreamHandler()]
 logging.basicConfig(level=logging.INFO,
                     format="%(asctime)s [%(levelname)8.8s] %(message)s",
                     handlers=handlers_list)
 logger = logging.getLogger(__name__)
 
-# -----------------------------
-# Env 설정 (필요시 docker/k8s에서 주입)
-# -----------------------------
+
 NUM_CLIENTS   = int(os.getenv("FEDOPS_NUM_CLIENTS", "3"))
-CLIENT_ID     = int(os.getenv("FEDOPS_CLIENT_ID", "0"))  # 0~NUM_CLIENTS-1
+CLIENT_ID     = int(os.getenv("FEDOPS_CLIENT_ID", "2"))  # 0~NUM_CLIENTS-1
 PARTITION_MODE= os.getenv("FEDOPS_PARTITION", "dirichlet:0.1")  # 예: "dirichlet:0.1", "label_skew:2", "qty_skew:beta0.5"
 SEED          = int(os.getenv("FEDOPS_SEED", "42"))
 PART_DIR      = os.getenv("FEDOPS_PARTITION_DIR", "./partitions")
@@ -27,26 +112,23 @@ DATA_ROOT     = os.getenv("FEDOPS_DATA_ROOT", "./dataset/mnist")
 
 os.makedirs(PART_DIR, exist_ok=True)
 
-# -----------------------------
-# 공통: 재현성
-# -----------------------------
+
 def set_seed(seed: int):
     np.random.seed(seed)
     torch.manual_seed(seed)
 
-# -----------------------------
-# Non-IID 파티션 유틸
-# -----------------------------
+# Non-IID partition utility
+
 def _targets_numpy(train_ds) -> np.ndarray:
     # torchvision MNIST는 targets(Tensor) 보유
     t = train_ds.targets
     return t.numpy() if torch.is_tensor(t) else np.asarray(t)
 
 def partition_dirichlet(targets: np.ndarray, num_clients: int, alpha: float, min_per_client: int = 5) -> List[List[int]]:
-    """
-    클래스별로 Dirichlet(alpha)로 비율을 샘플링 → 그 비율만큼 각 클라에 인덱스 할당.
-    alpha↓ → 편향↑
-    """
+   
+  # Sampling a ratio with Dirichlet (alpha) for each class → Indexing each class by that ratio.
+    # alpha↓ → deflection↑
+   
     n_classes = int(targets.max() + 1)
     idx_by_class = [np.where(targets == c)[0] for c in range(n_classes)]
     for arr in idx_by_class:
@@ -85,9 +167,9 @@ def partition_dirichlet(targets: np.ndarray, num_clients: int, alpha: float, min
     return client_indices
 
 def partition_label_skew(targets: np.ndarray, num_clients: int, n_labels_per_client: int = 2) -> List[List[int]]:
-    """
-    각 클라이언트가 소수의 라벨만 갖도록(병리적 분할).
-    """
+   
+    # 각 클라이언트가 소수의 라벨만 갖도록(병리적 분할).
+    
     n_classes = int(targets.max() + 1)
     idx_by_class = [np.where(targets == c)[0] for c in range(n_classes)]
     for arr in idx_by_class:
@@ -117,9 +199,9 @@ def partition_label_skew(targets: np.ndarray, num_clients: int, n_labels_per_cli
     return client_indices
 
 def partition_quantity_skew(targets: np.ndarray, num_clients: int, beta: float = 0.5) -> List[List[int]]:
-    """
+    #
     각 클라이언트가 데이터 개수 자체가 다르게 되도록(수량 편향). beta↓ → 편차↑
-    """
+    
     all_idxs = np.arange(len(targets))
     np.random.shuffle(all_idxs)
     # 각 클라 비율 ~ Dirichlet(beta,...)
@@ -138,11 +220,10 @@ def partition_quantity_skew(targets: np.ndarray, num_clients: int, beta: float =
     return client_indices
 
 def parse_partition_mode(s: str) -> Tuple[str, Dict]:
-    """
-    "dirichlet:0.1" -> ("dirichlet", {"alpha":0.1})
-    "label_skew:2" -> ("label_skew", {"n_labels":2})
-    "qty_skew:beta0.5" -> ("qty_skew", {"beta":0.5})
-    """
+    #"dirichlet:0.1" -> ("dirichlet", {"alpha":0.1})
+    #"label_skew:2" -> ("label_skew", {"n_labels":2})
+    #"qty_skew:beta0.5" -> ("qty_skew", {"beta":0.5})
+    
     s = s.strip().lower()
     if s.startswith("dirichlet:"):
         alpha = float(s.split(":")[1])
@@ -203,22 +284,21 @@ def build_or_load_partitions(train_ds, num_clients: int, mode: str, params: Dict
     logger.info(f"Saved partition to {path}")
     return parts
 
-# -----------------------------
-# Public API: 기존 함수 시그니처 유지
-# -----------------------------
+
+# Pytorch version
 def load_partition(dataset: str, validation_split: float, batch_size: int):
-    """
-    각 서버(클라이언트)는 환경변수로 CLIENT_ID를 넘겨 자기 데이터만 로드합니다.
-    """
-    now_str = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+  
+    now_str = datetime.now()
+    now_str = now.strftime('%Y-%m-%d %H:%M:%S')
     logging.info(json.dumps({"dataset": dataset, "start_execution_time": now_str,
                              "client_id": CLIENT_ID, "num_clients": NUM_CLIENTS,
                              "partition": PARTITION_MODE, "seed": SEED}))
 
-    # 1) 공통 변환
+
+    # MNIST Data Preprocessing
     transform = transforms.Compose([
         transforms.ToTensor(),
-        transforms.Normalize((0.5,), (0.5,)),
+        transforms.Normalize((0.5,), (0.5,)),   # Adjusted for grayscale
     ])
 
     # 2) 전체 train split(=원래 MNIST train)을 다운로드
@@ -256,9 +336,8 @@ def load_partition(dataset: str, validation_split: float, batch_size: int):
     return train_loader, val_loader, test_loader
 
 def gl_model_torch_validation(batch_size: int):
-    """
-    서버(중앙)에서 전역 모델을 검증할 때 쓰는 공통 테스트셋 로더.
-    """
+    # Common test set loader used to validate a global model on a server (central).
+    
     transform = transforms.Compose([
         transforms.ToTensor(),
         transforms.Normalize((0.5,), (0.5,))
@@ -266,3 +345,4 @@ def gl_model_torch_validation(batch_size: int):
     val_dataset = datasets.MNIST(root=DATA_ROOT, train=False, download=True, transform=transform)
     gl_val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False)
     return gl_val_loader
+

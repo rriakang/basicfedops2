@@ -1,5 +1,3 @@
-#app.py
-
 import logging, json
 import socket
 import time
@@ -7,25 +5,20 @@ from fastapi import FastAPI, BackgroundTasks
 import asyncio
 import uvicorn
 from datetime import datetime
-from torch.utils.data import DataLoader
 
-# from . import client_utils
-# from . import client_fl
-# from . import client_wandb
-# from . import client_api
+from . import client_utils
+from . import client_fl
+from . import client_wandb
+from . import client_api
+from ..utils.fedxai.gradcam import MNISTGradCAM
 
-import client_api
-import client_wandb
-import client_fl
-import client_utils
 
 class FLClientTask():
-    def __init__(self, cfg, fl_task=None):
+    def __init__(self, cfg, fl_task=None, xai=False):
         self.app = FastAPI()
         self.status = client_utils.FLClientStatus()
         self.cfg = cfg
         self.client_port = 8003
-        # self.client_port = cfg.client.port
         self.task_id = cfg.task_id
         self.dataset_name = cfg.dataset.name
         self.output_size = cfg.model.output_size
@@ -34,6 +27,7 @@ class FLClientTask():
         self.model_type = cfg.model_type
         self.model = fl_task["model"]
         self.model_name = fl_task["model_name"]
+        self.xai = xai
         
         self.status.client_name = socket.gethostname()
         self.status.task_id = self.task_id
@@ -61,6 +55,13 @@ class FLClientTask():
             self.test_loader = fl_task["test_loader"]
             self.train_torch = fl_task["train_torch"]
             self.test_torch = fl_task["test_torch"]
+
+        elif self.model_type == "Huggingface":
+            self.trainset = fl_task["trainset"]
+            self.tokenizer = fl_task["tokenizer"]
+            self.finetune_llm = fl_task["finetune_llm"]
+            self.data_collator = fl_task["data_collator"]
+            self.formatting_prompts_func = fl_task["formatting_prompts_func"]
                     
 
     async def fl_client_start(self):
@@ -108,7 +109,26 @@ class FLClientTask():
                                             train_loader=self.train_loader, val_loader=self.val_loader, test_loader=self.test_loader, 
                                             cfg=self.cfg, train_torch=self.train_torch, test_torch=self.test_torch)
 
-
+            elif self.model_type == "Huggingface":
+                client = client_fl.FLClient(
+                    model=self.model,
+                    validation_split=self.validation_split,
+                    fl_task_id=self.task_id,
+                    client_mac=self.status.client_mac,
+                    client_name=self.status.client_name,
+                    fl_round=1,
+                    gl_model=self.status.gl_model,
+                    wandb_use=self.wandb_use,
+                    wandb_name=self.wandb_name,
+                    wandb_run=wandb_run,
+                    model_name=self.model_name,
+                    model_type=self.model_type,
+                    trainset=self.trainset,
+                    tokenizer=self.tokenizer,
+                    finetune_llm=self.finetune_llm,
+                    formatting_prompts_func=self.formatting_prompts_func,
+                    data_collator=self.data_collator,
+                )
             
             # Check data fl client data status in the wandb
             # label_values = [[i, self.y_label_counter[i]] for i in range(self.output_size)]
@@ -127,6 +147,24 @@ class FLClientTask():
 
             # FL client end time
             fl_end_time = time.time() - fl_start_time
+
+            # Grad-CAM 설명 생성
+            if self.xai:
+                try:
+                    logging.info("Generating Grad-CAM explanations...")
+                    gradcam = MNISTGradCAM(model=self.model)  # Replace "layer_name" with the desired layer
+                    input_data = self.x_test[:1]  # Use a sample input for visualization
+                    cam_output = gradcam.generate(input_data)
+                    
+                    # 저장 또는 시각화
+                    gradcam.save(cam_output, "gradcam_output.png")  # 저장 경로 지정
+                    logging.info("Grad-CAM explanation saved as gradcam_output.png")
+                except Exception as e:
+                    logging.error(f"Error generating Grad-CAM explanations: {e}")
+
+            # Wandb 로그 추가 (옵션)
+            # if self.wandb_use:
+            #     wandb_run.log({"gradcam_output": wandb.Image("gradcam_output.png")})
             
             
             if self.wandb_use:
@@ -213,6 +251,7 @@ class FLClientTask():
             # FL client out
             client_api.ClientMangerAPI().get_client_out()
             logging.info(f'{self.status.client_name};{self.status.client_mac}-client close')
+            if self.xai == True:
+                # close xai
+                GradCAM.close_xai()
 
-
-    

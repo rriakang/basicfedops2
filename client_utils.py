@@ -1,5 +1,3 @@
-#client_utils.py
-
 import asyncio
 import os
 import requests
@@ -7,8 +5,18 @@ from pydantic.main import BaseModel
 import re
 import logging
 import uuid, socket
-# from . import client_api
-import client_api
+from . import client_api
+from flwr.common.typing import NDArrays
+from peft import (
+    get_peft_model_state_dict,
+    set_peft_model_state_dict,
+)
+import torch
+import json
+from collections import OrderedDict
+from transformers import AutoModelForCausalLM, BitsAndBytesConfig
+from peft import get_peft_model, LoraConfig, prepare_model_for_kbit_training
+
 # set log format
 handlers_list = [logging.StreamHandler()]
 
@@ -126,3 +134,76 @@ async def notify_fail():
         logging.error('notify_fail error: ', r.content)
     
     return FL_client_start
+
+
+""" For LLM Functions """
+def set_parameters_for_llm(model, parameters: NDArrays) -> None:
+    """Change the parameters of the model using the given ones."""
+    peft_state_dict_keys = get_peft_model_state_dict(model).keys()
+    params_dict = zip(peft_state_dict_keys, parameters)
+    state_dict = OrderedDict({k: torch.Tensor(v) for k, v in params_dict})
+    set_peft_model_state_dict(model, state_dict)
+
+def get_parameters_for_llm(model) -> NDArrays:
+    """Return the parameters of the current net."""
+    state_dict = get_peft_model_state_dict(model)
+    return [val.cpu().numpy() for _, val in state_dict.items()]
+
+def load_model(model_name: str, quantization: int, gradient_checkpointing: bool, peft_config):
+    if quantization == 4:
+        bnb_config = BitsAndBytesConfig(
+            load_in_4bit=True,
+            bnb_4bit_compute_dtype=torch.float16,
+            bnb_4bit_use_double_quant=True,
+            bnb_4bit_quant_type="nf4",
+        )
+    elif quantization == 8:
+        bnb_config = BitsAndBytesConfig(
+            load_in_8bit=True
+        )
+    else:
+        bnb_config = None  # 양자화 안함
+
+    model = AutoModelForCausalLM.from_pretrained(
+        model_name,
+        quantization_config=bnb_config,
+        torch_dtype=torch.float16,
+        device_map="auto",
+    )
+
+    model = prepare_model_for_kbit_training(model, use_gradient_checkpointing=gradient_checkpointing)
+
+    if gradient_checkpointing:
+        model.config.use_cache = False
+
+    return get_peft_model(model, peft_config)
+
+def gen_parameter_shape(cfg) -> None:
+    """
+    Huggingface 모델에 LoRA를 적용한 후, 학습 가능한 파라미터들의 shape을 JSON으로 저장
+    cfg: OmegaConf or dict, 반드시 cfg.model.name이 포함되어 있어야 함
+    """
+    model_name = cfg.model.name
+    save_filename = cfg.save_filename if "save_filename" in cfg else "parameter_shapes.json"
+
+    # 모델 로드 및 LoRA 적용
+    model = AutoModelForCausalLM.from_pretrained(model_name)
+    peft_config = LoraConfig(
+        r=cfg.finetune.lora_r,
+        lora_alpha=cfg.finetune.lora_alpha,
+        lora_dropout=cfg.finetune.lora_dropout,
+        task_type="CAUSAL_LM",
+    )
+    peft_model = get_peft_model(model, peft_config)
+
+    # LoRA 파라미터 shape 추출
+    parameter_shapes = [list(p.shape) for p in get_parameters_for_llm(peft_model)]
+
+    # 현재 실행 위치 기준으로 저장
+    save_path = os.path.abspath(save_filename)
+
+    # JSON 저장
+    with open(save_path, "w") as f:
+        json.dump(parameter_shapes, f, indent=2)
+
+    print(f"[✓] {save_filename} saved to: {save_path}")
