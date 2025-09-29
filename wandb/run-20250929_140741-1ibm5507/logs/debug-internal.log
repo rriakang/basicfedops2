@@ -1,0 +1,16 @@
+{"time":"2025-09-29T14:07:41.037320922+09:00","level":"INFO","msg":"stream: starting","core version":"0.19.9","symlink path":"/home/ccl/Desktop/RR/FedOps2/fedopstest/wandb/run-20250929_140741-1ibm5507/logs/debug-core.log"}
+{"time":"2025-09-29T14:07:41.525550605+09:00","level":"INFO","msg":"created new stream","id":"1ibm5507"}
+{"time":"2025-09-29T14:07:41.525593429+09:00","level":"INFO","msg":"stream: started","id":"1ibm5507"}
+{"time":"2025-09-29T14:07:41.525611973+09:00","level":"INFO","msg":"writer: Do: started","stream_id":"1ibm5507"}
+{"time":"2025-09-29T14:07:41.525669328+09:00","level":"INFO","msg":"sender: started","stream_id":"1ibm5507"}
+{"time":"2025-09-29T14:07:41.525620252+09:00","level":"INFO","msg":"handler: started","stream_id":"1ibm5507"}
+{"time":"2025-09-29T14:07:41.880399999+09:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-09-29T14:08:28.023893465+09:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-09-29T14:08:28.023978878+09:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-09-29T14:08:29.026922561+09:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading config.yaml","runtime_seconds":0.35831003,"progress":"1020B/1020B"}],"total_operations":1}}
+{"time":"2025-09-29T14:08:29.095119027+09:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-29T14:08:29.782293267+09:00","level":"INFO","msg":"stream: closing","id":"1ibm5507"}
+{"time":"2025-09-29T14:08:29.78231233+09:00","level":"INFO","msg":"handler: closed","stream_id":"1ibm5507"}
+{"time":"2025-09-29T14:08:29.782321743+09:00","level":"INFO","msg":"writer: Close: closed","stream_id":"1ibm5507"}
+{"time":"2025-09-29T14:08:29.782328195+09:00","level":"INFO","msg":"sender: closed","stream_id":"1ibm5507"}
+{"time":"2025-09-29T14:08:29.782400298+09:00","level":"INFO","msg":"stream: closed","id":"1ibm5507"}
