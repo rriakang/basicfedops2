@@ -1,13 +1,13 @@
 # # data_preparation.py
 
-# import json
-# import logging
-# from collections import Counter
-# from datetime import datetime
+import json
+import logging
+from collections import Counter
+from datetime import datetime
 
-# import torch
-# from torch.utils.data import DataLoader, Dataset, random_split
-# from torchvision import datasets, transforms
+import torch
+from torch.utils.data import DataLoader, Dataset, random_split
+from torchvision import datasets, transforms
 
 
 # # set log format
@@ -199,8 +199,7 @@ def partition_label_skew(targets: np.ndarray, num_clients: int, n_labels_per_cli
     return client_indices
 
 def partition_quantity_skew(targets: np.ndarray, num_clients: int, beta: float = 0.5) -> List[List[int]]:
-    #
-    각 클라이언트가 데이터 개수 자체가 다르게 되도록(수량 편향). beta↓ → 편차↑
+    # 각 클라이언트가 데이터 개수 자체가 다르게 되도록(수량 편향). beta↓ → 편차↑
     
     all_idxs = np.arange(len(targets))
     np.random.shuffle(all_idxs)
@@ -288,8 +287,7 @@ def build_or_load_partitions(train_ds, num_clients: int, mode: str, params: Dict
 # Pytorch version
 def load_partition(dataset: str, validation_split: float, batch_size: int):
   
-    now_str = datetime.now()
-    now_str = now.strftime('%Y-%m-%d %H:%M:%S')
+    now_str = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     logging.info(json.dumps({"dataset": dataset, "start_execution_time": now_str,
                              "client_id": CLIENT_ID, "num_clients": NUM_CLIENTS,
                              "partition": PARTITION_MODE, "seed": SEED}))

@@ -5,7 +5,7 @@ from pydantic.main import BaseModel
 import re
 import logging
 import uuid, socket
-from . import client_api
+import client_api
 from flwr.common.typing import NDArrays
 from peft import (
     get_peft_model_state_dict,
