@@ -1,6 +1,0 @@
-[2025-09-12 00:43:49,923][root][ERROR] - No read global model
-[2025-09-12 00:43:49,923][root][INFO] - gl_model: None, gl_model_v: 0
-[2025-09-12 00:43:49,930][root][INFO] - last_gl_model_v: 0
-[2025-09-12 00:43:49,935][root][INFO] - init global model making
-[2025-09-12 00:43:52,360][root][INFO] - server close
-[2025-09-12 00:43:52,371][root][INFO] - global model version upgrade

@@ -1,8 +1,0 @@
-[2025-09-28 21:56:35,085][root][INFO] - FL_Task - {"dataset": "MNIST", "start_execution_time": "2025-09-28 21:56:35"}
-[2025-09-28 21:56:35,428][root][INFO] - [override] using fixed client_id=0/4
-[2025-09-28 21:56:35,521][root][INFO] - [NonIID-Dirichlet] clients=4 id=0 alpha=0.1 seed=42 local_size=9702
-[2025-09-28 21:56:35,523][__main__][INFO] - data loaded
-[2025-09-28 21:56:35,602][__main__][INFO] - Latest Local Model download
-[2025-09-28 21:56:35,603][root][INFO] - downloaded local_model_name: MNISTClassifier_local_model_V20.pth
-[2025-09-28 21:56:35,721][root][INFO] - init model_type: Pytorch
-[2025-09-28 22:10:28,995][root][INFO] - ccl-x-server;43:56:51:a9:43:53-client close
