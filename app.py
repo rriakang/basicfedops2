@@ -24,8 +24,8 @@ class FLClientTask():
         self.app = FastAPI()
         self.status = client_utils.FLClientStatus()
         self.cfg = cfg
-        # self.client_port = 8003
-        self.client_port = cfg.client.port
+        self.client_port = 8003
+        # self.client_port = cfg.client.port
         self.task_id = cfg.task_id
         self.dataset_name = cfg.dataset.name
         self.output_size = cfg.model.output_size

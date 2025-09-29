@@ -19,8 +19,8 @@ from omegaconf import DictConfig, OmegaConf
 @hydra.main(config_path="./conf", config_name="config", version_base=None)
 def main(cfg: DictConfig) -> None:
     # set log format
-    client_id = cfg.client.id
-    print(f"Starting client {client_id}")
+    # client_id = cfg.client.id
+    # print(f"Starting client {client_id}")
     
     handlers_list = [logging.StreamHandler()]
     
