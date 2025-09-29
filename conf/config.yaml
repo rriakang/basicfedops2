@@ -33,7 +33,7 @@ wandb:
 num_epochs: 1 # number of local epochs
 batch_size: 128
 num_rounds: 2 # Number of rounds to perform
-clients_per_round: 2 # Number of clients participating in the round
+clients_per_round: 3 # Number of clients participating in the round
 
 server:
   strategy:
