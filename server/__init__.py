@@ -25,6 +25,7 @@ from . import server_utils as server_utils
 from . import server_api as server_api
 from . import mobile_app as mobile_app
 from . import mobile_strategy as mobile_strategy
+from . import best_keeper as best_keeper
 
 # import app as app
 # import server_utils as server_utils
@@ -38,4 +39,5 @@ __all__ = [
     "server_api",
     "mobile_app",
     "mobile_strategy",
+    "best_keeper",
 ]

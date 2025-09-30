@@ -1,0 +1,17 @@
+{"time":"2025-09-30T10:51:23.07179221+09:00","level":"INFO","msg":"stream: starting","core version":"0.19.9","symlink path":"/home/ccl/Desktop/RR/FedOps2/fedopstest/wandb/run-20250930_105123-olzn8qhp/logs/debug-core.log"}
+{"time":"2025-09-30T10:51:23.477383123+09:00","level":"INFO","msg":"created new stream","id":"olzn8qhp"}
+{"time":"2025-09-30T10:51:23.477442487+09:00","level":"INFO","msg":"stream: started","id":"olzn8qhp"}
+{"time":"2025-09-30T10:51:23.477466085+09:00","level":"INFO","msg":"sender: started","stream_id":"olzn8qhp"}
+{"time":"2025-09-30T10:51:23.477478645+09:00","level":"INFO","msg":"writer: Do: started","stream_id":"olzn8qhp"}
+{"time":"2025-09-30T10:51:23.477569012+09:00","level":"INFO","msg":"handler: started","stream_id":"olzn8qhp"}
+{"time":"2025-09-30T10:51:23.77224765+09:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-09-30T11:15:41.634010277+09:00","level":"WARN","msg":"handler: ignoring partial history record","step":1,"current":2}
+{"time":"2025-09-30T11:15:41.668485503+09:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-09-30T11:15:41.66860435+09:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-09-30T11:15:42.437231325+09:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-30T11:15:42.671152475+09:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading history steps 1-1, summary, console lines 640-656","runtime_seconds":0.233704705}],"total_operations":1}}
+{"time":"2025-09-30T11:15:42.778333625+09:00","level":"INFO","msg":"stream: closing","id":"olzn8qhp"}
+{"time":"2025-09-30T11:15:42.778351426+09:00","level":"INFO","msg":"handler: closed","stream_id":"olzn8qhp"}
+{"time":"2025-09-30T11:15:42.778360664+09:00","level":"INFO","msg":"writer: Close: closed","stream_id":"olzn8qhp"}
+{"time":"2025-09-30T11:15:42.778368132+09:00","level":"INFO","msg":"sender: closed","stream_id":"olzn8qhp"}
+{"time":"2025-09-30T11:15:42.778446766+09:00","level":"INFO","msg":"stream: closed","id":"olzn8qhp"}
