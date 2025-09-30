@@ -1,0 +1,7 @@
+2025-09-30 12:20:49,945 INFO    MainThread:2080730 [wandb_init.py:setup_run_log_directory():662] Logging user logs to /home/ccl/Desktop/RR/FedOps2/fedopstest/wandb/run-20250930_122049-w8a4vtuk/logs/debug.log
+2025-09-30 12:20:49,945 INFO    MainThread:2080730 [wandb_init.py:setup_run_log_directory():663] Logging internal logs to /home/ccl/Desktop/RR/FedOps2/fedopstest/wandb/run-20250930_122049-w8a4vtuk/logs/debug-internal.log
+2025-09-30 12:20:49,946 INFO    MainThread:2080730 [wandb_init.py:init():781] calling init triggers
+2025-09-30 12:20:49,946 INFO    MainThread:2080730 [wandb_init.py:init():786] wandb.init called with sweep_config: {}
+config: {'learning_rate': 0, 'optimizer': '', 'dataset': '', 'model_architecture': '', 'batch_size': 0, 'epochs': 0, 'num_rounds': 0, '_wandb': {}}
+2025-09-30 12:20:49,946 INFO    MainThread:2080730 [wandb_init.py:init():801] wandb.init() called while a run is active
+2025-09-30 12:22:04,728 INFO    MsgRouterThr:2080730 [mailbox.py:close():129] [no run ID] Closing mailbox, abandoning 1 handles.

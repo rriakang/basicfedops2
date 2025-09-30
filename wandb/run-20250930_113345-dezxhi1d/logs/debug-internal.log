@@ -1,0 +1,15 @@
+{"time":"2025-09-30T11:33:45.697283394+09:00","level":"INFO","msg":"stream: starting","core version":"0.19.9","symlink path":"/home/ccl/Desktop/RR/FedOps2/fedopstest/wandb/run-20250930_113345-dezxhi1d/logs/debug-core.log"}
+{"time":"2025-09-30T11:33:46.031159006+09:00","level":"INFO","msg":"created new stream","id":"dezxhi1d"}
+{"time":"2025-09-30T11:33:46.031239296+09:00","level":"INFO","msg":"stream: started","id":"dezxhi1d"}
+{"time":"2025-09-30T11:33:46.03126158+09:00","level":"INFO","msg":"writer: Do: started","stream_id":"dezxhi1d"}
+{"time":"2025-09-30T11:33:46.031269304+09:00","level":"INFO","msg":"sender: started","stream_id":"dezxhi1d"}
+{"time":"2025-09-30T11:33:46.031375405+09:00","level":"INFO","msg":"handler: started","stream_id":"dezxhi1d"}
+{"time":"2025-09-30T11:33:46.289877057+09:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-09-30T12:22:04.729455469+09:00","level":"INFO","msg":"stream: closing","id":"dezxhi1d"}
+{"time":"2025-09-30T12:22:04.729499008+09:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-09-30T12:22:04.729629382+09:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-09-30T12:22:05.489190967+09:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-30T12:22:05.828295927+09:00","level":"INFO","msg":"handler: closed","stream_id":"dezxhi1d"}
+{"time":"2025-09-30T12:22:05.828358541+09:00","level":"INFO","msg":"writer: Close: closed","stream_id":"dezxhi1d"}
+{"time":"2025-09-30T12:22:05.828372527+09:00","level":"INFO","msg":"sender: closed","stream_id":"dezxhi1d"}
+{"time":"2025-09-30T12:22:05.828446648+09:00","level":"INFO","msg":"stream: closed","id":"dezxhi1d"}

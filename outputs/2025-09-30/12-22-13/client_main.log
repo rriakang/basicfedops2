@@ -1,0 +1,74 @@
+[2025-09-30 12:22:13,045][root][INFO] - {"dataset": "MNIST", "start_execution_time": "2025-09-30 12:22:13", "client_id": 2, "num_clients": 3, "partition": "dirichlet:0.1", "seed": 42}
+[2025-09-30 12:22:13,106][__main__][INFO] - data loaded
+[2025-09-30 12:22:13,124][__main__][INFO] - Latest Local Model download
+[2025-09-30 12:22:13,124][root][INFO] - downloaded local_model_name: MNISTClassifier_local_model_V1.pth
+[2025-09-30 12:22:13,135][root][INFO] - init model_type: Pytorch
+[2025-09-30 12:26:25,069][root][INFO] - bulid model
+[2025-09-30 12:26:25,069][root][INFO] - FL start
+[2025-09-30 12:26:25,077][client_api][INFO] - FL_server_IP:port - ccl.gachon.ac.kr:40032
+[2025-09-30 12:26:25,079][root][INFO] - FL learning ready
+[2025-09-30 12:26:25,079][root][INFO] - fl_task_id: cluster2
+[2025-09-30 12:26:25,079][root][INFO] - dataset: MNIST
+[2025-09-30 12:26:25,079][root][INFO] - output_size: 10
+[2025-09-30 12:26:25,079][root][INFO] - validation_split: 0.2
+[2025-09-30 12:26:25,079][root][INFO] - model_type: Pytorch
+[2025-09-30 12:26:25,079][root][INFO] - wandb_key: 38f6cf3c2c37660d42ebfe8ab434b72d34be3b31
+[2025-09-30 12:26:25,079][root][INFO] - wandb_account: rirakang@gachon.ac.kr
+[2025-09-30 12:26:26,908][flwr][WARNING] - DEPRECATED FEATURE: flwr.client.start_numpy_client() is deprecated. 
+	Instead, use `flwr.client.start_client()` by ensuring you first call the `.to_client()` method as shown below: 
+	flwr.client.start_client(
+		server_address='<IP>:<PORT>',
+		client=FlowerClient().to_client(), # <-- where FlowerClient is of type flwr.client.NumPyClient object
+	)
+	Using `start_numpy_client()` is deprecated.
+
+            This is a deprecated feature. It will be removed
+            entirely in future versions of Flower.
+        
+[2025-09-30 12:26:26,909][flwr][WARNING] - DEPRECATED FEATURE: flwr.client.start_client() is deprecated.
+	Instead, use the `flower-supernode` CLI command to start a SuperNode as shown below:
+
+		$ flower-supernode --insecure --superlink='<IP>:<PORT>'
+
+	To view all available options, run:
+
+		$ flower-supernode --help
+
+	Using `start_client()` is deprecated.
+
+            This is a deprecated feature. It will be removed
+            entirely in future versions of Flower.
+        
+[2025-09-30 12:26:26,945][flwr][DEBUG] - Opened insecure gRPC connection (no certificates were passed)
+[2025-09-30 12:26:26,948][flwr][DEBUG] - ChannelConnectivity.IDLE
+[2025-09-30 12:26:26,949][flwr][DEBUG] - ChannelConnectivity.CONNECTING
+[2025-09-30 12:26:26,952][flwr][DEBUG] - ChannelConnectivity.READY
+[2025-09-30 12:26:29,039][flwr][INFO] - 
+[2025-09-30 12:26:29,040][flwr][INFO] - Received: train message 3cc6b3e8-4134-4168-b9ac-4c6e52ad9557
+[2025-09-30 12:26:29,055][client_api][INFO] - [cluster-upsert] success (task_id=cluster2, mac=43:56:51:a9:43:53, cluster_id=0)
+[2025-09-30 12:26:33,704][client_fl][INFO] - train_performance - {"fl_task_id": "cluster2", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "round": 1, "gl_model_v": 2, "train_loss": 0.1250186047476271, "train_accuracy": 0.9616531742650192, "train_f1_score": 0.9601641666142315, "val_loss": 0.1386137996678767, "val_accuracy": 0.9512444595976816, "val_f1_score": 0.9503639949643995, "train_time": 4.646603584289551, "wandb_name": "ccl-x-server-v0(2025-09-30 12:22:13.136779)", "cluster_id": 0}
+[2025-09-30 12:26:33,776][flwr][INFO] - Sent reply
+[2025-09-30 12:26:41,955][flwr][INFO] - 
+[2025-09-30 12:26:41,956][flwr][INFO] - Received: evaluate message e823876f-49e0-432f-9db6-dbcd65e35008
+[2025-09-30 12:26:43,450][client_fl][INFO] - test - {"fl_task_id": "cluster2", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "round": 1, "test_loss": 2.743178817290294, "test_accuracy": 0.3698, "gl_model_v": 2, "wandb_name": "ccl-x-server-v0(2025-09-30 12:22:13.136779)"}
+[2025-09-30 12:26:43,460][flwr][INFO] - Sent reply
+[2025-09-30 12:26:44,567][flwr][INFO] - 
+[2025-09-30 12:26:44,568][flwr][INFO] - Received: train message 5eba1dc8-0edf-4113-8993-fe983950eb67
+[2025-09-30 12:26:44,583][client_api][INFO] - [cluster-upsert] success (task_id=cluster2, mac=43:56:51:a9:43:53, cluster_id=0)
+[2025-09-30 12:26:54,282][client_fl][INFO] - train_performance - {"fl_task_id": "cluster2", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "round": 2, "gl_model_v": 2, "train_loss": 0.0759001259773988, "train_accuracy": 0.9781849169152109, "train_f1_score": 0.9769478798405047, "val_loss": 0.07917384001547875, "val_accuracy": 0.9768155472212752, "val_f1_score": 0.9761923816910432, "train_time": 9.6959388256073, "wandb_name": "ccl-x-server-v0(2025-09-30 12:22:13.136779)", "cluster_id": 0}
+[2025-09-30 12:26:54,337][flwr][INFO] - Sent reply
+[2025-09-30 12:27:30,522][flwr][INFO] - 
+[2025-09-30 12:27:30,523][flwr][INFO] - Received: evaluate message c9937440-2999-455e-8474-2e15419050b2
+[2025-09-30 12:27:32,041][client_fl][INFO] - test - {"fl_task_id": "cluster2", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "round": 2, "test_loss": 2.4512859205656414, "test_accuracy": 0.5488, "gl_model_v": 2, "wandb_name": "ccl-x-server-v0(2025-09-30 12:22:13.136779)"}
+[2025-09-30 12:27:32,052][flwr][INFO] - Sent reply
+[2025-09-30 12:27:32,297][flwr][INFO] - 
+[2025-09-30 12:27:32,298][flwr][INFO] - Received: reconnect message 857d899f-556a-47e8-80f2-a716a396e931
+[2025-09-30 12:27:32,301][flwr][DEBUG] - gRPC channel closed
+[2025-09-30 12:27:32,302][flwr][INFO] - Disconnect and shut down
+[2025-09-30 12:27:32,303][root][INFO] - fl learning finished
+[2025-09-30 12:27:33,920][root][ERROR] - wandb system load error: Could not find project MNIST_cluster2
+[2025-09-30 12:27:33,920][root][INFO] - client_operation_time - {"fl_task_id": "cluster2", "client_mac": "43:56:51:a9:43:53", "client_name": "ccl-x-server", "operation_time": 65.39760541915894, "gl_model_v": 2}
+[2025-09-30 12:27:33,931][root][INFO] - try notify_fin
+[2025-09-30 12:27:33,943][root][INFO] - trainFin
+[2025-09-30 12:27:33,943][root][INFO] - FL Client Learning Finish
+[2025-09-30 12:32:35,396][root][INFO] - ccl-x-server;43:56:51:a9:43:53-client close
