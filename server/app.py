@@ -15,7 +15,7 @@ from collections import OrderedDict
 from hydra.utils import instantiate
 
 from flwr.common import ndarrays_to_parameters, parameters_to_ndarrays, NDArrays
-from .best_keeper import BestKeeper
+# from .best_keeper import BestKeeper
 
 # TF warning log filtering
 # os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
@@ -25,37 +25,35 @@ logging.basicConfig(level=logging.DEBUG, format="%(asctime)s [%(levelname)8.8s] 
 logger = logging.getLogger(__name__)
 
 
-class FLServer():
-    def __init__(self, cfg, model, model_name, model_type, gl_val_loader=None, x_val=None, y_val=None, test_torch=None):
-        
-        self.task_id = os.environ.get('TASK_ID') # Set FL Task ID
+# server/app.py (발췌)
 
-        self.server = server_utils.FLServerStatus() # Set FLServerStatus class
+class FLServer():
+    def __init__(self, cfg, model, model_name, model_type,
+                 gl_val_loader=None, x_val=None, y_val=None, test_torch=None):
+
+        self.task_id = os.environ.get('TASK_ID')
+        self.server = server_utils.FLServerStatus()
         self.model_type = model_type
         self.cfg = cfg
         self.strategy = cfg.server.strategy
-        
+
         self.batch_size = int(cfg.batch_size)
-        self.local_epochs = int(cfg.num_epochs)
+        self.local_epochs = int(cfg.num_rounds)  # <- 오타면 원래대로
         self.num_rounds = int(cfg.num_rounds)
 
         self.init_model = model
         self.init_model_name = model_name
         self.next_model = None
         self.next_model_name = None
-        
-        if self.model_type=="Tensorflow":
+
+        if self.model_type == "Tensorflow":
             self.x_val = x_val
-            self.y_val = y_val  
-               
+            self.y_val = y_val
         elif self.model_type == "Pytorch":
             self.gl_val_loader = gl_val_loader
             self.test_torch = test_torch
 
-        elif self.model_type == "Huggingface":
-            pass
-
-        # ====== 클러스터 전략 여부/메트릭 키 결정 (비클러스터는 영향 없음) ======
+        # ====== 클러스터 전략 여부/메트릭 키 결정 ======
         try:
             strat_target = str(self.strategy._target_)
         except Exception:
@@ -64,7 +62,6 @@ class FLServer():
 
         metric_key = "accuracy"
         if self.is_cluster:
-            # yaml: server.strategy.objective -> maximize_f1 | maximize_acc | minimize_loss
             try:
                 objective = str(getattr(self.strategy, "objective", "")).lower()
             except Exception:
@@ -73,12 +70,13 @@ class FLServer():
                 metric_key = "val_f1_score"
             elif "minimize_loss" in objective:
                 metric_key = "val_loss"
-            else:
-                metric_key = "accuracy"
 
-        # 클러스터일 때만 BestKeeper 활성화
-        self.best_keeper = BestKeeper(save_dir="./gl_best", metric_key=metric_key) if self.is_cluster else None
-        # ===============================================================
+        # ====== BestKeeper: 클러스터일 때만 지연 임포트/생성 ======
+        self.best_keeper = None
+        if self.is_cluster:
+            from .best_keeper import BestKeeper  # 지연 임포트
+            self.best_keeper = BestKeeper(save_dir="./gl_best", metric_key=metric_key)
+
 
 
     def init_gl_model_registration(self, model, gl_model_name) -> None:

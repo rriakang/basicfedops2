@@ -72,7 +72,7 @@ dataset:
 
 
 # client
-task_id: 'baseof' # Input your Task Name that you register in FedOps Website
+task_id: 'baseof2' # Input your Task Name that you register in FedOps Website
 
 wandb: 
   use: true # Whether to use wandb
