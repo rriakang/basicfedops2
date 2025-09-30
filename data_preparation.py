@@ -77,7 +77,7 @@ def gl_model_torch_validation(batch_size):
     return gl_val_loader
 
 
- If you would like to recreate a noniid situation, please remove the comment below   
+#  If you would like to recreate a noniid situation, please remove the comment below   
 
 
 
